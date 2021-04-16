@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class EnemDamage : MonoBehaviour
 {
+    Rigidbody2D turistaRigidBody;
     public Animator anima;
     int golpeTurista = 1;
     int golpe = 2;
     int golpeRobot = 4;
-    
+
+    private void Start()
+    {
+        turistaRigidBody = GetComponent<Rigidbody2D>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //METEMOS QUE SOLO EL DISCO DEL JUG PUEDE HACER DAÑO
@@ -43,6 +48,7 @@ public class EnemDamage : MonoBehaviour
     }
     void TuristaDaño()
     {
+        turistaRigidBody.velocity = Vector2.zero;
         anima.SetBool("Muerto", true);
         anima.SetBool("Heavy", false);
         anima.SetBool("Electrica", false);
