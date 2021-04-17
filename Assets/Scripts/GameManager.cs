@@ -51,10 +51,22 @@ public class GameManager : MonoBehaviour
         enemy--;
         print("enemy: " + enemy);
     }
+    
+    //Reduce 1 sola vida cuando golpean
+    public void reducirVidas()
+    {
+        vidas = vidas - 10;
+        print(vidas);
+    }
     //Reduce dos vidas al recibir un golpe
     public void reducir2Vidas()
     {
         vidas = vidas - 20;
+        print(vidas);
+    }
+    public void ReducirVidasConstante()
+    {
+        vidas--;
         print(vidas);
     }
     //Cambia el estado del booleano parálisis que es el que permitirá o no al jugador moverse
@@ -66,17 +78,6 @@ public class GameManager : MonoBehaviour
     public bool EstadoParalisis()
     {
         return paralisis;
-    }
-    //Reduce 1 sola vida cuando golpean
-    public void reducirVidas()
-    {
-        vidas = vidas - 10;
-        print(vidas);
-    }
-    public void ReducirVidasConstante()
-    {
-        vidas--;
-        print(vidas);
     }
     //Aumenta 1 vida cada x segundos
     public void vidasElectric()

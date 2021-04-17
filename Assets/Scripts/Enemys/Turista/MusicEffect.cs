@@ -38,6 +38,8 @@ public class MusicEffect : MonoBehaviour
     }
     public void Empezar()
     {
+        //Al morir que solo haga la animación y se cancele el movimiento eléctrico
+        if (Rigidbody2D.velocity == Vector2.zero) Cancelar();
         if (player != null)
         {
             if (musica == 'c' && !clasic)
@@ -123,7 +125,7 @@ public class MusicEffect : MonoBehaviour
         {
             Rigidbody2D.velocity = new Vector2(transform.position.x - posElectronic.x, transform.position.y - posElectronic.y) * -1 * fuerzaTuristaElectronica;//2=velocidad          
         }
-        if (Rigidbody2D.velocity.x<0)
+        if (Rigidbody2D.velocity.x < 0)
         {
             anima.SetBool("Mov", false);
             anima.SetBool("MovIzq", true);

@@ -14,20 +14,20 @@ public class RobotPoliciaDisparo : MonoBehaviour
         tiempoAux = tiempoAux - Time.deltaTime;
     }
     //Si el contador lo permite dispara un rayo que hace 2 golpes de daño
-    public void MusicaElectronica()
+    public void MusicaElectronica(float rotationZ)
     {
         if (tiempoAux <= 0)
         {
-            Instantiate(rayoDaño, transform.position, transform.rotation);
+            Instantiate(rayoDaño, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, rotationZ)));
             tiempoAux = cadencia;
         }
     }
     //Si el contador lo permite dispara un rayo que hace 1 golpe de daño y stoonea al player
-    public void MusicaClasica()
+    public void MusicaClasica(float rotationZ)
     {
         if (tiempoAux <= 0)
         {
-            Instantiate(rayoStoon, transform.position, transform.rotation);
+            Instantiate(rayoStoon, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, rotationZ)));
             tiempoAux = cadencia;
         }
     }

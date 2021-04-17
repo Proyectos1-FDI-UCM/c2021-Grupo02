@@ -82,9 +82,8 @@ public class Damageable : MonoBehaviour
                     GameManager.GetInstance().CambiarEstadoParalisis();
                     GameManager.GetInstance().reducirVidas();
                 }
-                else GameManager.GetInstance().reducirVidas(); ;
+                else if(collision.GetComponent<bulletPolicia>())GameManager.GetInstance().reducirVidas(); ;
             }
-
             else 
             {
                 anim.SetInteger("Direction", 20);
