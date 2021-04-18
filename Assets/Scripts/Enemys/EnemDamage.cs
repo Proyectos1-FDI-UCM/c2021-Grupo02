@@ -8,7 +8,7 @@ public class EnemDamage : MonoBehaviour
     public Animator anima;
     int golpeTurista = 1;
     int golpe = 2;
-    int golpeRobot = 4;
+    public int golpeRobot = 4;
 
     private void Start()
     {
@@ -42,7 +42,7 @@ public class EnemDamage : MonoBehaviour
         else golpeRobot = golpeRobot-1;
         if (golpeRobot <= 0)
         {
-            Destroy(gameObject);
+            Invoke("Destruir", 1.25f);
             GameManager.GetInstance().RemoveEnemy();
         }
     }

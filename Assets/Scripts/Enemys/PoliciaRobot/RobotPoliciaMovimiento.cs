@@ -12,58 +12,109 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     int sentido = 1;
     char musica = 'c', musicaVieja = 'c';
     bool jugador, clasica = true, electrica = false, heavy = false;
-    Vector2 direction;
+    Vector2 direction, anguloEmbestida;
     Animator anim;
+    EnemDamage enemDamage;
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>()) GameManager.GetInstance().reducirVidas();
+        else Invoke("CambiarSentidoChoque", 0);
+    }
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
     {
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();
-        
+        enemDamage = GetComponent<EnemDamage>();
     }
     private void Update()
     {
-        //Actualiza el contador
-        tiempoAux = tiempoAux - Time.deltaTime;
-        //Da una char que dirá que música está sonando
-        musica = GameManager.GetInstance().Musica();
-        //Calcula la distancia entre el player y el enemigo;
-        direction = player.position - transform.position;
-        //Calcula el ángulo que tiene que girar a partir de la distancia a la que se encuentra del jugador
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //Obtenemos el estado del jugador, vivo/muerto
-        jugador = GameManager.GetInstance().EstadoJugador();
-
-        if (GameManager.GetInstance().EstadoSala() && !jugador)
+        if (enemDamage.golpeRobot > 0)
         {
-            if (musica != musicaVieja)
+            //Actualiza el contador
+            tiempoAux = tiempoAux - Time.deltaTime;
+            //Da una char que dirá que música está sonando
+            musica = GameManager.GetInstance().Musica();
+            //Calcula la distancia entre el player y el enemigo;
+            direction = player.position - transform.position;
+            //Calcula el ángulo que tiene que girar a partir de la distancia a la que se encuentra del jugador
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            //Obtenemos el estado del jugador, vivo/muerto
+            jugador = GameManager.GetInstance().EstadoJugador();
+
+            if (GameManager.GetInstance().EstadoSala() && !jugador)
             {
-                musicaVieja = musica;
-                sentido = -1;
-                tiempoAux = 1.2f;
-                Invoke("CambioSentido", 1);
-            }
-            else if (musica == 'c' && clasica){
-                clasica = false;
-                electrica = true;
-                heavy = true;
-                Invoke("Clasica", 1.2f); 
-            }
-            else if(musica == 'h' && heavy){
-                clasica = true;
-                electrica = true;
-                heavy = false;
-                Invoke("Heavy", 1.2f);
-            }
-            else if (musica == 'e' && electrica){
-                clasica = true;
-                electrica = false;
-                heavy = true;
-                Invoke("Electronica", 1.2f);
+                if (musica != musicaVieja)
+                {
+                    CancelInvoke();
+                    Invoke("CambiarSentido", 0);
+                }
+                else if (musica == 'c' && clasica && tiempoAux <= 0)
+                {
+                    CancelInvoke();
+                    clasica = false;
+                    electrica = true;
+                    heavy = true;
+                    Invoke("Clasica", 1.2f);
+                }
+                else if (musica == 'h' && heavy && tiempoAux <= 0)
+                {
+                    CancelInvoke();
+                    clasica = true;
+                    electrica = true;
+                    heavy = false;
+                    Invoke("Heavy", 1.2f);
+                }
+                else if (musica == 'e' && electrica && tiempoAux <= 0)
+                {
+                    CancelInvoke();
+                    clasica = true;
+                    electrica = false;
+                    heavy = true;
+                    Invoke("Electronica", 1.2f);
+                }
             }
         }
+        else {
+            CancelInvoke();
+            anim.SetBool("Disparo", false);
+            anim.SetBool("Embestir", false);
+            anim.SetBool("Retroceder", false);
+            anim.SetBool("Morir", true);
+            rb.velocity = Vector2.zero;
+        }
+    }
+    void CambiarSentidoChoque()
+    {
+        tiempoAux = 1.2f;
+    }
+    void CambiarSentido()
+    {
+        musicaVieja = musica;    
+        sentido = -1;
+        tiempoAux = 1.2f;
+        if (rb.velocity.x > 0)
+        {
+            anim.SetBool("Disparo", false);
+            anim.SetBool("Embestir", false);
+            anim.SetBool("Retroceder", true);
+            anim.SetBool("Morir", false);
+            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (rb.velocity.x < 0)
+        {          
+            anim.SetBool("Disparo", false);
+            anim.SetBool("Embestir", false);
+            anim.SetBool("Retroceder", true);
+            anim.SetBool("Morir", false);
+            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        Invoke("CambiarSentido", 0.001f);
+        Invoke("CambioSentido", 1);  
     }
     void Clasica()
     {
@@ -83,7 +134,11 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 4 && direction.magnitude > 2)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 8 && direction.magnitude > 4)
+        {
+            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+        }
+        else if (direction.magnitude < 4 && direction.magnitude > 2)
         {
             rpd.MusicaClasica(angle);
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
@@ -97,7 +152,54 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     void Heavy()
     {
+        if(rb.velocity != Vector2.zero) { 
+            if (rb.velocity.x > 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", true);
+                anim.SetBool("Retroceder", false);
+                anim.SetBool("Morir", false);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (rb.velocity.x < 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", true);
+                anim.SetBool("Retroceder", false);
+                anim.SetBool("Morir", false);
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+        else if(tiempoAux >=0)
+        {
+            if (player.transform.position.x - transform.position.x >= 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", false);
+                anim.SetBool("Retroceder", true);
+                anim.SetBool("Morir", false);
+                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * -velocidad * sentido * Time.deltaTime;
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (player.transform.position.x - transform.position.x < 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", false);
+                anim.SetBool("Retroceder", true);
+                anim.SetBool("Morir", false);
+                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * -velocidad * sentido * Time.deltaTime;
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
 
+        if (rb.velocity  == Vector2.zero && tiempoAux <=0) {
+            anguloEmbestida = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
+        }
+        if (tiempoAux <= 0) rb.velocity = anguloEmbestida * 8 * velocidad * sentido * Time.deltaTime;
+        else rb.velocity = Vector2.zero;
+        Invoke("Heavy", 0.001f);
+
+       
     }
     void Electronica()
     {
@@ -117,18 +219,22 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             anim.SetBool("Morir", false);
             transform.localScale = new Vector3(-1, 1, 1);
         }
-
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 4 && direction.magnitude > 2)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 8 && direction.magnitude > 4)
+        {
+            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+        }
+        else if (direction.magnitude < 4 && direction.magnitude > 2)
         {
             rpd.MusicaElectronica(angle);
-            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido;
+            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
         //Si el sentido es negativo, tendrá velocidad negativa y el ángulo opuesto
         else if (sentido == -1)
         {
-            rb.velocity = -transform.right * velocidad * sentido;
+            rb.velocity = -transform.right * velocidad * sentido * Time.deltaTime;
         }
         else rb.velocity = Vector2.zero;
+        Invoke("Electronica", 0.001f);
     }
     public void Parar()
     {
@@ -136,8 +242,8 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         CancelInvoke();
     }
     void CambioSentido()
-    {      
-        sentido = -sentido;   
+    {
+        CancelInvoke();
+        sentido = -sentido;
     }
-    
 }
