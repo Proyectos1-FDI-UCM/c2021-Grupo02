@@ -5183,7 +5183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b0c470c1ed6fa4e934b7bcbcc5f8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discoPrefab: {fileID: 4097979326506190078, guid: ab00120c8e1703949b8cde72314c5e4b,
+  discoPrefab: {fileID: 4097979326506190078, guid: c0476e16e9ab5c7438919a62c0d51a97,
     type: 3}
   cadencia: 1
   angulo: 0
@@ -5706,7 +5706,7 @@ PrefabInstance:
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
