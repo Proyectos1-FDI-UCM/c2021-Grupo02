@@ -31,7 +31,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     private void Update()
     {
-        if (enemDamage.golpeRobot > 0)
+        if (enemDamage.golpeRobot > 0&& !GameManager.GetInstance().EstadoJugador())
         {
             //Actualiza el contador
             tiempoAux = tiempoAux - Time.deltaTime;

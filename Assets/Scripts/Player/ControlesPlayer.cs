@@ -35,7 +35,7 @@ public class ControlesPlayer : MonoBehaviour
        
         
         bool paralisis = GameManager.GetInstance().EstadoParalisis();
-        if (!paralisis)
+        if (!paralisis && !GameManager.GetInstance().EstadoJugador())
         {
             CancelInvoke();
             //Fuerza asociada al eje x
@@ -116,6 +116,7 @@ public class ControlesPlayer : MonoBehaviour
             Invoke("Paralisis", 1);
             fuerzas = Vector2.zero;
         }
+        
     }
     //Para movimientos físicos
     void FixedUpdate()

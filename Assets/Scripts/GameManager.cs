@@ -127,7 +127,6 @@ public class GameManager : MonoBehaviour
     {
         if (perder == true)
         {
-            print("gameover");
             perderJugador = true;
         }
         else print("YOU WIN");
