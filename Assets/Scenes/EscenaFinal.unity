@@ -1125,7 +1125,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 97161b733108eee4cb545ebdba10f7f3, type: 3}
-  m_Color: {r: 0.93333334, g: 0.60988986, b: 0, a: 1}
+  m_Color: {r: 0.5058824, g: 0.6320754, b: 0.5068529, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
@@ -5183,7 +5183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b0c470c1ed6fa4e934b7bcbcc5f8b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discoPrefab: {fileID: 4097979326506190078, guid: c0476e16e9ab5c7438919a62c0d51a97,
+  discoHeavy: {fileID: 4097979326506190078, guid: c0476e16e9ab5c7438919a62c0d51a97,
+    type: 3}
+  discoElectric: {fileID: 4097979326506190078, guid: ab00120c8e1703949b8cde72314c5e4b,
+    type: 3}
+  discoClasic: {fileID: 4097979326506190078, guid: cbbf6979cc8b76f4da804f1479434539,
     type: 3}
   cadencia: 1
   angulo: 0
@@ -5706,7 +5710,7 @@ PrefabInstance:
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
