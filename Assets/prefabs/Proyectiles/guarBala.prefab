@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209c468f99df09148b36cf2c8d9654c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityScale: 4
+  velocityScale: 3
   tiempoExplot: 2
 --- !u!114 &-4549003768158871570
 MonoBehaviour:

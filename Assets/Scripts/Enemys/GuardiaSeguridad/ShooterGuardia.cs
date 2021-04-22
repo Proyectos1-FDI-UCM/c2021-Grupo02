@@ -5,7 +5,10 @@ public class ShooterGuardia : MonoBehaviour
     public GameObject prefab;      //GO a instanciar
     char musica;                   //Almacenara la musica que suene en ese momento
     char musicaVieja = ' ';
-    public Transform player; 
+    public Transform player;
+    float angle;
+    Vector2 direction;
+    public Animator animator;
 
     //Almacenara la musica antigua. Empezará siendo ninguna
     private void Update()
@@ -26,32 +29,54 @@ public class ShooterGuardia : MonoBehaviour
 
 
         }
+        //Calcula el ángulo que tiene que girar a partir de la distancia a la que se encuentra del jugador
+        direction = player.position - transform.position;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+     
     }
     public void DisparoElectrica()  //Disparo del Guardia de seguridad con la musica electricas
     {
+        //InvokeRepeating("Disparos", 0.5f, 0.5f);
         Cancelar();
         InvokeRepeating("Automatic", 0.5f, 0.5f);  //Dispara 2 balas por segundo
+        //activar animacion disparo
     }
     public void DisparoClasica()  //Disparo del Guardia de seguridad con la musica clasica
     {
+        //InvokeRepeating("Disparos", 1f, 1f);
         Cancelar();
         InvokeRepeating("Automatic", 1f, 1f); //Dispara una bala cada segundo
+        //activar animacion disparo
     }
     //Metodo que se encarga del disparo automatico de los enemigos
+    //void Disparos()
+    //{
+    //    animator.SetBool("Correr", false);//llamas al parametro;
+    //    animator.SetBool("Porra", false);//llamas al parametro;
+    //    animator.SetBool("Muerte", false);//llamas al parametro;
+    //    animator.SetBool("Disparar", true);
+    //}
     public void Automatic()
     {
         if (player != null)
         {
             //Calculo la distancia entre el jugador y el cañón y si están a más de 4 no dispara
-            Vector2 direction = player.position - transform.position;
+            
             if (direction.magnitude < 4)
-                Instantiate<GameObject>(prefab, transform.position, transform.rotation);   //Se crea un clon de la bala en la posicion del GO que posea este script
+            {
+                Instantiate<GameObject>(prefab, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle - 90)));   //Se crea un clon de la bala en la posicion del GO que posea este script
+                animator.SetBool("Correr", false);//llamas al parametro;
+                animator.SetBool("Porra", false);//llamas al parametro;
+                animator.SetBool("Muerte", false);//llamas al parametro;
+                animator.SetBool("Disparar", true);
+            }
+                
         }
     }
     private void Cancelar()
     {
         CancelInvoke();  //Se cancelan las invocaciones anteriores para que no haya problemas
     }
-
+    
 
 }
