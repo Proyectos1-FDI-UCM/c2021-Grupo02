@@ -33,7 +33,7 @@ public class EnemDamage : MonoBehaviour
         //para animacion de matarlo
         {
             Invoke("MuerteGuardia", 1f);
-            Debug.Log("SI QUE VA");
+
             anima.SetBool("Muerte", true);
             anima.SetBool("Disparar", false);
             anima.SetBool("Correr", false);//llamas al parametro;
@@ -46,7 +46,7 @@ public class EnemDamage : MonoBehaviour
             //MuerteGuardia();
             GameManager.GetInstance().RemoveEnemy();
         }
-        Debug.Log(golpe);
+
     }
     void RobotDaño()
     {

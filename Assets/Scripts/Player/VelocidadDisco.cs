@@ -20,7 +20,7 @@ public class VelocidadDisco : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       if(!collision.GetComponent<Damageable>()&&!collision.GetComponent<Rooms>())
+       if(!collision.GetComponent<Damageable>()&&!collision.GetComponent<Habita>())
         Destroy(this.gameObject);
     }
 }

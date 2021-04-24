@@ -51,23 +51,28 @@ public class GameManager : MonoBehaviour
         enemy--;
         print("enemy: " + enemy);
     }
+    public bool Enemiesmuertos()
+    {
+        if (enemy <= 0) return true;
+        else return false;
+    }
     
     //Reduce 1 sola vida cuando golpean
     public void reducirVidas()
     {
         vidas = vidas - 10;
-        print(vidas);
+     
     }
     //Reduce dos vidas al recibir un golpe
     public void reducir2Vidas()
     {
         vidas = vidas - 20;
-        print(vidas);
+      
     }
     public void ReducirVidasConstante()
     {
         vidas--;
-        print(vidas);
+
     }
     //Cambia el estado del booleano parálisis que es el que permitirá o no al jugador moverse
     public void CambiarEstadoParalisis()
@@ -83,7 +88,7 @@ public class GameManager : MonoBehaviour
     public void vidasElectric()
     {
         if (vidas < 100) vidas = vidas + 1;
-        print(vidas);
+      
     }
     //Dice que está sonando música elétrica
     public void MusicaElectric()
@@ -146,19 +151,19 @@ public class GameManager : MonoBehaviour
     public void AñadirDiscos()
     {
         Invoke("SumaDiscos", 1);
-        print("discos: " + discos);
+
     }
     public void SumaDiscos()
     {
         if(discos < 20) discos++;
-        Invoke("SumaDiscos", 4);
+    
     }
     public bool NumeroDiscos()
     {
         if (discos > 0)
         {
             discos--;
-            Debug.Log(discos);
+
             return true;
         }
         else

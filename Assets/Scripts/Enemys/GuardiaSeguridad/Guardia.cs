@@ -13,10 +13,20 @@ public class Guardia : MonoBehaviour
     bool metodo = false;
     public Animator animator;
     Vector2 direction;
+    
     void Start()
     {
         //Se accede al metodo  AddEnemy del gm para que se cuente al numero de enemigos
         rb = GetComponent<Rigidbody2D>();                     //Acceso al rigidBody2D
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        rb.isKinematic = true;
+    }
+    void OnCollisionExit2D(Collision2D other)
+    {
+        rb.isKinematic = false;
+
     }
     private void Update()
     {

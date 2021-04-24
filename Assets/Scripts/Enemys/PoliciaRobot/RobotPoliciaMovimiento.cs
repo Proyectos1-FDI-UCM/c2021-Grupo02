@@ -20,6 +20,13 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     {
         if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>()) GameManager.GetInstance().reducirVidas();
         else Invoke("CambiarSentidoChoque", 0);
+        rb.isKinematic = true;
+    }
+ 
+    void OnCollisionExit2D(Collision2D other)
+    {
+        rb.isKinematic = false;
+
     }
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
