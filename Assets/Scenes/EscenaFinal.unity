@@ -28663,12 +28663,12 @@ PrefabInstance:
     - target: {fileID: 9009270940848080639, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009270941093338178, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009270941093338178, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
@@ -28814,7 +28814,7 @@ PrefabInstance:
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 9
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9009270942490364506, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}

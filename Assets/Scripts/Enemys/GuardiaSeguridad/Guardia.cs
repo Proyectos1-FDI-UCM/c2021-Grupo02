@@ -8,6 +8,7 @@ public class Guardia : MonoBehaviour
     public Transform player;       //Acceso al transform del player
     Rigidbody2D rb;                //Variable tipo rigidbody2d
     int sentido = 1;               //Sentido del movimiento
+    float porrazo;
     char musica, musicaVieja = ' ';                 //Almacenara la musica que suene en ese momento       //Almacenara la musica antigua. Empezará siendo ninguna
     bool metodo = false;
     public Animator animator;
@@ -28,6 +29,7 @@ public class Guardia : MonoBehaviour
     }
     private void Update()
     {
+        porrazo = porrazo - Time.deltaTime;
         musica = GameManager.GetInstance().Musica();
         if (GameManager.GetInstance().EstadoSala() && !metodo)
         {
@@ -70,7 +72,7 @@ public class Guardia : MonoBehaviour
             else if (musica == 'h')//cuerpo a cuerpo
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * sentido * Time.deltaTime);
-                if (direction.magnitude < 1)
+                if (direction.magnitude < 1.5f && porrazo <= 0)
                 { //hacer lo de la porra pegar cuerpo a cuerpo}
                     if (direction.x < 0)
                     {
@@ -81,7 +83,7 @@ public class Guardia : MonoBehaviour
 
                         transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                     }
-                    else if (direction.x > 0)
+                    else if (direction.x > 0 && porrazo <= 0)
                     {
                         animator.SetBool("Correr", false);//llamas al parametro;
                         animator.SetBool("Porra", true);//llamas al parametro;
@@ -90,11 +92,22 @@ public class Guardia : MonoBehaviour
 
                         transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                     }
-                }                                                          //rb.velocity = new Vector2(transform.position.x - player.position.x, transform.position.y - player.position.y) * -velocidad;
+                    Invoke("Porrazo", 1f);
+                }  
+                else {
+                animator.SetBool("Correr", true);//llamas al parametro;
+                animator.SetBool("Porra", false);//llamas al parametro;
+                animator.SetBool("Muerte", false);//llamas al parametro;
+                animator.SetBool("Disparar", false);
+                }//rb.velocity = new Vector2(transform.position.x - player.position.x, transform.position.y - player.position.y) * -velocidad;
                 //Invoco persecuccion cada poco para que vaya mas fluido el movimiento
             }
             Invoke("Persecucion", 0.1f);
         }
+    }
+    private void Porrazo()
+    {
+        porrazo = 1;
     }
     void CambioSentido()
     {

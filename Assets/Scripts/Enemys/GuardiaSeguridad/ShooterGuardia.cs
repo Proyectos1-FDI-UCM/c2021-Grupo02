@@ -14,7 +14,7 @@ public class ShooterGuardia : MonoBehaviour
     private void Update()
     {
         musica = GameManager.GetInstance().Musica();          //En musica se guarda la musica que suene en ese momento
-        if (musica != musicaVieja && GameManager.GetInstance().EstadoJugador())                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
+        if (musica != musicaVieja && !GameManager.GetInstance().EstadoJugador())                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
         {
             musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
             if (musica == 'c' )
@@ -47,8 +47,6 @@ public class ShooterGuardia : MonoBehaviour
     }  
     public void Automatic()
     {
-        if (player != null)
-        {
             if (direction.magnitude < 4)
             {
                 Instantiate<GameObject>(prefab, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle - 90)));   //Se crea un clon de la bala en la posicion del GO que posea este script
@@ -57,7 +55,6 @@ public class ShooterGuardia : MonoBehaviour
                 animator.SetBool("Muerte", false);//llamas al parametro;
                 animator.SetBool("Disparar", true);
             }              
-        }
         if(musica == 'e') Invoke("Automatic", 0.5f);
         else if(musica == 'c') Invoke("Automatic", 1f); ;
     }

@@ -8,7 +8,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     public int velocidad;
     RobotPoliciaDisparo rpd;
     Rigidbody2D rb;
-    float tiempoAux, angle;
+    float tiempoAux, angle, tiempoChoque;
     int sentido = 1;
     char musica = 'c', musicaVieja = 'c';
     bool jugador, clasica = true, electrica = false, heavy = false;
@@ -17,9 +17,13 @@ public class RobotPoliciaMovimiento : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>()) GameManager.GetInstance().reducirVidas();
+        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
+        {
+            GameManager.GetInstance().reducirVidas();
+            tiempoChoque = 1.2f;
+        }
+        else if (collision.transform.GetComponent<MusicEffect>() || collision.transform.GetComponent<Guardia>()) Debug.Log("Aparta");
         else Invoke("CambiarSentidoChoque", 0);
-        rb.isKinematic = true;
     }
  
     void OnCollisionExit2D(Collision2D other)
@@ -41,6 +45,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         {
             //Actualiza el contador
             tiempoAux = tiempoAux - Time.deltaTime;
+            tiempoChoque = tiempoChoque - Time.deltaTime;
             //Da una char que dirá que música está sonando
             musica = GameManager.GetInstance().Musica();
             //Calcula la distancia entre el player y el enemigo;
