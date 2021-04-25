@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869915761259871836}
   - component: {fileID: 2541389999343641193}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: -4549003768158871570}
   - component: {fileID: -2722911044198108191}
   - component: {fileID: 2806741852107552056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: guarBala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3618916994498894329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.047, y: -1.596, z: -1.1411967}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 869915761259871836}
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3868899412370571831}
   - component: {fileID: 8566939766497627484}
   - component: {fileID: 5184321190396631828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1512043211322589432}
   - component: {fileID: 5675250439125345065}
   - component: {fileID: -6506023492343413469}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: stoon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192541363911493775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4549, y: 2.3417, z: -0.49560547}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 0.12489134, y: 0.105664946, z: 1}
   m_Children:
   - {fileID: 5256365150739475091}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 5256365150739475091}
   - component: {fileID: 7695799084744236230}
   - component: {fileID: 1026418625841820715}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4860,7 +4860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7943613660922369482}
   - component: {fileID: 7099007925627249168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
