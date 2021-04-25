@@ -8,8 +8,7 @@ public class Guardia : MonoBehaviour
     public Transform player;       //Acceso al transform del player
     Rigidbody2D rb;                //Variable tipo rigidbody2d
     int sentido = 1;               //Sentido del movimiento
-    char musica;                   //Almacenara la musica que suene en ese momento
-    char musicaVieja = ' ';        //Almacenara la musica antigua. Empezará siendo ninguna
+    char musica, musicaVieja = ' ';                 //Almacenara la musica que suene en ese momento       //Almacenara la musica antigua. Empezará siendo ninguna
     bool metodo = false;
     public Animator animator;
     Vector2 direction;
@@ -26,19 +25,16 @@ public class Guardia : MonoBehaviour
     void OnCollisionExit2D(Collision2D other)
     {
         rb.isKinematic = false;
-
     }
     private void Update()
     {
         musica = GameManager.GetInstance().Musica();
-
         if (GameManager.GetInstance().EstadoSala() && !metodo)
         {
             metodo = true;
             Persecucion();
         }
         //En musica se guarda la musica que suene en ese momento
-
         if (musica != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
         {
             musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
@@ -63,47 +59,18 @@ public class Guardia : MonoBehaviour
 
                 if (direction.x < 0)
                 {
-                    if (musica == 'c')//es clasica dispara cada 1 s
-                    {
-                        //Invoke("Disparos", 1f);
-                    }
-                    else if (musica == 'e')
-                    {
-                        //Invoke("Disparos", 0.5f);
-                    }
-
-                    //llamas al parametro;
-
                     transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                 }
                 else if (direction.x > 0)
                 {
-                    if (musica == 'c')//es clasica dispara cada 1 s
-                    {
-                        //Invoke("Disparos", 1f);
-                    }
-                    else if (musica == 'e')
-                    {
-                        //Invoke("Disparos", 0.5f);
-                    }
                     //llamas al parametro;
-
                     transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                 }
-
-                ////MUSICA CLASICA
-                //animator.SetBool("Correr", true);//llamas al parametro;
-                //animator.SetBool("Porra", false);//llamas al parametro;
-                //animator.SetBool("Muerte", false);//llamas al parametro;
-                //animator.SetBool("Disparar", false);//llamas al parametro;
             }
-           
             else if (musica == 'h')//cuerpo a cuerpo
             {
-
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * sentido * Time.deltaTime);
-
-                if (direction.magnitude < 4)
+                if (direction.magnitude < 1)
                 { //hacer lo de la porra pegar cuerpo a cuerpo}
                     if (direction.x < 0)
                     {
@@ -123,24 +90,19 @@ public class Guardia : MonoBehaviour
 
                         transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                     }
-
                 }                                                          //rb.velocity = new Vector2(transform.position.x - player.position.x, transform.position.y - player.position.y) * -velocidad;
                 //Invoco persecuccion cada poco para que vaya mas fluido el movimiento
             }
-
             Invoke("Persecucion", 0.1f);
         }
     }
-    void Disparos()
-    {
-        animator.SetBool("Correr", false);//llamas al parametro;
-        animator.SetBool("Porra", false);//llamas al parametro;
-        animator.SetBool("Muerte", false);//llamas al parametro;
-        animator.SetBool("Disparar", true);
-    }
-
     void CambioSentido()
     {
         sentido = -sentido; //Sentido contrario
+    }
+    private void OnDisable()
+    {
+        CancelInvoke();
+        rb.velocity = Vector2.zero;
     }
 }

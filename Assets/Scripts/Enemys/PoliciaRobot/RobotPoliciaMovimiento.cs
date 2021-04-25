@@ -13,8 +13,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     char musica = 'c', musicaVieja = 'c';
     bool jugador, clasica = true, electrica = false, heavy = false;
     Vector2 direction, anguloEmbestida;
-    Animator anim;
-    EnemDamage enemDamage;
+    public Animator anim;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -31,14 +30,14 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        //anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();
-        enemDamage = GetComponent<EnemDamage>();
+        
     }
     private void Update()
     {
-        if (enemDamage.golpeRobot > 0&& !GameManager.GetInstance().EstadoJugador())
+        if (!GameManager.GetInstance().EstadoJugador())
         {
             //Actualiza el contador
             tiempoAux = tiempoAux - Time.deltaTime;
@@ -83,14 +82,6 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     Invoke("Electronica", 1.2f);
                 }
             }
-        }
-        else {
-            CancelInvoke();
-            anim.SetBool("Disparo", false);
-            anim.SetBool("Embestir", false);
-            anim.SetBool("Retroceder", false);
-            anim.SetBool("Morir", true);
-            rb.velocity = Vector2.zero;
         }
     }
     void CambiarSentidoChoque()
@@ -252,5 +243,10 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     {
         CancelInvoke();
         sentido = -sentido;
+    }
+    private void OnDisable()
+    {
+        CancelInvoke();
+        rb.velocity = Vector2.zero;
     }
 }
