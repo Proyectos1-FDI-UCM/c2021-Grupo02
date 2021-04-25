@@ -62,7 +62,7 @@ public class ShooterGuardia : MonoBehaviour
         {
             //Calculo la distancia entre el jugador y el cañón y si están a más de 4 no dispara
             
-            if (direction.magnitude < 4)
+            if (direction.magnitude < 10)
             {
                 Instantiate<GameObject>(prefab, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, angle - 90)));   //Se crea un clon de la bala en la posicion del GO que posea este script
                 animator.SetBool("Correr", false);//llamas al parametro;

@@ -6,7 +6,7 @@ public class Destructible : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D objeto)
     {
-        Destroy(this.gameObject);                                    //La bala se destruira al chocar con algo
+        if(objeto.gameObject.GetComponent<ControlesPlayer>())  Destroy(this.gameObject);                                    //La bala se destruira al chocar con algo
                    
     }
 
