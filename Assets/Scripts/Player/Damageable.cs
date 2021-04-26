@@ -74,7 +74,7 @@ public class Damageable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.GetComponent<VelocidadDisco>()&&!collision.GetComponent<Rooms>())
+        if (!collision.GetComponent<VelocidadDisco>()&&!collision.GetComponent<Habita>())
         {
             if (!GameManager.GetInstance().JugMuerto())
             {

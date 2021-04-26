@@ -9,10 +9,16 @@ public class EnemDamage : MonoBehaviour
 
     int golpeTurista = 1, golpe = 2;
     public int golpeRobot = 4;
+    Guardia guardia;
+    ShooterGuardia shooterGuardia;
+    RobotPoliciaMovimiento robotPoliciaMovimiento;
 
     private void Start()
     {
         rigidBody2D = GetComponent<Rigidbody2D>();
+        guardia = GetComponent<Guardia>();
+        shooterGuardia = GetComponentInChildren<ShooterGuardia>();
+        robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,12 +34,16 @@ public class EnemDamage : MonoBehaviour
     {
         if (GameManager.GetInstance().Musica() == 'h') golpe = golpe - 2;
         else golpe = golpe - 1;
-
         if (golpe <= 0)
         //para animacion de matarlo
         {
+            if(guardia && shooterGuardia)
+            {
+                guardia.enabled = false;
+                shooterGuardia.enabled = false;
+            }
             Invoke("MuerteGuardia", 1f);
-            Debug.Log("SI QUE VA");
+
             anima.SetBool("Muerte", true);
             anima.SetBool("Disparar", false);
             anima.SetBool("Correr", false);//llamas al parametro;
@@ -46,7 +56,6 @@ public class EnemDamage : MonoBehaviour
             //MuerteGuardia();
             GameManager.GetInstance().RemoveEnemy();
         }
-        Debug.Log(golpe);
     }
     void RobotDaño()
     {
@@ -54,7 +63,12 @@ public class EnemDamage : MonoBehaviour
         else golpeRobot = golpeRobot-1;
         if (golpeRobot <= 0)
         {
-            Invoke("Destruir", 1.25f);
+            if (robotPoliciaMovimiento) robotPoliciaMovimiento.enabled = false;
+            anima.SetBool("Disparo", false);
+            anima.SetBool("Embestir", false);
+            anima.SetBool("Retroceder", false);
+            anima.SetBool("Morir", true);
+            Invoke("Destruir", 0.55f);
             GameManager.GetInstance().RemoveEnemy();
         }
     }

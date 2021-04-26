@@ -7,7 +7,7 @@ public class ControlesPlayer : MonoBehaviour
     //Declaración de variables
     public float velocityScale;//velocidad de movimiento
     float forceX, forceY;
-    Rigidbody2D Tanque;
+    Rigidbody2D rb;
     Vector2 fuerzas;
     Animator anim;
     ShooterApuntadoRaton shooter;
@@ -17,17 +17,17 @@ public class ControlesPlayer : MonoBehaviour
     void Start()
     {
         shooter = GetComponentInChildren<ShooterApuntadoRaton>();
-        Tanque = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
       
     }
     void OnCollisionEnter2D(Collision2D col)
     {
-        Tanque.isKinematic = true;
+        rb.isKinematic = true;
     }
     void OnCollisionExit2D(Collision2D other)
     {
-        Tanque.isKinematic = false;
+        rb.isKinematic = false;
 
     }
     void Update()
@@ -121,7 +121,7 @@ public class ControlesPlayer : MonoBehaviour
     //Para movimientos físicos
     void FixedUpdate()
     {
-        Tanque.velocity = fuerzas * velocityScale;
+        rb.velocity = fuerzas * velocityScale;
     }
     void Paralisis()
     {

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4097979326056416738}
   - component: {fileID: 4097979326056416749}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4097979326506190072}
   - component: {fileID: 4097979326506190073}
   - component: {fileID: 5615297070476980087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ProyectilPlayerHeavy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4097979326506190078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4097979326056416738}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 8165916641186410069}
   - component: {fileID: 3452958902620232466}
   - component: {fileID: 2794465284546663061}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4953,7 +4953,7 @@ GameObject:
   - component: {fileID: 2083277054609306732}
   - component: {fileID: 7427428897549253556}
   - component: {fileID: 4472220770707394658}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

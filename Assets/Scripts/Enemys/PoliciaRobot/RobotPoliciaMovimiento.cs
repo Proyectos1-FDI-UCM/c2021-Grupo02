@@ -8,33 +8,44 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     public int velocidad;
     RobotPoliciaDisparo rpd;
     Rigidbody2D rb;
-    float tiempoAux, angle;
+    float tiempoAux, angle, tiempoChoque;
     int sentido = 1;
     char musica = 'c', musicaVieja = 'c';
     bool jugador, clasica = true, electrica = false, heavy = false;
     Vector2 direction, anguloEmbestida;
-    Animator anim;
-    EnemDamage enemDamage;
+    public Animator anim;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>()) GameManager.GetInstance().reducirVidas();
+        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
+        {
+            GameManager.GetInstance().reducirVidas();
+            tiempoChoque = 1.2f;
+        }
+        else if (collision.transform.GetComponent<MusicEffect>() || collision.transform.GetComponent<Guardia>()) Debug.Log("Aparta");
         else Invoke("CambiarSentidoChoque", 0);
+    }
+ 
+    void OnCollisionExit2D(Collision2D other)
+    {
+        rb.isKinematic = false;
+
     }
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
     {
-        anim = GetComponentInChildren<Animator>();
+        //anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();
-        enemDamage = GetComponent<EnemDamage>();
+        
     }
     private void Update()
     {
-        if (enemDamage.golpeRobot > 0&& !GameManager.GetInstance().EstadoJugador())
+        if (!GameManager.GetInstance().EstadoJugador())
         {
             //Actualiza el contador
             tiempoAux = tiempoAux - Time.deltaTime;
+            tiempoChoque = tiempoChoque - Time.deltaTime;
             //Da una char que dirá que música está sonando
             musica = GameManager.GetInstance().Musica();
             //Calcula la distancia entre el player y el enemigo;
@@ -76,14 +87,6 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     Invoke("Electronica", 1.2f);
                 }
             }
-        }
-        else {
-            CancelInvoke();
-            anim.SetBool("Disparo", false);
-            anim.SetBool("Embestir", false);
-            anim.SetBool("Retroceder", false);
-            anim.SetBool("Morir", true);
-            rb.velocity = Vector2.zero;
         }
     }
     void CambiarSentidoChoque()
@@ -245,5 +248,10 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     {
         CancelInvoke();
         sentido = -sentido;
+    }
+    private void OnDisable()
+    {
+        CancelInvoke();
+        rb.velocity = Vector2.zero;
     }
 }
