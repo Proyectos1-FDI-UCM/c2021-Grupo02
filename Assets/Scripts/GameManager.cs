@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     private UIManager UIManager;
+    AudioManager audioManager;
     //Empieza con once vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     char musica = 'c';
@@ -181,5 +182,23 @@ public class GameManager : MonoBehaviour
         UIManager = uim;
         UIManager.VariarDiscos(discos, musica);
         UIManager.UpdateLives(vidas);
+    }
+
+    //guarda el audio manager 
+    public void SoyElAudioManager(AudioManager aM)
+    {
+        audioManager = aM;
+    }  
+
+    //devuelve el audio manager
+    public AudioManager GetAudioManagerInstance()
+    {
+        return audioManager;
+    }
+
+    //reproduce un sonido
+    public void ReproducirSonido(string sonido)
+    {
+        audioManager.Play(sonido);
     }
 }
