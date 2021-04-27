@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     private UIManager UIManager;
     AudioManager audioManager;
-    //Empieza con once vidas porque le quita vidas solo con empezar
+    //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     char musica = 'c';
     int enemy = 0;
