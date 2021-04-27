@@ -2,49 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class porra : MonoBehaviour
+public class Porra : MonoBehaviour
 {
-    public float tiempo = 1;
-    bool pegar = true;
-    private CircleCollider2D collider;
-    private void Start()
+    BoxCollider2D boxCollider2D;
+    void Start()
     {
-        collider = GetComponent<CircleCollider2D>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
     }
-
-    private void Update()
+    //Activa y desactiva collider en las animaciones para que cuando ataque con la porra se active si lo detecta le hace daño al player
+    void CambioCollider()
     {
-        char music = GameManager.GetInstance().Musica();
-        if (music == 'h')
-        {
-           
-            if (pegar)
-            {
-                collider.isTrigger = true;
-                pegar = false;
-                Invoke("Pegar", 0);
-                
-            }
-
-        }
-        else 
-        {
-            CancelInvoke();
-            collider.isTrigger = false;
-            pegar = true;
-        }
+        boxCollider2D.enabled = !boxCollider2D.enabled;
     }
-        void Pegar()
-        {
-
-                gameObject.SetActive(true);
-                Invoke("Nopegar", tiempo);
-            
-        }
-        void Nopegar()
-        {
-            gameObject.SetActive(false);
-            Invoke("Pegar", tiempo);
-        }
-    
 }
