@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //entregamos la referencia del audio manager al game manager;
-        GameManager.GetInstance().SoyElAudioManager(this);
+        GameManager.GetInstance().SoyElAudioManager(gameObject);
 
         foreach (Sound s in sounds)
         {

@@ -28803,31 +28803,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4815648576987254251, guid: df54f90adae6ccb4c91652e4db8c75e7,
-        type: 3}
-      propertyPath: sounds.Array.size
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815648576987254251, guid: df54f90adae6ccb4c91652e4db8c75e7,
-        type: 3}
-      propertyPath: sounds.Array.data[7].name
-      value: MusicaMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815648576987254251, guid: df54f90adae6ccb4c91652e4db8c75e7,
-        type: 3}
-      propertyPath: sounds.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 1826d56888ae83745a12bc42960d5332, type: 3}
-    - target: {fileID: 4815648576987254251, guid: df54f90adae6ccb4c91652e4db8c75e7,
-        type: 3}
-      propertyPath: sounds.Array.data[7].volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4815648576987254251, guid: df54f90adae6ccb4c91652e4db8c75e7,
-        type: 3}
-      propertyPath: sounds.Array.data[7].pitch
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df54f90adae6ccb4c91652e4db8c75e7, type: 3}
 --- !u!1001 &4978244100597811097
