@@ -25,10 +25,15 @@ public class Habita : MonoBehaviour
         if (collision.gameObject.GetComponent<ControlesPlayer>())    //Solo se produce si el objeto que entra en el trigger es el jugador
         {
             GameManager.GetInstance().EntrarSala();
-            puerta1.SetActive(true);
+            Invoke("DoorClosed",1);
+            
         }
        
        
+    }
+    void DoorClosed()
+    {
+        puerta1.SetActive(true);
     }
 
 
