@@ -8,7 +8,7 @@ public class EnemDamage : MonoBehaviour
     public Animator anima;
 
     GameManager gameManager;
-    GameObject audioManager;
+    AudioManager audioManager;
     int golpeTurista = 1, golpe = 2;
     public int golpeRobot = 4;
     Guardia guardia;
@@ -18,7 +18,7 @@ public class EnemDamage : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.GetInstance();
-        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>().gameObject;
+        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
         shooterGuardia = GetComponentInChildren<ShooterGuardia>();
@@ -39,7 +39,7 @@ public class EnemDamage : MonoBehaviour
         if (GameManager.GetInstance().Musica() == 'h') golpe = golpe - 2;
         else golpe = golpe - 1;
 
-        audioManager.GetComponent<AudioManager>().Play("ImpactoGuardia");        
+        audioManager.Play("ImpactoGuardia");        
 
         if (golpe <= 0)
         //para animacion de matarlo
@@ -68,6 +68,9 @@ public class EnemDamage : MonoBehaviour
     {
         if (GameManager.GetInstance().Musica() == 'e') golpeRobot = golpeRobot-2;
         else golpeRobot = golpeRobot-1;
+
+        audioManager.Play("ImpactoPolicia");
+
         if (golpeRobot <= 0)
         {
             if (robotPoliciaMovimiento) robotPoliciaMovimiento.enabled = false;
@@ -81,6 +84,8 @@ public class EnemDamage : MonoBehaviour
     }
     void TuristaDaño()
     {
+        audioManager.Play("ImpactoGuardia");
+
         rigidBody2D.velocity = Vector2.zero;
         anima.SetBool("Muerto", true);
         anima.SetBool("Heavy", false);
