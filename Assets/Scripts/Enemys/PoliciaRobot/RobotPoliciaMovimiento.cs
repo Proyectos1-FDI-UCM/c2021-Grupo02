@@ -88,6 +88,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                 }
             }
         }
+        else CancelInvoke();
     }
     void CambiarSentidoChoque()
     {
