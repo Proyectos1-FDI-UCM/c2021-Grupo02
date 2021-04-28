@@ -14,24 +14,29 @@ public class ShooterGuardia : MonoBehaviour
     private void Update()
     {
         musica = GameManager.GetInstance().Musica();          //En musica se guarda la musica que suene en ese momento
-        if (musica != musicaVieja && !GameManager.GetInstance().EstadoJugador())                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
+        if (!GameManager.GetInstance().EstadoJugador())
         {
-            musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
-            if (musica == 'c' )
+            if (musica != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
             {
-                Cancelar();
-                DisparoClasica();
-            }               
-            else if (musica == 'e')
-            {
-                Cancelar();
-                DisparoElectrica();
+                musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
+                if (musica == 'c')
+                {
+                    Cancelar();
+                    DisparoClasica();
+                }
+                else if (musica == 'e')
+                {
+                    Cancelar();
+                    DisparoElectrica();
+                }
+                else CancelInvoke();
             }
-            else CancelInvoke();
+            direction = player.position - transform.position;
+            angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         }
+        else CancelInvoke();
         //Calcula el ángulo que tiene que girar a partir de la distancia a la que se encuentra del jugador
-        direction = player.position - transform.position;
-        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
     }
     public void DisparoElectrica()  //Disparo del Guardia de seguridad con la musica electricas
     {
