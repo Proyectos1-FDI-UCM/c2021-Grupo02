@@ -48,6 +48,7 @@ public class Guardia : MonoBehaviour
     {
         if (player != null)       //Solo si el transform del jugador no esta destruido
         {
+
             // Calculo la distancia para cuando este a dos o menos unidades de distancia no siga corriendo
             direction = player.position - transform.position;
             if (direction.magnitude > 4 && direction.magnitude < 9 && musica != 'h')// a distancia

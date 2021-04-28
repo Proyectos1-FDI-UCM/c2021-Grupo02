@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //entregamos la referencia del audio manager al game manager;
-        GameManager.GetInstance().SoyElAudioManager(gameObject);
+        GameManager.GetInstance().SoyElAudioManager(this);
 
         foreach (Sound s in sounds)
         {
@@ -32,12 +32,18 @@ public class AudioManager : MonoBehaviour
             s.source.clip = s.clip;
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
+            s.source.loop = s.loop;
         }   
     }
 
     private void Start()
     {
         Play("MusicaClasica");
+        Play("MusicaElectronica");
+        Play("MusicaHeavy");
+        Play("MusicaMenu");
+
+        ChangeMusic("MusicaClasica");
     }
 
     public void Play (string name)
@@ -50,12 +56,22 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void StopTheMusic()
+    public void ChangeMusic(string name)
     {
-        Array.Find(sounds, sound => sound.name == "MusicaClasica").source.Stop();
-        Array.Find(sounds, sound => sound.name == "MusicaElectronica").source.Stop();
-        Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.Stop();
-        Array.Find(sounds, sound => sound.name == "MusicaMenu").source.Stop();
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+        {
+            StopTheMusic();
+            s.source.volume = 1;
+        }
 
+    }
+
+    void StopTheMusic()
+    {
+        Array.Find(sounds, sound => sound.name == "MusicaClasica").source.volume = 0;
+        Array.Find(sounds, sound => sound.name == "MusicaElectronica").source.volume = 0;
+        Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.volume = 0;
+        Array.Find(sounds, sound => sound.name == "MusicaMenu").source.volume = 0;
     }
 }

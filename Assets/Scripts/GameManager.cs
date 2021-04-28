@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     private UIManager UIManager;
-    GameObject audioManager;
+    AudioManager audioManager;
     //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     char musica = 'c';
@@ -99,17 +99,23 @@ public class GameManager : MonoBehaviour
     {
         print("Esta sonando musica electric");
         musica = 'e';
+
+        audioManager.ChangeMusic("MusicaElectronica");
     }
     //Reduce 1 vida cada x segundos
     public void MusicaClásica()
     {
         musica = 'c';
+
+        audioManager.ChangeMusic("MusicaClasica");
     }
     //Reduce 1 vida más rapidamente que la música clásica 
     public void MusicaHeavy()
     {
         print("Esta sonando musica heavy");
         musica = 'h';
+
+        audioManager.ChangeMusic("MusicaHeavy");
     }
     //Actualiza el char de la música que esté sonando y lo devuelve
     public char Musica()
@@ -188,13 +194,13 @@ public class GameManager : MonoBehaviour
     }
 
     //guarda el audio manager 
-    public void SoyElAudioManager(GameObject aM)
+    public void SoyElAudioManager(AudioManager aM)
     {
         audioManager = aM;
     }  
 
     //devuelve el audio manager
-    public GameObject GetAudioManagerInstance()
+    public AudioManager GetAudioManagerInstance()
     {
         return audioManager;
     }
@@ -204,6 +210,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager.GetComponent<AudioManager>().Play(sonido);
     }
+
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
