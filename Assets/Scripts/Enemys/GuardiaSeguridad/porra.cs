@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Porra : MonoBehaviour
+public class porra : MonoBehaviour
 {
     BoxCollider2D boxCollider2D;
     void Start()
