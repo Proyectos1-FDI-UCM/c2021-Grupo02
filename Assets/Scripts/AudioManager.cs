@@ -6,13 +6,25 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    private static AudioManager instance;
+
     public Sound[] sounds;
 
     // Start is called before the first frame update
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         //entregamos la referencia del audio manager al game manager;
-        GameManager.GetInstance().SoyElAudioManager(this);
+        GameManager.GetInstance().SoyElAudioManager(gameObject);
 
         foreach (Sound s in sounds)
         {
@@ -25,14 +37,25 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Musica Clasica");
+        Play("MusicaClasica");
     }
 
     public void Play (string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        if (s != null)
+        {
+            s.source.Play();
+        }
+
     }
 
+    public void StopTheMusic()
+    {
+        Array.Find(sounds, sound => sound.name == "MusicaClasica").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaElectronica").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaMenu").source.Stop();
 
+    }
 }

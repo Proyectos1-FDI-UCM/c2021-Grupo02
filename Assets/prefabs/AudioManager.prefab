@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4815648576987254249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4815648576987254250}
+  - component: {fileID: 4815648576987254251}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4815648576987254250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815648576987254249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4815648576987254251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815648576987254249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a57584b8275a84ebc4b0fd7a36ebe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: MusicaClasica
+    clip: {fileID: 8300000, guid: 3444b34567b64664a9d32a0cc4383c78, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MusicaHeavy
+    clip: {fileID: 8300000, guid: 35d8b955d9fd0e149ab9e2251ec62168, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MusicaElectronica
+    clip: {fileID: 8300000, guid: 2500e31d8d4a76641a5f0b2eba96e32f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ImpactoPolicia
+    clip: {fileID: 8300000, guid: 176bf83d8e22b1f408b29bfd429d2d34, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ImpactoPlayer
+    clip: {fileID: 8300000, guid: ef116e6c50cc21241bd590ca021f8c39, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: ImpactoGuardia
+    clip: {fileID: 8300000, guid: ce0429bb9dae3ba409eab2632655abe5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: GolpePorra
+    clip: {fileID: 8300000, guid: 1826d56888ae83745a12bc42960d5332, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MusicaMenu
+    clip: {fileID: 8300000, guid: 1826d56888ae83745a12bc42960d5332, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}

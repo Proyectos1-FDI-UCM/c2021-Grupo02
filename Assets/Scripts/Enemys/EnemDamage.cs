@@ -7,6 +7,8 @@ public class EnemDamage : MonoBehaviour
     Rigidbody2D rigidBody2D;
     public Animator anima;
 
+    GameManager gameManager;
+    GameObject audioManager;
     int golpeTurista = 1, golpe = 2;
     public int golpeRobot = 4;
     Guardia guardia;
@@ -15,6 +17,8 @@ public class EnemDamage : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.GetInstance();
+        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>().gameObject;
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
         shooterGuardia = GetComponentInChildren<ShooterGuardia>();
@@ -34,6 +38,9 @@ public class EnemDamage : MonoBehaviour
     {
         if (GameManager.GetInstance().Musica() == 'h') golpe = golpe - 2;
         else golpe = golpe - 1;
+
+        audioManager.GetComponent<AudioManager>().Play("ImpactoGuardia");        
+
         if (golpe <= 0)
         //para animacion de matarlo
         {
