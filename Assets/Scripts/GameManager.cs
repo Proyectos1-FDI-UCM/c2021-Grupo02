@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,13 +13,15 @@ public class GameManager : MonoBehaviour
     char musica = 'c';
     int enemy = 0;
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false;
+    public string[] scenesInOrder;//para poner por orden las escenas que hay
+    /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            //DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -201,4 +204,10 @@ public class GameManager : MonoBehaviour
     {
         audioManager.Play(sonido);
     }
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        sceneName = SceneManager.GetActiveScene().name;
+    }
+    
 }
