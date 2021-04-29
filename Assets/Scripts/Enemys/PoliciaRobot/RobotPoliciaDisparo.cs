@@ -4,9 +4,12 @@ using UnityEngine;
 //Script asociado al "cañón" del robot
 public class RobotPoliciaDisparo : MonoBehaviour
 {
-    public float cadencia;
-    public GameObject rayoStoon, rayoDaño;
-    public int velocidad;
+    [SerializeField]
+    GameObject rayoStoon, rayoDaño;
+    [SerializeField]
+    float cadencia;
+    [SerializeField]
+    int velocidad;
     float tiempoAux = 0;
     //Contador para que disparen cada cadencia segundos
     private void Update()
@@ -30,10 +33,5 @@ public class RobotPoliciaDisparo : MonoBehaviour
             Instantiate(rayoStoon, transform.position, Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.y, rotationZ)));
             tiempoAux = cadencia;
         }
-    }
-    //Comportamiento de música HeavyMetal
-    void MusicaHeavyMetal()
-    {
-
     }
 }
