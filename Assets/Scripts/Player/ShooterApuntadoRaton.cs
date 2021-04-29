@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class ShooterApuntadoRaton : MonoBehaviour
 {
-    public GameObject discoHeavy,discoElectric,discoClasic;
+    [SerializeField]
+   GameObject discoHeavy,discoElectric,discoClasic;
     public float cadencia;
     float tiempoAux = 0;
     Vector3 mousePosition, playerPosition;
     public float angulo;
-    char musica='c';
+    GameManager.Music mus;
+ 
     public void Disparo()
     {
-        musica= GameManager.GetInstance().Musica();
+        mus= GameManager.GetInstance().Musica();
         if (tiempoAux <= 0)
         {
             bool disparo = GameManager.GetInstance().NumeroDiscos();
             if (disparo)
             {
-                if(musica=='h')
+                if(mus == GameManager.Music.heavy)
                 Instantiate<GameObject>(discoHeavy, transform.position, Quaternion.Euler(new Vector3(0, 0, angulo)));
-                else if(musica=='e') Instantiate<GameObject>(discoElectric, transform.position, Quaternion.Euler(new Vector3(0, 0, angulo)));
-                else if (musica == 'c') Instantiate<GameObject>(discoClasic, transform.position, Quaternion.Euler(new Vector3(0, 0, angulo)));
+                else if(mus == GameManager.Music.electronic) Instantiate<GameObject>(discoElectric, transform.position, Quaternion.Euler(new Vector3(0, 0, angulo)));
+                else if (mus == GameManager.Music.classic) Instantiate<GameObject>(discoClasic, transform.position, Quaternion.Euler(new Vector3(0, 0, angulo)));
                 tiempoAux = cadencia;
             }
 

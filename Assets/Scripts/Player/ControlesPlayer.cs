@@ -5,7 +5,8 @@ using UnityEngine;
 public class ControlesPlayer : MonoBehaviour
 {
     //Declaración de variables
-    public float velocityScale;//velocidad de movimiento
+    [SerializeField]
+    float velocityScale;//velocidad de movimiento
     float forceX, forceY;
     Rigidbody2D rb;
     Vector2 fuerzas;
