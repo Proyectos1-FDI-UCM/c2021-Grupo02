@@ -22,15 +22,7 @@ public class ControlesPlayer : MonoBehaviour
         anim = GetComponent<Animator>();
       
     }
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        rb.isKinematic = true;
-    }
-    void OnCollisionExit2D(Collision2D other)
-    {
-        rb.isKinematic = false;
-
-    }
+   
     void Update()
     {
        
