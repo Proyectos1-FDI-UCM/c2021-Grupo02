@@ -12,7 +12,7 @@ public class Despegable : MonoBehaviour
     void Start()
     {
         animboton = GetComponent<Animator>();
-        boton = GameObject.Find("PosicionABuscar").GetComponent<Boton>();
+        boton = GameObject.Find("Code").GetComponent<Boton>();
         
     }
 
@@ -21,11 +21,11 @@ public class Despegable : MonoBehaviour
     {
         if(boton.showMenu)
         {
-            animboton.SetBool("Desplegarse", true);
+            animboton.SetBool("Saliendo", true);
         }
         if (boton.showMenu==false)
         {
-            animboton.SetBool("Desplegarse", false);
+            animboton.SetBool("Saliendo", false);
         }
     }
 }

@@ -8,12 +8,9 @@ public class Boton : MonoBehaviour
     //para cambiar variable a falso¡e o true.
    public void ButtonShowMenu()
     {
-        if (!showMenu)
-        {
-            showMenu = true;
-        }
-        else if (showMenu)
-            showMenu = false;
+        if (!showMenu) showMenu = true;
+        
+        else if (showMenu) showMenu = false;
 
     }
 }
