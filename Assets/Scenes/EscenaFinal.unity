@@ -58012,7 +58012,7 @@ MonoBehaviour:
     type: 3}
   discoClasic: {fileID: 4097979326506190078, guid: cbbf6979cc8b76f4da804f1479434539,
     type: 3}
-  cadencia: 1
+  cadencia: 2
   angulo: 0
 --- !u!114 &2143648816
 MonoBehaviour:
@@ -58344,7 +58344,7 @@ PrefabInstance:
     - target: {fileID: 9009270940848080638, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 9009270940848080639, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}

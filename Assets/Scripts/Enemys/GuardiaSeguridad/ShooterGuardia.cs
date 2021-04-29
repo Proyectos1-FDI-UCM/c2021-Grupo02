@@ -9,8 +9,12 @@ public class ShooterGuardia : MonoBehaviour
     float angle;
     Vector2 direction;
     [SerializeField]
-   Animator animator;
+    Animator animator;
 
+    private void Start()
+    {
+        DisparoClasica();
+    }
     //Almacenara la musica antigua. Empezará siendo ninguna
     private void Update()
     {
@@ -42,12 +46,13 @@ public class ShooterGuardia : MonoBehaviour
     public void DisparoElectrica()  //Disparo del Guardia de seguridad con la musica electricas
     {
         //InvokeRepeating("Disparos", 0.5f, 0.5f);
+        print("disparo bala electronica");
         Invoke("Automatic", 0.5f);  //Dispara 2 balas por segundo
         //activar animacion disparo
     }
     public void DisparoClasica()  //Disparo del Guardia de seguridad con la musica clasica
     {
-        
+        print("disparo bala clasica"); 
         Invoke("Automatic", 1f); //Dispara una bala cada segundo
 
     }  

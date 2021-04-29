@@ -18,8 +18,8 @@ public class GameManager : MonoBehaviour
     /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
 
-   public enum Music { classic,heavy,electronic}
-    Music mus;
+    public enum Music { classic,heavy,electronic}
+    Music mus = Music.classic;
     void Awake()
     {
         if (instance == null)

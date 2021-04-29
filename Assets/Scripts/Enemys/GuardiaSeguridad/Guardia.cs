@@ -5,8 +5,9 @@ using UnityEngine;
 public class Guardia : MonoBehaviour
 {
     [SerializeField]
-   float velocidad = 5;      //Velocidad del enemigo
-    public Transform player;       //Acceso al transform del player
+    float velocidad = 5;      //Velocidad del enemigo
+    [SerializeField]
+    Transform player;       //Acceso al transform del player
     Rigidbody2D rb;                //Variable tipo rigidbody2d
     int sentido = 1;               //Sentido del movimiento
     float porrazo;
@@ -54,7 +55,7 @@ public class Guardia : MonoBehaviour
 
             // Calculo la distancia para cuando este a dos o menos unidades de distancia no siga corriendo
             direction = player.position - transform.position;
-            if (direction.magnitude > 4 && direction.magnitude < 9 && mus == GameManager.Music.heavy)// a distancia
+            if (direction.magnitude > 4 && direction.magnitude < 9 && mus != GameManager.Music.heavy)// a distancia
             {
                 animator.SetBool("Correr", true);//llamas al parametro;
                 animator.SetBool("Porra", false);//llamas al parametro;
