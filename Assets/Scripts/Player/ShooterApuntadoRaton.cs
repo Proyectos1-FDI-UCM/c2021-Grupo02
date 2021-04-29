@@ -5,11 +5,11 @@ using UnityEngine;
 public class ShooterApuntadoRaton : MonoBehaviour
 {
     [SerializeField]
-   GameObject discoHeavy,discoElectric,discoClasic;
-    public float cadencia;
+    GameObject discoHeavy,discoElectric,discoClasic;
+    [SerializeField]
+    float cadencia, angulo;
     float tiempoAux = 0;
     Vector3 mousePosition, playerPosition;
-    public float angulo;
     GameManager.Music mus;
  
     public void Disparo()

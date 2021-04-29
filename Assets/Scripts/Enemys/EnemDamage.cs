@@ -36,7 +36,7 @@ public class EnemDamage : MonoBehaviour
     }
     void GuardiaDaño()
     {
-        if (GameManager.GetInstance().Musica() == 'h') golpe = golpe - 2;
+        if (GameManager.GetInstance().Musica() == GameManager.Music.heavy) golpe = golpe - 2;
         else golpe = golpe - 1;
 
         audioManager.Play("ImpactoGuardia");        
@@ -66,7 +66,7 @@ public class EnemDamage : MonoBehaviour
     }
     void RobotDaño()
     {
-        if (GameManager.GetInstance().Musica() == 'e') golpeRobot = golpeRobot-2;
+        if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) golpeRobot = golpeRobot-2;
         else golpeRobot = golpeRobot-1;
 
         audioManager.Play("ImpactoPolicia");
