@@ -15,14 +15,14 @@ public class EfectoHeavy : MonoBehaviour
     }
     void Update()
     {
-        char musica = GameManager.GetInstance().Musica();
-        if (musica == 'h' && !heavy)
+        GameManager.Music musica = GameManager.GetInstance().Musica();
+        if (musica == GameManager.Music.heavy && !heavy)
         {
             circleCollider2D.enabled = true;
             Heavy();
             heavy = true;
         }
-        else if(musica == 'e' || musica == 'c')
+        else if(musica == GameManager.Music.classic || musica == GameManager.Music.electronic)
         { 
             circleCollider2D.enabled = false;
             heavy = false;
@@ -33,13 +33,10 @@ public class EfectoHeavy : MonoBehaviour
         if (collision.GetComponent<MusicEffect>())
         {
             collision.GetComponent<MusicEffect>().Cancelar();
-  
         }
     }
     public void Heavy()
     {
-        
-
         float x2 = Random.Range(-horizontal, horizontal);
         float y2 = Random.Range(-vertical, vertical); 
         transform.position = new Vector2(x2, y2);
