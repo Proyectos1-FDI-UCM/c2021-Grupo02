@@ -13,9 +13,14 @@ public class GameManager : MonoBehaviour
     char musica = 'c';
     int enemy = 0;
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false;
-    public string[] scenesInOrder;//para poner por orden las escenas que hay
+    public string[] scenesInOrder;
+    
+    //para poner por orden las escenas que hay
     /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
+
+   public enum Music { classic,heavy,electronic}
+    Music mus;
     void Awake()
     {
         if (instance == null)
@@ -98,32 +103,30 @@ public class GameManager : MonoBehaviour
     public void MusicaElectric()
     {
         print("Esta sonando musica electric");
-        musica = 'e';
+
+        mus=Music.electronic;
 
         audioManager.ChangeMusic("MusicaElectronica");
     }
     //Reduce 1 vida cada x segundos
     public void MusicaClásica()
     {
-        musica = 'c';
+        mus = Music.classic;
 
         audioManager.ChangeMusic("MusicaClasica");
     }
     //Reduce 1 vida más rapidamente que la música clásica 
     public void MusicaHeavy()
     {
-        print("Esta sonando musica heavy");
-        musica = 'h';
+        
+        mus = Music.heavy;
 
         audioManager.ChangeMusic("MusicaHeavy");
     }
-    //Actualiza el char de la música que esté sonando y lo devuelve
-    public char Musica()
+    //Actualiza el char de la música que esté sonando y lo devuelve 
+    public Music Musica()
     {
-        if (musica == 'c') return 'c';
-        else if (musica == 'e') return 'e';
-        else if (musica == 'h') return 'h';
-        else return ' ';
+        return mus;
     }
     //Actualiza de si el jugador está vivo o muerto 
     public bool JugMuerto()

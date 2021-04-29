@@ -10,14 +10,15 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     Rigidbody2D rb;
     float tiempoAux, angle, tiempoChoque;
     int sentido = 1;
-    char musica = 'c', musicaVieja = 'c';
+ 
     bool jugador, clasica = true, electrica = false, heavy = false;
     Vector2 direction, anguloEmbestida;
     public Animator anim;
-
+    GameManager.Music mus,musicaVieja;
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (musica == 'h' && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
+        if (mus == GameManager.Music.heavy && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
         {
             GameManager.GetInstance().reducirVidas();
             tiempoChoque = 1.2f;
@@ -34,6 +35,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
     {
+        mus = GameManager.GetInstance().Musica();
         //anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();
@@ -46,8 +48,8 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             //Actualiza el contador
             tiempoAux = tiempoAux - Time.deltaTime;
             tiempoChoque = tiempoChoque - Time.deltaTime;
-            //Da una char que dirá que música está sonando
-            musica = GameManager.GetInstance().Musica();
+            
+            mus = GameManager.GetInstance().Musica();
             //Calcula la distancia entre el player y el enemigo;
             direction = player.position - transform.position;
             //Calcula el ángulo que tiene que girar a partir de la distancia a la que se encuentra del jugador
@@ -57,12 +59,12 @@ public class RobotPoliciaMovimiento : MonoBehaviour
 
             if (GameManager.GetInstance().EstadoSala() && !jugador)
             {
-                if (musica != musicaVieja)
+                if (mus != musicaVieja)
                 {
                     CancelInvoke();
                     Invoke("CambiarSentido", 0);
                 }
-                else if (musica == 'c' && clasica && tiempoAux <= 0)
+                else if (mus == GameManager.Music.classic&& clasica && tiempoAux <= 0)
                 {
                     CancelInvoke();
                     clasica = false;
@@ -70,7 +72,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     heavy = true;
                     Invoke("Clasica", 1.2f);
                 }
-                else if (musica == 'h' && heavy && tiempoAux <= 0)
+                else if (mus == GameManager.Music.heavy && heavy && tiempoAux <= 0)
                 {
                     CancelInvoke();
                     clasica = true;
@@ -78,7 +80,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     heavy = false;
                     Invoke("Heavy", 1.2f);
                 }
-                else if (musica == 'e' && electrica && tiempoAux <= 0)
+                else if (mus == GameManager.Music.electronic && electrica && tiempoAux <= 0)
                 {
                     CancelInvoke();
                     clasica = true;
@@ -96,7 +98,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     void CambiarSentido()
     {
-        musicaVieja = musica;    
+        musicaVieja = mus;    
         sentido = -1;
         tiempoAux = 1.2f;
         if (rb.velocity.x > 0)

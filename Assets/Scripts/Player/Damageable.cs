@@ -10,7 +10,8 @@ public class Damageable : MonoBehaviour
     bool electric = true;
     Rigidbody2D RB;
     Animator anim;
-  
+    GameManager.Music mus;
+
     //Música electrónica: la vida aumenta, es decir se cura 1 pila cada 8 segundos.
     //Música clásica: la vida del jugador disminuye de forma normal 1 pila cada 6 segundos.
     //Música heavy metal: la vida decrementará a una velocidad más rápida(1 pila cada 4 segundos).
@@ -25,6 +26,7 @@ public class Damageable : MonoBehaviour
     }
     void Update()
     {
+        mus = GameManager.GetInstance().Musica();
         if (GameManager.GetInstance().JugMuerto())
         {
             anim.SetInteger("Direction", 20);
@@ -33,7 +35,7 @@ public class Damageable : MonoBehaviour
         }
 
 
-        if (GameManager.GetInstance().Musica() == 'c')
+        if (mus == GameManager.Music.classic)
         {
             if (classic == true)
             {
@@ -45,7 +47,7 @@ public class Damageable : MonoBehaviour
             }
            
         }
-        else if (GameManager.GetInstance().Musica() == 'h')
+        else if (mus == GameManager.Music.heavy)
         {
             if (heavy== true)
             {
@@ -57,7 +59,7 @@ public class Damageable : MonoBehaviour
             }
            
         }
-        else if (GameManager.GetInstance().Musica() == 'e')
+        else if (mus == GameManager.Music.electronic)
         {
             if (electric == true)
             {
