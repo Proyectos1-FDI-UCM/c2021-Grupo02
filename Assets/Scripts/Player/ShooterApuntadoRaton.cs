@@ -7,7 +7,8 @@ public class ShooterApuntadoRaton : MonoBehaviour
     [SerializeField]
     GameObject discoHeavy,discoElectric,discoClasic;
     [SerializeField]
-    float cadencia, angulo;
+    float cadencia;
+    public float angulo;
     float tiempoAux = 0;
     Vector3 mousePosition, playerPosition;
     GameManager.Music mus;

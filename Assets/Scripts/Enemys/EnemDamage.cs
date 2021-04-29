@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemDamage : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;
-    public Animator anima;
+    [SerializeField]
+    Animator anima;
 
     GameManager gameManager;
     AudioManager audioManager;

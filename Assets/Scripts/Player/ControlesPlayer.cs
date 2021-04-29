@@ -50,7 +50,6 @@ public class ControlesPlayer : MonoBehaviour
             Quaternion invertir = new Quaternion(0, 180, 0,0);
             if (Input.GetMouseButton(0))
             {
-               
                 shooter.Disparo();
                 angulbala = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
                 //anim.SetBool("dispfront", true);
