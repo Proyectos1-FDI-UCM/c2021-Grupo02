@@ -4,15 +4,18 @@ using UnityEngine;
 //Script asociado a los enemigos
 public class Guardia : MonoBehaviour
 {
-    public float velocidad = 5;      //Velocidad del enemigo
+    [SerializeField]
+   float velocidad = 5;      //Velocidad del enemigo
     public Transform player;       //Acceso al transform del player
     Rigidbody2D rb;                //Variable tipo rigidbody2d
     int sentido = 1;               //Sentido del movimiento
     float porrazo;
-    char musica, musicaVieja = ' ';                 //Almacenara la musica que suene en ese momento       //Almacenara la musica antigua. Empezará siendo ninguna
+                   //Almacenara la musica que suene en ese momento       //Almacenara la musica antigua. Empezará siendo ninguna
     bool metodo = false;
     public Animator animator;
     Vector2 direction;
+    GameManager.Music mus,musicaVieja;
+
     
     void Start()
     {
@@ -30,16 +33,16 @@ public class Guardia : MonoBehaviour
     private void Update()
     {
         porrazo = porrazo - Time.deltaTime;
-        musica = GameManager.GetInstance().Musica();
+        mus = GameManager.GetInstance().Musica();
         if (GameManager.GetInstance().EstadoSala() && !metodo)
         {
             metodo = true;
             Persecucion();
         }
         //En musica se guarda la musica que suene en ese momento
-        if (musica != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
+        if (mus != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
         {
-            musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
+            musicaVieja = mus;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
             CambioSentido();                                  //El enemigo irá en setido contrario
             Invoke("CambioSentido", 1f);                      //Tras un segundo el enemigo volverá a ir en la dirección normal. Si cambias el sentido 2 veces t qdas igual
         }
@@ -51,7 +54,7 @@ public class Guardia : MonoBehaviour
 
             // Calculo la distancia para cuando este a dos o menos unidades de distancia no siga corriendo
             direction = player.position - transform.position;
-            if (direction.magnitude > 4 && direction.magnitude < 9 && musica != 'h')// a distancia
+            if (direction.magnitude > 4 && direction.magnitude < 9 && mus == GameManager.Music.heavy)// a distancia
             {
                 animator.SetBool("Correr", true);//llamas al parametro;
                 animator.SetBool("Porra", false);//llamas al parametro;
@@ -70,7 +73,7 @@ public class Guardia : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                 }
             }
-            else if (musica == 'h')//cuerpo a cuerpo
+            else if (mus == GameManager.Music.heavy)//cuerpo a cuerpo
             {
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * sentido * Time.deltaTime);
                 if (direction.magnitude < 1.5f && porrazo <= 0)

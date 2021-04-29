@@ -2,29 +2,30 @@
 //Script asociado a la pistola del guardia de seguridad
 public class ShooterGuardia : MonoBehaviour
 {
-    public GameObject prefab;      //GO a instanciar
-    char musica;                   //Almacenara la musica que suene en ese momento
-    char musicaVieja = ' ';
+    [SerializeField]
+    GameObject prefab;      //GO a instanciar
+    GameManager.Music mus, musicaVieja;
     public Transform player;
     float angle;
     Vector2 direction;
-    public Animator animator;
+    [SerializeField]
+   Animator animator;
 
     //Almacenara la musica antigua. Empezará siendo ninguna
     private void Update()
     {
-        musica = GameManager.GetInstance().Musica();          //En musica se guarda la musica que suene en ese momento
+        mus = GameManager.GetInstance().Musica();          //En musica se guarda la musica que suene en ese momento
         if (!GameManager.GetInstance().EstadoJugador())
         {
-            if (musica != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
+            if (mus != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
             {
-                musicaVieja = musica;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
-                if (musica == 'c')
+                musicaVieja = mus;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
+                if (mus == GameManager.Music.classic)
                 {
                     Cancelar();
                     DisparoClasica();
                 }
-                else if (musica == 'e')
+                else if (mus == GameManager.Music.electronic)
                 {
                     Cancelar();
                     DisparoElectrica();
@@ -60,8 +61,8 @@ public class ShooterGuardia : MonoBehaviour
                 animator.SetBool("Muerte", false);//llamas al parametro;
                 animator.SetBool("Disparar", true);
             }              
-        if(musica == 'e') Invoke("Automatic", 0.5f);
-        else if(musica == 'c') Invoke("Automatic", 1f); ;
+        if(mus == GameManager.Music.electronic) Invoke("Automatic", 0.5f);
+        else if(mus == GameManager.Music.classic) Invoke("Automatic", 1f); ;
     }
     private void Cancelar()
     {

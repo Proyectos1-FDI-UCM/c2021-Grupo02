@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class MusicEffect : MonoBehaviour
 {
-    public Animator anima;
+    [SerializeField]
+    Animator anima;
     [SerializeField]
     float limitehorizontal = 3f;
     [SerializeField]
     float limitevertical = 1.5f;
-    public Transform PuntoAleatorio, player;//te coge el componente Transform de todo el GO
-    public float fuerzaTuristaHeavy = 10;
+    [SerializeField]
+    Transform PuntoAleatorio, player;//te coge el componente Transform de todo el GO
+    [SerializeField]
+    float fuerzaTuristaHeavy = 10;
     [SerializeField]
     float fuerzaTuristaElectronica = 5;
     private Rigidbody2D Rigidbody2D;
     private BoxCollider2D BoxCollider2D ;
     Vector3 posElectronic;
     bool heavy = false, electric = false, clasic = false;
-    char musica;
+    GameManager.Music musica;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +45,7 @@ public class MusicEffect : MonoBehaviour
         if (Rigidbody2D.velocity == Vector2.zero) Cancelar();
         if (player != null)
         {
-            if (musica == 'c' && !clasic)
+            if (musica == GameManager.Music.classic && !clasic)
             {
                 Cancelar();
                 MusicaClasica();
@@ -50,7 +53,7 @@ public class MusicEffect : MonoBehaviour
                 heavy = false;
                 electric = false;
             }
-            else if (musica == 'h' && !heavy)
+            else if (musica == GameManager.Music.heavy && !heavy)
             {
                 Cancelar();
                 MusicaHeavy();
@@ -58,7 +61,7 @@ public class MusicEffect : MonoBehaviour
                 heavy = true;
                 electric = false;
             }
-            else if (musica == 'e' && !electric)
+            else if (musica == GameManager.Music.electronic && !electric)
             {
                 Cancelar();
                 MusicaElectronica();
