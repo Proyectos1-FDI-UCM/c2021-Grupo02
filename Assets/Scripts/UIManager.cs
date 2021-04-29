@@ -23,10 +23,10 @@ public class UIManager : MonoBehaviour
         GameManager.GetInstance().UIManagerUpdate(this);
     }
     // Dibuja y escribe las vidas, discos y balas disponibles
-    public void VariarDiscos(int Discos, char musica)
+    public void VariarDiscos(int Discos, GameManager.Music musica)
     {
         numeroDiscos.text = "x" + Discos.ToString();
-        if(musica == 'c')
+        if(musica == GameManager.Music.classic)
         {
             disco.sprite = discoClasic;
             cintaClasicAni.enabled = true;
@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
             cintaElectricAni.enabled = false;
             cintaElectric.rotation = Quaternion.Euler(Vector2.zero);
         }
-        else if (musica == 'h')
+        else if (musica == GameManager.Music.heavy)
         {
             disco.sprite = discoHeavy;
             cintaClasicAni.enabled = false;
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
             cintaElectricAni.enabled = false;            
             cintaElectric.rotation = Quaternion.Euler(Vector2.zero);        
         }
-        else if(musica == 'e')
+        else if(musica == GameManager.Music.electronic)
         {
             disco.sprite = discoElectric;
             cintaClasicAni.enabled = false;

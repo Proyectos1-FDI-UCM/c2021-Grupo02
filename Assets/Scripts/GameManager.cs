@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     AudioManager audioManager;
     //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
-    char musica = 'c';
     int enemy = 0;
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false;
     public string[] scenesInOrder;
@@ -37,8 +36,10 @@ public class GameManager : MonoBehaviour
    
     private void Update()
     {
-        if (musica == 'c' && recargaDiscos) { recargaDiscos = false; AñadirDiscos(); }
-        else if(musica =='e' || musica == 'h') { CancelInvoke();  recargaDiscos = true; }
+        if (mus == Music.classic && recargaDiscos) { recargaDiscos = false; AñadirDiscos(); }
+        else if(mus == Music.electronic || mus == Music.heavy) { 
+            recargaDiscos = true; 
+        }
     }
     public bool EntrarSala()
     {
@@ -192,7 +193,7 @@ public class GameManager : MonoBehaviour
     public void UIManagerUpdate(UIManager uim)
     {
         UIManager = uim;
-        UIManager.VariarDiscos(discos, musica);
+        UIManager.VariarDiscos(discos, mus);
         UIManager.UpdateLives(vidas);
     }
 
