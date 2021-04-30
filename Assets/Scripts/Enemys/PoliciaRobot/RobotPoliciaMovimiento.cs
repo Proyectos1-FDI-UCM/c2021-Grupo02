@@ -140,7 +140,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 8 && direction.magnitude > 4)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 9 && direction.magnitude > 4)
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
