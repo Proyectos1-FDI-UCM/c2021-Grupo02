@@ -4803,7 +4803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadDisco: 3
-  tiempoExplot: 3
+  tiempoExplot: 2
 --- !u!50 &-3328503445493145527
 Rigidbody2D:
   serializedVersion: 4
