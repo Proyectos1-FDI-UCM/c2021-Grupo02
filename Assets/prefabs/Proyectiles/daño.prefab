@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: -3328503445493145527}
   - component: {fileID: 2835645377500818674}
   - component: {fileID: 7764133684153149358}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "da\xF1o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
