@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5245199775469605563}
   - component: {fileID: 5245199775469605508}
   - component: {fileID: 5245199775469605509}
-  - component: {fileID: 5245199775469605511}
+  - component: {fileID: 845295943455492927}
   m_Layer: 9
   m_Name: Turista (2)
   m_TagString: Untagged
@@ -101,7 +101,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2797417, y: 0.53663033}
   m_EdgeRadius: 0
---- !u!114 &5245199775469605511
+--- !u!114 &845295943455492927
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,10 +110,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5245199775469605504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf4ed87a0ac951a488da9a17222e718b, type: 3}
+  m_Script: {fileID: 11500000, guid: c4cde9aef63317d42ac5676fe750e00e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anima: {fileID: 5245199775597642296}
   golpeRobot: 4
 --- !u!1 &5245199775597642298
 GameObject:
