@@ -27,7 +27,7 @@ public class Habita : MonoBehaviour
     }
 
     void DoorClosed()
-    {
+    {//se cierra
         puerta1.SetActive(true);
     }
 
