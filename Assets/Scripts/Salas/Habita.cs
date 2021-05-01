@@ -9,25 +9,21 @@ public class Habita : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-      //  if(collision.gameObject.GetComponent<Guardia>() && collision.gameObject.GetComponent<RobotPoliciaMovimiento>())
-        //{
-            
-        //}
-    }
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.GetComponent<RobotPoliciaMovimiento>()|| collision.gameObject.GetComponent<Guardia>())
+        if (collision.gameObject.GetComponent<ControlesPlayer>())    //Solo se produce si el objeto que entra en el trigger es el jugador
+        {
+            gameObject.layer = 0;
+            GameManager.GetInstance().EntrarSala();
+            Invoke("DoorClosed", 1);
+
+        }
+        if (collision.gameObject.GetComponent<RobotPoliciaMovimiento>()|| collision.gameObject.GetComponent<Guardia>())
         GameManager.GetInstance().AddEnemy();
         
 
-        if (collision.gameObject.GetComponent<ControlesPlayer>())    //Solo se produce si el objeto que entra en el trigger es el jugador
-        {
-            GameManager.GetInstance().EntrarSala();
-            Invoke("DoorClosed",1);
-            
-        }
+       
        
        
     }

@@ -43285,7 +43285,7 @@ GameObject:
   - component: {fileID: 140562199}
   - component: {fileID: 140562198}
   - component: {fileID: 140562197}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: habita (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44682,6 +44682,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2946512390569184579, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3026836201626086641, guid: 54d07e79c36167e4bacf398b73acc11e,
         type: 3}
       propertyPath: player
@@ -44696,6 +44701,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Guardia 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803945495937750342, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5803945495937750350, guid: 54d07e79c36167e4bacf398b73acc11e,
         type: 3}
@@ -44751,6 +44761,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803945496472227939, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870933916178131341, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d07e79c36167e4bacf398b73acc11e, type: 3}
@@ -44839,7 +44859,7 @@ GameObject:
   - component: {fileID: 572587846}
   - component: {fileID: 572587845}
   - component: {fileID: 572587844}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: puerta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47071,7 +47091,7 @@ GameObject:
   - component: {fileID: 1118974220}
   - component: {fileID: 1118974219}
   - component: {fileID: 1118974218}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: puerta (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47282,7 +47302,7 @@ GameObject:
   - component: {fileID: 1211426724}
   - component: {fileID: 1211426723}
   - component: {fileID: 1211426722}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: puerta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55874,6 +55894,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2946512390569184579, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3026836201626086641, guid: 54d07e79c36167e4bacf398b73acc11e,
         type: 3}
       propertyPath: player
@@ -55888,6 +55913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Guardia 2 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803945495937750342, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5803945495937750350, guid: 54d07e79c36167e4bacf398b73acc11e,
         type: 3}
@@ -55943,6 +55973,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5803945496472227939, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870933916178131341, guid: 54d07e79c36167e4bacf398b73acc11e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54d07e79c36167e4bacf398b73acc11e, type: 3}
@@ -57297,7 +57337,7 @@ GameObject:
   - component: {fileID: 1774256936}
   - component: {fileID: 1774256935}
   - component: {fileID: 1774256934}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: habita
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57894,7 +57934,7 @@ GameObject:
   - component: {fileID: 1931098347}
   - component: {fileID: 1931098346}
   - component: {fileID: 1931098345}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: puerta (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59316,12 +59356,12 @@ PrefabInstance:
     - target: {fileID: 9009270940848080639, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9009270941093338178, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9009270941093338178, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
@@ -59467,7 +59507,7 @@ PrefabInstance:
     - target: {fileID: 9009270942490364504, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9009270942490364506, guid: 9f2234b0792c7294abb968f04509bff9,
         type: 3}
