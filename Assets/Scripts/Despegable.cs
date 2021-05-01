@@ -3,29 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Despegable : MonoBehaviour
-{
-    public Animator animboton;
-    private Boton boton;
+{     
+     Animator animboton;
+    [SerializeField ]
+     static bool GameIsPaused = true;//por defecto
+    private int contador = 0;
    
     // Start is called before the first frame update
     //segun si es false o true hacer la animacion.
     void Start()
     {
         animboton = GetComponent<Animator>();
-        boton = GameObject.Find("Code").GetComponent<Boton>();
-        
+       
+     
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if(boton.showMenu)
+    {if(Input.GetKeyDown(KeyCode.Escape))
         {
-            animboton.SetBool("Saliendo", true);
+            if (!GameIsPaused) //si no está pausado no queremos meter cuadro de texto
+            {
+                Resume();//esconder cuadro de texto
+
+            }
+            else//gameispaused=true , si esta pausado queremos cuadro de texto de pausa
+            {
+                Pause();
+
+            }
         }
-        if (boton.showMenu==false)
-        {
-            animboton.SetBool("Saliendo", false);
-        }
+        
+            
+               
+            
     }
+     void Resume()//si esta parado que se esconda el cuadro de texto y vuelva a la normalidad , si saliendo = false , significa que tiene que esconderse el cuadro de texto
+     {
+            animboton.SetBool("Saliendo", false);
+            Time.timeScale = 1f;//lo se , es para que no se pare
+            GameIsPaused = true;
+     }
+     void Pause()
+     {
+            animboton.SetBool("Saliendo", true);
+            Time.timeScale = 0f;
+            GameIsPaused = false;
+     }
 }
