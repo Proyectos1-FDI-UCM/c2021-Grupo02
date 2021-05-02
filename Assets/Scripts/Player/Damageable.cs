@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
-    bool classic = false;
-    bool heavy = true;
-    bool electric = true;
-    Rigidbody2D RB;
     Animator anim;
-    GameManager.Music mus;
 
     //Música electrónica: la vida aumenta, es decir se cura 1 pila cada 8 segundos.
     //Música clásica: la vida del jugador disminuye de forma normal 1 pila cada 6 segundos.
@@ -18,60 +13,18 @@ public class Damageable : MonoBehaviour
 
     void Start()
     {
-       InvokeRepeating( "Classic",0,0.6f);
-        RB = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         
 
     }
     void Update()
     {
-        mus = GameManager.GetInstance().Musica();
         if (GameManager.GetInstance().JugMuerto())
         {
             anim.SetInteger("Direction", 20);
             Destroy(this.gameObject, 2f);
 
         }
-
-
-        if (mus == GameManager.Music.classic)
-        {
-            if (classic == true)
-            {
-                classic = false;
-                heavy = true;
-                electric = true;
-                CancelInvoke();
-                InvokeRepeating("Classic",0,0.6f);
-            }
-           
-        }
-        else if (mus == GameManager.Music.heavy)
-        {
-            if (heavy== true)
-            {
-               heavy = false;
-                classic = true;
-                electric = true;
-                CancelInvoke();
-                InvokeRepeating("Heavy",0, 0.4f);
-            }
-           
-        }
-        else if (mus == GameManager.Music.electronic)
-        {
-            if (electric == true)
-            {
-               electric = false;
-                classic = true;
-                heavy = true;
-                CancelInvoke();
-                InvokeRepeating("Electric",0,0.6f);
-            }
-          
-        }
-      
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -90,37 +43,6 @@ public class Damageable : MonoBehaviour
             }
         }
       
-    }
-  
-
-    public void Heavy()
-     {
-       
-            
-            GameManager.GetInstance().ReducirVidasConstante();
-          
-  
-     }
-    public void Electric()
-    {
-        
-            GameManager.GetInstance().vidasElectric();
-           
-
-        
-    }
-    public void Classic()
-    {
-
-            GameManager.GetInstance().ReducirVidasConstante();
-        
-     
-      
-       
-    }
-    public void Cancelar()
-    {
-        CancelInvoke();
     }
 }
    

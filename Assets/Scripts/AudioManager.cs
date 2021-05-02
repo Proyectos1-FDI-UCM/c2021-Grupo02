@@ -7,8 +7,8 @@ using System;
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;
-
-    public Sound[] sounds;
+    [SerializeField]
+    Sound[] sounds;
 
     // Start is called before the first frame update
     void Awake()

@@ -5,7 +5,8 @@ using UnityEngine;
 public class CamaraFollower : MonoBehaviour
 {
     
-        public GameObject personaje;//objeto que queremos que la camara siga , asociarlo a  GO Player
+        [SerializeField]
+        GameObject personaje;//objeto que queremos que la camara siga , asociarlo a  GO Player
         private Vector3 posicion;//posición o vista de camara que sigue
         void Start()
         {

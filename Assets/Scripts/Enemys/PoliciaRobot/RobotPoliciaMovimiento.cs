@@ -4,8 +4,10 @@ using UnityEngine;
 //Scripts asociado al robot
 public class RobotPoliciaMovimiento : MonoBehaviour
 {
-    public Transform player;
-    public int velocidad;
+    [SerializeField]
+    Transform player;
+    [SerializeField]
+    int velocidad;
     RobotPoliciaDisparo rpd;
     Rigidbody2D rb;
     float tiempoAux, angle, tiempoChoque;
@@ -36,6 +38,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     private void Start()
     {
         mus = GameManager.GetInstance().Musica();
+        musicaVieja = mus;
         //anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();

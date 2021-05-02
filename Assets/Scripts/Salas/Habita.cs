@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Habita : MonoBehaviour
 {
-    public GameObject puerta1, puerta2;
+    [SerializeField]
+    GameObject puerta1, puerta2;
     void Start()
     {
         

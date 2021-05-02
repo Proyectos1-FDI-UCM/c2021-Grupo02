@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     int enemy = 0;
-    bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false;
+    bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false, classic = false, heavy = true, electric = true;
     public string[] scenesInOrder;
     
     //para poner por orden las escenas que hay
@@ -36,9 +36,44 @@ public class GameManager : MonoBehaviour
    
     private void Update()
     {
-        if (mus == Music.classic && recargaDiscos) { recargaDiscos = false; AñadirDiscos(); }
-        else if(mus == Music.electronic || mus == Music.heavy) { 
-            recargaDiscos = true; 
+        if (mus == Music.classic)
+        {
+            if (classic && recargaDiscos)
+            {
+                classic = false;
+                heavy = true;
+                electric = true;
+                recargaDiscos = false;
+                CancelInvoke();
+                InvokeRepeating("AñadirDiscos", 0, 2);
+                InvokeRepeating("ReducirVidasConstante", 0, 0.6f);
+            }
+
+        }
+        else if (mus == Music.heavy)
+        {
+            if (heavy)
+            {
+                heavy = false;
+                classic = true;
+                electric = true;
+                recargaDiscos = true;
+                CancelInvoke();
+                InvokeRepeating("ReducirVidasConstante", 0, 0.4f);
+            }
+
+        }
+        else if (mus == Music.electronic)
+        {
+            if (electric)
+            {
+                electric = false;
+                classic = true;
+                heavy = true;
+                recargaDiscos = true;
+                CancelInvoke();
+                InvokeRepeating("vidasElectric", 0, 0.6f);
+            }
         }
     }
     public bool EntrarSala()
@@ -81,8 +116,8 @@ public class GameManager : MonoBehaviour
     }
     public void ReducirVidasConstante()
     {
+        if(vidas >= 0)
         vidas--;
-
     }
     //Cambia el estado del booleano parálisis que es el que permitirá o no al jugador moverse
     public void CambiarEstadoParalisis()
@@ -98,7 +133,6 @@ public class GameManager : MonoBehaviour
     public void vidasElectric()
     {
         if (vidas < 100) vidas = vidas + 1;
-      
     }
     //Dice que está sonando música elétrica
     public void MusicaElectric()
@@ -164,8 +198,7 @@ public class GameManager : MonoBehaviour
     //Reduce el número de discos al disparar e impide que dispare cuando no le quedan
     public void AñadirDiscos()
     {
-        Invoke("SumaDiscos", 1);
-
+        Invoke("SumaDiscos", 0);
     }
     public void SumaDiscos()
     {
