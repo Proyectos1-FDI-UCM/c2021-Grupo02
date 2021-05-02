@@ -78,8 +78,6 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
                 else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", false);
 
-            }
-
                 if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
                 else if (forceX < 0 && forceY == 0) anim.SetInteger("Direction", 7);
                 else if (forceX == 0 && forceY > 0) anim.SetInteger("Direction", 5);
@@ -88,6 +86,9 @@ public class ControlesPlayer : MonoBehaviour
                 else if (forceX == -1 && forceY == 1) anim.SetInteger("Direction", 6);
                 else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
                 else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
+            }
+
+             
             
             // if(angulbala<22.5f&&angulbala>=287.5f) anim.SetInteger("Direction", 12);
             // anim.SetInteger("Direction", 1);
