@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
         }
 
         //entregamos la referencia del audio manager al game manager;
-        GameManager.GetInstance().SoyElAudioManager(this);
+       
 
         foreach (Sound s in sounds)
         {
@@ -38,6 +38,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        GameManager.GetInstance().SoyElAudioManager(this);
         Play("MusicaClasica");
         Play("MusicaElectronica");
         Play("MusicaHeavy");
