@@ -16,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     Animator cintaClasicAni, cintaHeavyAni, cintaElectricAni;
     [SerializeField]
-    RectTransform PilasPanel, PanelDiscos, cintaClasic, cintaHeavy, cintaElectric;
+    RectTransform PilasPanel, PanelDiscos, cintaClasic, cintaHeavy, cintaElectric, winScreen, loseScreen;
     
     private void Update()
     {
@@ -86,5 +86,13 @@ public class UIManager : MonoBehaviour
                     pila[i].sprite = vacia[10];  
             }
         }
-    }   
+    }
+    public void Perder()
+    {
+        loseScreen.gameObject.SetActive(true);
+    }
+    public void Ganar()
+    {
+        winScreen.gameObject.SetActive(true);
+    }
 }

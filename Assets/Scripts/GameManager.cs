@@ -182,8 +182,14 @@ public class GameManager : MonoBehaviour
         if (perder == true)
         {
             perderJugador = true;
+            UIManager.Perder();
         }
-        else print("YOU WIN");
+        else
+        {
+            UIManager.Ganar();
+            print("YOU WIN");
+        }
+
     }
     //Avisa de si el jugador está vivo o muerto, un simple booleano
     public bool EstadoJugador()

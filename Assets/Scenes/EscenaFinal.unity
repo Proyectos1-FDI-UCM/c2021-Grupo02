@@ -43425,7 +43425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &129460777
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46759,7 +46759,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &867480282
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60521,6 +60521,8 @@ MonoBehaviour:
   cintaClasic: {fileID: 1026183673}
   cintaHeavy: {fileID: 1172981063}
   cintaElectric: {fileID: 1487446343}
+  winScreen: {fileID: 867480282}
+  loseScreen: {fileID: 129460777}
 --- !u!1001 &2037909656
 PrefabInstance:
   m_ObjectHideFlags: 0
