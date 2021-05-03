@@ -8,10 +8,12 @@ public class EfectoHeavy : MonoBehaviour
     bool heavy = false;
     [SerializeField]
     float horizontal=0, vertical=0;
+    Vector2 ini;
     // Start is called before the first frame update
     void Start()
     {
         circleCollider2D = GetComponent<CircleCollider2D>();
+        ini = transform.position;
     }
     void Update()
     {
@@ -37,8 +39,8 @@ public class EfectoHeavy : MonoBehaviour
     }
     public void Heavy()
     {
-        float x2 = Random.Range(-horizontal, horizontal);
-        float y2 = Random.Range(-vertical, vertical); 
+        float x2 = Random.Range(ini.x-horizontal,ini.x+ horizontal);
+        float y2 = Random.Range(ini.y-vertical, ini.y+vertical); 
         transform.position = new Vector2(x2, y2);
         
     }

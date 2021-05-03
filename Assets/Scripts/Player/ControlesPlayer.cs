@@ -12,9 +12,9 @@ public class ControlesPlayer : MonoBehaviour
     Vector2 fuerzas;
     Animator anim;
     ShooterApuntadoRaton shooter;
-    float angulbala;
+    float angu;
     float[] angul = new float[11];
-
+    float angulbala = 0;
     //Accedemos al componente shooter para disparar una bala al pulsar la tecla espacio
     void Start()
     {
@@ -48,11 +48,12 @@ public class ControlesPlayer : MonoBehaviour
             //es para que en los movimientos diagonales no tenga el doble de fuerza por ejeX y ejeY
             fuerzas.Normalize();
             Quaternion invertir = new Quaternion(0, 180, 0,0);
+     
             if (Input.GetMouseButton(0))
             {
                 shooter.Disparo();
-                angulbala = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
-               
+                angu = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
+                angulbala = angu;
                 if (angulbala>= angul[7] && angulbala< angul[6]) anim.SetBool("dispfront",true);
                 else if (angulbala >= angul[5] && angulbala < angul[4]) anim.SetBool("dispder", true);
                 else if(angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", true);
@@ -76,27 +77,18 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras", false);
                 else if (angulbala > angul[2] && angulbala < angul[1]) anim.SetBool("dig", false);
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
-                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", false);
-
-                if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
-                else if (forceX < 0 && forceY == 0) anim.SetInteger("Direction", 7);
-                else if (forceX == 0 && forceY > 0) anim.SetInteger("Direction", 5);
-                else if (forceX == 0 && forceY < 0) anim.SetInteger("Direction", 1);
-                else if (forceX == 1 && forceY == 1) anim.SetInteger("Direction", 4);
-                else if (forceX == -1 && forceY == 1) anim.SetInteger("Direction", 6);
-                else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
-                else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
+                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", false);  
             }
 
-             
-            
-            // if(angulbala<22.5f&&angulbala>=287.5f) anim.SetInteger("Direction", 12);
-            // anim.SetInteger("Direction", 1);
+            if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
+            else if (forceX < 0 && forceY == 0) anim.SetInteger("Direction", 7);
+            else if (forceX == 0 && forceY > 0) anim.SetInteger("Direction", 5);
+            else if (forceX == 0 && forceY < 0) anim.SetInteger("Direction", 1);
+            else if (forceX == 1 && forceY == 1) anim.SetInteger("Direction", 4);
+            else if (forceX == -1 && forceY == 1) anim.SetInteger("Direction", 6);
+            else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
+            else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
 
-           
-
-            //El sprite se rota, hay un problema vuelve a la rotación inicial al principio
-            //transform.up = fuerzas;
 
             if (Input.GetKeyDown("1"))
             {

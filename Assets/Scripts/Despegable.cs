@@ -20,7 +20,8 @@ public class Despegable : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {if(Input.GetKeyDown(KeyCode.Escape))
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if (!GameIsPaused) //si no está pausado no queremos meter cuadro de texto
             {

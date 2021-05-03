@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     int enemy = 0;
-    bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = false, classic = false, heavy = true, electric = true;
+    bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = true, classic = true, heavy = true, electric = true;
     public string[] scenesInOrder;
     
     //para poner por orden las escenas que hay
@@ -33,7 +33,8 @@ public class GameManager : MonoBehaviour
         }
         AñadirDiscos();     
     }
-   
+
+
     private void Update()
     {
         if (mus == Music.classic)

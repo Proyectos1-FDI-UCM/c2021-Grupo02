@@ -21,11 +21,13 @@ public class MusicEffect : MonoBehaviour
     Vector3 posElectronic;
     bool heavy = false, electric = false, clasic = false;
     GameManager.Music musica;
+    Vector2 ini;
     // Start is called before the first frame update
     void Start()
     {
         BoxCollider2D = GetComponent<BoxCollider2D>();
         Rigidbody2D = GetComponent<Rigidbody2D>();
+        ini = transform.position;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -120,13 +122,17 @@ public class MusicEffect : MonoBehaviour
         anima.SetBool("Electrica", true);
         anima.SetBool("Dream", false);
         BoxCollider2D.enabled = true;//el turista se mueve de manera aleatoria entre 4 posibilidades , arriba , abajo , izq y der
-        float x1 = Random.Range(-limitehorizontal , limitehorizontal );
-        float y1 = Random.Range(-limitevertical, limitevertical);
+        float x1 = Random.Range(ini.x-limitehorizontal , ini.x+limitehorizontal );
+        float y1 = Random.Range(ini.y-limitevertical,ini.y+ limitevertical);
         posElectronic = new Vector3(x1, y1, 0);
 
-        if (transform.position.x > -limitehorizontal && transform.position.y > -limitevertical && transform.position.y < limitevertical)
+        if (transform.position.x > ini.x-limitehorizontal && transform.position.y > ini.y-limitevertical && transform.position.y < ini.y+limitevertical&&transform.position.x<ini.x+limitehorizontal)
         {
             Rigidbody2D.velocity = new Vector2(transform.position.x - posElectronic.x, transform.position.y - posElectronic.y) * -1 * fuerzaTuristaElectronica;//2=velocidad          
+        }
+        else
+        {
+            Rigidbody2D.velocity=new Vector2(transform.position.x - ini.x, transform.position.y - ini.y) * -1 * fuerzaTuristaElectronica;
         }
         if (Rigidbody2D.velocity.x < 0)
         {
