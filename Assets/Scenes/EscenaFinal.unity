@@ -43082,7 +43082,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &114119723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44783,7 +44783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -334.6705, y: -201.69, z: -11}
+  m_LocalPosition: {x: -334.67, y: -201.69, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1078734223}
@@ -45328,18 +45328,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1197828f43ae746bb7d7d9dd3f5986, type: 3}
---- !u!114 &623290997 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8260208583778659239, guid: 7c1197828f43ae746bb7d7d9dd3f5986,
-    type: 3}
-  m_PrefabInstance: {fileID: 623290996}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8413ac7e2e55abd43a985c03848d5693, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!213 &636065842
 Sprite:
   m_ObjectHideFlags: 0
@@ -46340,7 +46328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876830786}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -334.6705, y: -201.69, z: -11}
+  m_LocalPosition: {x: -334.67, y: -201.69, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1191770817}
@@ -46376,7 +46364,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.5995024, y: 1}
+    m_SensorSize: {x: 1.6, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -56577,7 +56565,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 623290997}
+      - m_Target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -57566,7 +57555,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 623290997}
+      - m_Target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
@@ -57695,7 +57685,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 623290997}
+      - m_Target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
+          type: 3}
         m_MethodName: ChangeScene
         m_Mode: 5
         m_Arguments:
