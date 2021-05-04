@@ -94,7 +94,7 @@ public class MusicEffect : MonoBehaviour
         anima.SetBool("Dream", false);
         anima.SetBool("Heavy", true);
         BoxCollider2D.enabled = true;
-        transform.position = Vector2.MoveTowards(transform.position, PuntoAleatorio.position, fuerzaTuristaHeavy * Time.deltaTime);
+        Rigidbody2D.velocity = new Vector2(transform.position.x - PuntoAleatorio.position.x, transform.position.y - PuntoAleatorio.position.y) * -1 * fuerzaTuristaHeavy;
         if ((PuntoAleatorio.position - transform.position).magnitude > 1) Invoke("MusicaHeavy", 0.01f);
         if (transform.position.x < 0)
         {
@@ -106,6 +106,7 @@ public class MusicEffect : MonoBehaviour
             anima.SetBool("Mov", true);
             anima.SetBool("MovIzq", false);
         }
+        Invoke("MusicaHeavy", 1);
     }
     public void MusicaClasica()
     {
