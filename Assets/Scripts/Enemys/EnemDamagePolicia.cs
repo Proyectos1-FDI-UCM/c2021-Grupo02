@@ -14,10 +14,14 @@ public class EnemDamagePolicia : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.GetInstance();
-        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
+        
         rigidBody2D = GetComponent<Rigidbody2D>();
         robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
         anima = GetComponentInChildren<Animator>();
+    }
+    private void Update()
+    {
+        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

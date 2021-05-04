@@ -48,7 +48,15 @@ public class ControlesPlayer : MonoBehaviour
             //es para que en los movimientos diagonales no tenga el doble de fuerza por ejeX y ejeY
             fuerzas.Normalize();
             Quaternion invertir = new Quaternion(0, 180, 0,0);
-     
+            if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
+            else if (forceX < 0 && forceY == 0) anim.SetInteger("Direction", 7);
+            else if (forceX == 0 && forceY > 0) anim.SetInteger("Direction", 5);
+            else if (forceX == 0 && forceY < 0) anim.SetInteger("Direction", 1);
+            else if (forceX == 1 && forceY == 1) anim.SetInteger("Direction", 4);
+            else if (forceX == -1 && forceY == 1) anim.SetInteger("Direction", 6);
+            else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
+            else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
+
             if (Input.GetMouseButton(0))
             {
                 shooter.Disparo();
@@ -73,17 +81,10 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras", false);
                 else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", false);
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
-                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu",false);
+                else if (angulbala >= angul[1] && angulbala <= angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu",false);
             }
 
-            if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
-            else if (forceX < 0 && forceY == 0) anim.SetInteger("Direction", 7);
-            else if (forceX == 0 && forceY > 0) anim.SetInteger("Direction", 5);
-            else if (forceX == 0 && forceY < 0) anim.SetInteger("Direction", 1);
-            else if (forceX == 1 && forceY == 1) anim.SetInteger("Direction", 4);
-            else if (forceX == -1 && forceY == 1) anim.SetInteger("Direction", 6);
-            else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
-            else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
+            
 
 
             if (Input.GetKeyDown("1"))

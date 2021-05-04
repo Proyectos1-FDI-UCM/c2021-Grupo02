@@ -48,39 +48,47 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3444b34567b64664a9d32a0cc4383c78, type: 3}
     volume: 1
     pitch: 1
+    loop: 1
     source: {fileID: 0}
   - name: MusicaHeavy
     clip: {fileID: 8300000, guid: 35d8b955d9fd0e149ab9e2251ec62168, type: 3}
     volume: 1
     pitch: 1
+    loop: 1
     source: {fileID: 0}
   - name: MusicaElectronica
     clip: {fileID: 8300000, guid: 2500e31d8d4a76641a5f0b2eba96e32f, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: ImpactoPolicia
     clip: {fileID: 8300000, guid: 176bf83d8e22b1f408b29bfd429d2d34, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: ImpactoPlayer
     clip: {fileID: 8300000, guid: ef116e6c50cc21241bd590ca021f8c39, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: ImpactoGuardia
     clip: {fileID: 8300000, guid: ce0429bb9dae3ba409eab2632655abe5, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: GolpePorra
     clip: {fileID: 8300000, guid: 1826d56888ae83745a12bc42960d5332, type: 3}
     volume: 1
     pitch: 1
+    loop: 0
     source: {fileID: 0}
   - name: MusicaMenu
-    clip: {fileID: 8300000, guid: 1826d56888ae83745a12bc42960d5332, type: 3}
+    clip: {fileID: 8300000, guid: 32780574c78e9e94b97e340a45536de5, type: 3}
     volume: 1
     pitch: 1
+    loop: 1
     source: {fileID: 0}

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     int enemy = 0;
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = true, classic = true, heavy = true, electric = true;
     public string[] scenesInOrder;
-    
+    bool cambio = true;
     //para poner por orden las escenas que hay
     /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
@@ -37,7 +37,17 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         if (SceneManager.GetActiveScene().name != "EscenaFinal") vidas = 101;
+        if (SceneManager.GetActiveScene().name == "MenuPpal")
+        {
+            audioManager.ChangeMusic("MusicaMenu");
+        }
+       else if (SceneManager.GetActiveScene().name == "EscenaFinal"&&cambio)
+        {
+            cambio = false;
+            audioManager.ChangeMusic("MusicaClasica"); 
+        }
         if (mus == Music.classic)
         {
             if (classic && recargaDiscos)
@@ -77,6 +87,11 @@ public class GameManager : MonoBehaviour
                 InvokeRepeating("vidasElectric", 0, 0.6f);
             }
         }
+    }
+    public void PonerFalsePerderJugador()
+    {
+        perderJugador = false;
+        cambio = true;
     }
     public bool EntrarSala()
     {
@@ -164,6 +179,10 @@ public class GameManager : MonoBehaviour
     public Music Musica()
     {
         return mus;
+    }
+    public void CerrarJuego()
+    {
+        Application.Quit();
     }
     //Actualiza de si el jugador está vivo o muerto 
     public bool JugMuerto()
@@ -260,10 +279,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
-        if(sceneName == "MenuPpal")
-        {
-            audioManager.ChangeMusic("MusicaMenu");
-        }
+  
     }
     
 }

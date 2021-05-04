@@ -19,7 +19,7 @@ public class Damageable : MonoBehaviour
     }
     void Update()
     {
-        if (GameManager.GetInstance().JugMuerto())
+        if (GameManager.GetInstance().EstadoJugador())
         {
             anim.SetInteger("Direction", 20);
             Destroy(this.gameObject, 2f);
@@ -29,7 +29,7 @@ public class Damageable : MonoBehaviour
     {
         if (!collision.GetComponent<VelocidadDisco>()&&!collision.GetComponent<Habita>())
         {
-            if (!GameManager.GetInstance().JugMuerto())
+            if (!GameManager.GetInstance().EstadoJugador())
             {
                 if (collision.GetComponent<VelocidadRayoDaño>()) GameManager.GetInstance().reducir2Vidas();
                 else if (collision.GetComponent<VelocidadRayoStoon>())

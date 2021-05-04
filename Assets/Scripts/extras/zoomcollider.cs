@@ -16,11 +16,12 @@ public class zoomcollider : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("HOLA");
-        myVirtualCamera.gameObject.SetActive(true);
+        if (other.GetComponent<ControlesPlayer>())
+            myVirtualCamera.gameObject.SetActive(true);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
+        if(other.GetComponent<ControlesPlayer>())
         myVirtualCamera.gameObject.SetActive(false);
     }
 
