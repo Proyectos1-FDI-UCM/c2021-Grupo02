@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            //DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
         {
@@ -259,6 +259,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         sceneName = SceneManager.GetActiveScene().name;
+        Time.timeScale = 1;
     }
     
 }

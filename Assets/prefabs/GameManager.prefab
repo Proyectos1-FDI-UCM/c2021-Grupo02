@@ -43,3 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8413ac7e2e55abd43a985c03848d5693, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenesInOrder:
+  - MenuPpal
+  - Controles
+  - Sound
+  - EscenaFinal

@@ -16,7 +16,7 @@ public class EnemDamageTurista : MonoBehaviour
         gameManager = GameManager.GetInstance();
         rigidBody2D = GetComponent<Rigidbody2D>();
         anima = GetComponentInChildren<Animator>();
-        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
+       // audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -42,7 +42,7 @@ public class EnemDamageTurista : MonoBehaviour
         GameManager.GetInstance().Perder(true);
         Invoke("Destruir", 0.85f);
         
-        audioManager.Play("ImpactoGuardia");
+        //audioManager.Play("ImpactoGuardia");
     }
     void Destruir()
     {
