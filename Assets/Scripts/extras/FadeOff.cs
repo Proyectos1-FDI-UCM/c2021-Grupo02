@@ -22,7 +22,10 @@ public class FadeOff : MonoBehaviour
             colorInicial.color = new Color(0, 0, 0, alpha);
             alpha -= velocidadFade = Time.deltaTime;
             if (alpha <= 0)
-            { Destroy(this.gameObject); }
+            {
+                alpha = 1.0f;
+                gameObject.SetActive(false);
+            }
         
         
     }
