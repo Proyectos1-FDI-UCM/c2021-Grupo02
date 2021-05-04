@@ -106,7 +106,6 @@ public class MusicEffect : MonoBehaviour
             anima.SetBool("Mov", true);
             anima.SetBool("MovIzq", false);
         }
-        Invoke("MusicaHeavy", 1);
     }
     public void MusicaClasica()
     {
