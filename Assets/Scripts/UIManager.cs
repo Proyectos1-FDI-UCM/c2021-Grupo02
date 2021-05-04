@@ -18,14 +18,12 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     RectTransform PilasPanel, PanelDiscos, cintaClasic, cintaHeavy, cintaElectric, winScreen, loseScreen, MenuPausa, menuControlesRect, menuSonidoRect;
     [SerializeField]
-    static bool GameIsPaused = false, menuSonido = false, menuControles = false;
+    static bool GameIsPaused = false;
     private int contador = 0;
 
     private void Update()
     {
         GameManager.GetInstance().UIManagerUpdate(this);
-        cargarMenuSonido();
-        cargarMenuControles();
         if (Input.GetKeyDown(KeyCode.Escape)) Desplegable();
     }
     // Dibuja y escribe las vidas, discos y balas disponibles
@@ -113,33 +111,31 @@ public class UIManager : MonoBehaviour
         if (GameIsPaused) //si no está pausado no queremos meter cuadro de texto
         {
             Resume();//esconder cuadro de texto
-
         }
         else//gameispaused=true , si esta pausado queremos cuadro de texto de pausa
         {
             Pause();
-
         }
     }
-    public void BotonSonido()
+    //Cierra los menus sonidos y controles
+    public void CerrarMenusSonidoControles()
     {
-        menuSonido = !menuSonido;
+        menuControlesRect.gameObject.SetActive(false);
+        menuSonidoRect.gameObject.SetActive(false);
     }
-    public void BotonControles()
+    //Activa el menú sonido
+    public void cargarMenuSonido()
     {
-        menuControles = !menuControles;
+        menuControlesRect.gameObject.SetActive(false);
+        menuSonidoRect.gameObject.SetActive(true);
     }
-    void cargarMenuSonido()
+    //Activa el menú controles
+    public void cargarMenuControles()
     {
-        if (menuSonido && !menuControles && !GameIsPaused) menuSonidoRect.gameObject.SetActive(true);
-        else menuSonidoRect.gameObject.SetActive(false);
+        menuSonidoRect.gameObject.SetActive(false);
+        menuControlesRect.gameObject.SetActive(true);
     }
-    void cargarMenuControles()
-    {
-        if (!menuSonido && menuControles && !GameIsPaused) menuSonidoRect.gameObject.SetActive(true);
-        else menuSonidoRect.gameObject.SetActive(false);
-    }
-    void Resume()//si esta parado que se esconda el cuadro de texto y vuelva a la normalidad , si saliendo = false , significa que tiene que esconderse el cuadro de texto
+    public void Resume()//si esta parado que se esconda el cuadro de texto y vuelva a la normalidad , si saliendo = false , significa que tiene que esconderse el cuadro de texto
     {
         MenuPausa.gameObject.SetActive(false);
         //animboton.SetBool("Saliendo", false);
