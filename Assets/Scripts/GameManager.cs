@@ -260,6 +260,10 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
+        if(sceneName == "MenuPpal")
+        {
+            audioManager.ChangeMusic("MusicaMenu");
+        }
     }
     
 }

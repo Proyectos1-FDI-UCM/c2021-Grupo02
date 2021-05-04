@@ -35,7 +35,7 @@ public class EnemDamageGuardia : MonoBehaviour
         if (GameManager.GetInstance().Musica() == GameManager.Music.heavy) golpe = golpe - 2;
         else golpe = golpe - 1;
 
-        audioManager.Play("ImpactoGuardia");        
+      
 
         if (golpe <= 0)
         //para animacion de matarlo
@@ -59,6 +59,8 @@ public class EnemDamageGuardia : MonoBehaviour
             //MuerteGuardia();
             GameManager.GetInstance().RemoveEnemy();
         }
+
+        audioManager.Play("ImpactoGuardia");
     }
     void Destruir()
     {
