@@ -18,12 +18,12 @@ public class EnemDamageTurista : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.GetInstance();
-       // audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
         shooterGuardia = GetComponentInChildren<ShooterGuardia>();
         robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
         anima = GetComponentInChildren<Animator>();
+        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,7 +36,7 @@ public class EnemDamageTurista : MonoBehaviour
 
     void TuristaDaño()
     {
-        //audioManager.Play("ImpactoGuardia");
+        
 
         rigidBody2D.velocity = Vector2.zero;
         anima.SetBool("Muerto", true);
@@ -47,6 +47,8 @@ public class EnemDamageTurista : MonoBehaviour
         golpeTurista = golpeTurista -1;
         GameManager.GetInstance().Perder(true);
         Invoke("Destruir", 0.85f);
+        
+        audioManager.Play("ImpactoGuardia");
     }
     void Destruir()
     {
