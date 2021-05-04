@@ -9,21 +9,15 @@ public class EnemDamageTurista : MonoBehaviour
 
     GameManager gameManager;
     AudioManager audioManager;
-    int golpeTurista = 1, golpe = 2;
-    public int golpeRobot = 4;
-    Guardia guardia;
-    ShooterGuardia shooterGuardia;
-    RobotPoliciaMovimiento robotPoliciaMovimiento;
+    int golpeTurista = 1;
 
     private void Start()
     {
         gameManager = GameManager.GetInstance();
         rigidBody2D = GetComponent<Rigidbody2D>();
-        guardia = GetComponent<Guardia>();
-        shooterGuardia = GetComponentInChildren<ShooterGuardia>();
-        robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
         anima = GetComponentInChildren<Animator>();
         audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

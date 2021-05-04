@@ -9,18 +9,13 @@ public class EnemDamagePolicia : MonoBehaviour
 
     GameManager gameManager;
     AudioManager audioManager;
-    int golpeTurista = 1, golpe = 2;
     public int golpeRobot = 4;
-    Guardia guardia;
-    ShooterGuardia shooterGuardia;
     RobotPoliciaMovimiento robotPoliciaMovimiento;
     private void Start()
     {
         gameManager = GameManager.GetInstance();
         audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
         rigidBody2D = GetComponent<Rigidbody2D>();
-        guardia = GetComponent<Guardia>();
-        shooterGuardia = GetComponentInChildren<ShooterGuardia>();
         robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
         anima = GetComponentInChildren<Animator>();
     }

@@ -9,11 +9,9 @@ public class EnemDamageGuardia : MonoBehaviour
 
     GameManager gameManager;
     AudioManager audioManager;
-    int golpeTurista = 1, golpe = 2;
-    public int golpeRobot = 4;
+    int golpe = 2;
     Guardia guardia;
     ShooterGuardia shooterGuardia;
-    RobotPoliciaMovimiento robotPoliciaMovimiento;
 
     private void Start()
     {
@@ -22,7 +20,6 @@ public class EnemDamageGuardia : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
         shooterGuardia = GetComponentInChildren<ShooterGuardia>();
-        robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
         anima = GetComponentInChildren<Animator>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
