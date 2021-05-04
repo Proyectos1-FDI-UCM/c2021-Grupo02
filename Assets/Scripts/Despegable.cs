@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Despegable : MonoBehaviour
 {     
-     Animator animboton;
+    Animator animboton;
     [SerializeField ]
-     static bool GameIsPaused = true;//por defecto
+    static bool GameIsPaused = true;//por defecto
     private int contador = 0;
    
     // Start is called before the first frame update
@@ -14,8 +14,6 @@ public class Despegable : MonoBehaviour
     void Start()
     {
         animboton = GetComponent<Animator>();
-       
-     
     }
 
     // Update is called once per frame
@@ -41,6 +39,7 @@ public class Despegable : MonoBehaviour
     }
      void Resume()//si esta parado que se esconda el cuadro de texto y vuelva a la normalidad , si saliendo = false , significa que tiene que esconderse el cuadro de texto
      {
+        gameObject.SetActive(true);
             animboton.SetBool("Saliendo", false);
             Time.timeScale = 1f;//lo se , es para que no se pare
             GameIsPaused = true;

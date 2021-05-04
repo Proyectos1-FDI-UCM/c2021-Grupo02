@@ -23,10 +23,8 @@ public class Damageable : MonoBehaviour
         {
             anim.SetInteger("Direction", 20);
             Destroy(this.gameObject, 2f);
-
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.GetComponent<VelocidadDisco>()&&!collision.GetComponent<Habita>())

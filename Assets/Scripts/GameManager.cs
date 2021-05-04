@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "EscenaFinal") vidas = 101;
         if (mus == Music.classic)
         {
             if (classic && recargaDiscos)
@@ -183,6 +184,7 @@ public class GameManager : MonoBehaviour
         {
             perderJugador = true;
             UIManager.Perder();
+            vidas = 101;
         }
         else
         {
@@ -254,11 +256,9 @@ public class GameManager : MonoBehaviour
     {
         audioManager.GetComponent<AudioManager>().Play(sonido);
     }
-
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        sceneName = SceneManager.GetActiveScene().name;
         Time.timeScale = 1;
     }
     

@@ -62,11 +62,7 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala > angul[2] && angulbala < angul[1]) anim.SetBool("dig", true);                        
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", true);
                 else if(angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", true);
-
-
-           
-            }
-           
+            }        
             else
             {
             
@@ -103,10 +99,14 @@ public class ControlesPlayer : MonoBehaviour
                 GameManager.GetInstance().MusicaElectric();
             }
         }
+        else if(paralisis)
+        {
+            Invoke("Paralisis", 1);  
+        }
         else
         {
-            Invoke("Paralisis", 1);
             fuerzas = Vector2.zero;
+            CancelInvoke();
         }
         
     }
