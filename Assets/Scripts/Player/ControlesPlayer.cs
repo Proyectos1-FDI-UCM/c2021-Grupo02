@@ -13,7 +13,7 @@ public class ControlesPlayer : MonoBehaviour
     Animator anim;
     ShooterApuntadoRaton shooter;
     float angu;
-    float[] angul = new float[11];
+    float[] angul = new float[10];
     float angulbala = 0;
     //Accedemos al componente shooter para disparar una bala al pulsar la tecla espacio
     void Start()
@@ -59,9 +59,9 @@ public class ControlesPlayer : MonoBehaviour
                 else if(angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", true);
                 else if(angulbala >= angul[4] && angulbala < angul[3]) anim.SetBool("disdigatrasder", true);
                 else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras",true);
-                else if (angulbala > angul[2] && angulbala < angul[1]) anim.SetBool("dig", true);                        
+                else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", true);                        
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", true);
-                else if(angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", true);
+                else if(angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu", true);
             }        
             else
             {
@@ -71,9 +71,9 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", false);
                 else if (angulbala >= angul[4] && angulbala < angul[3]) anim.SetBool("disdigatrasder",false);
                 else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras", false);
-                else if (angulbala > angul[2] && angulbala < angul[1]) anim.SetBool("dig", false);
+                else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", false);
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
-                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[10]) anim.SetBool("sperfizqu", false);  
+                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu",false);
             }
 
             if (forceX > 0 && forceY == 0) anim.SetInteger("Direction", 3);
