@@ -33,8 +33,6 @@ public class EnemDamagePolicia : MonoBehaviour
         if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) golpeRobot = golpeRobot-2;
         else golpeRobot = golpeRobot-1;
 
-        audioManager.Play("ImpactoPolicia");
-
         if (golpeRobot <= 0)
         {
             if (robotPoliciaMovimiento) robotPoliciaMovimiento.enabled = false;
@@ -45,6 +43,8 @@ public class EnemDamagePolicia : MonoBehaviour
             Invoke("Destruir", 0.55f);
             GameManager.GetInstance().RemoveEnemy();
         }
+
+        audioManager.Play("ImpactoPolicia");
     }
     void Destruir()
     {
