@@ -62,6 +62,13 @@ public class UIManager : MonoBehaviour
         {
             //Llena todas las pilas si el numero de vidas es menor de su decena,
             //es decir ej si tiene 70 de vida, llena las pilas 1,2,3,4,5,6 y en la 7 se para y entra en el siguiente else if
+            if(i <= 0)
+            {
+                for (int j = 0; j < 10; j++)             
+                {
+                    pila[j].sprite = vacia[10];
+                }
+            }
             if (i < (vidas / 10))
             {
                 pila[i].sprite = vacia[0];
