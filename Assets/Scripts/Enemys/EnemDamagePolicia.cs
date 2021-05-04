@@ -14,7 +14,6 @@ public class EnemDamagePolicia : MonoBehaviour
     Guardia guardia;
     ShooterGuardia shooterGuardia;
     RobotPoliciaMovimiento robotPoliciaMovimiento;
-
     private void Start()
     {
         gameManager = GameManager.GetInstance();

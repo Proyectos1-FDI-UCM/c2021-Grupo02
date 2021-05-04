@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FadeOff : MonoBehaviour
 {
@@ -18,15 +19,16 @@ public class FadeOff : MonoBehaviour
     void Update()
     {
         renderer.material = colorInicial;
-        
             colorInicial.color = new Color(0, 0, 0, alpha);
-            alpha -= velocidadFade = Time.deltaTime;
-            if (alpha <= 0)
+            if (alpha > 0)
             {
-                alpha = 1.0f;
-                gameObject.SetActive(false);
+                alpha -= velocidadFade = Time.deltaTime;
             }
-        
-        
+
+        if (SceneManager.GetActiveScene().name != "MenuPpal")
+        { 
+            alpha = 1.0f;
+            velocidadFade = 0.1f;
+        }
     }
 }
