@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log(perderJugador);
         if (SceneManager.GetActiveScene().name != "EscenaFinal") vidas = 101;
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
@@ -87,11 +87,14 @@ public class GameManager : MonoBehaviour
                 InvokeRepeating("vidasElectric", 0, 0.6f);
             }
         }
+        if (vidas >= 0) JugMuerto();
     }
     public void PonerFalsePerderJugador()
     {
         perderJugador = false;
         cambio = true;
+        vidas = 101;
+        enemy = 0;
     }
     public bool EntrarSala()
     {
@@ -203,7 +206,6 @@ public class GameManager : MonoBehaviour
         {
             perderJugador = true;
             UIManager.Perder();
-            vidas = 101;
         }
         else
         {
