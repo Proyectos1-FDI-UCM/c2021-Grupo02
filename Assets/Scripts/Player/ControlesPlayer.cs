@@ -83,10 +83,6 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
                 else if (angulbala >= angul[1] && angulbala <= angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu",false);
             }
-
-            
-
-
             if (Input.GetKeyDown("1"))
             {
                 GameManager.GetInstance().MusicaClásica();

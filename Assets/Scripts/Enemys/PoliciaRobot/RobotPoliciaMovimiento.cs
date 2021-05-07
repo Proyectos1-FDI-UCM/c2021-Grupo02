@@ -12,7 +12,6 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     Rigidbody2D rb;
     float tiempoAux, angle, tiempoChoque;
     int sentido = 1;
- 
     bool jugador, clasica = false, electrica = true, heavy = true;
     Vector2 direction, anguloEmbestida;
     public Animator anim;
