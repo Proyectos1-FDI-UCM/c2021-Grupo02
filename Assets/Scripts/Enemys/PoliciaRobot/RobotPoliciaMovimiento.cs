@@ -13,7 +13,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     float tiempoAux, angle, tiempoChoque;
     int sentido = 1;
  
-    bool jugador, clasica = true, electrica = false, heavy = false;
+    bool jugador, clasica = false, electrica = true, heavy = true;
     Vector2 direction, anguloEmbestida;
     public Animator anim;
     GameManager.Music mus,musicaVieja;
@@ -37,6 +37,10 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     //Accedemos al rigidbody para variar la velocidad, añadimos un enemy en el GameManager, y al script de disparo
     private void Start()
     {
+        //Comportamiento con el que inicia
+        Invoke("Clasica", 0);
+        clasica = false;
+        tiempoAux = 0;
         mus = GameManager.GetInstance().Musica();
         musicaVieja = mus;
         //anim = GetComponentInChildren<Animator>();
@@ -73,7 +77,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     clasica = false;
                     electrica = true;
                     heavy = true;
-                    Invoke("Clasica", 1.2f);
+                    Invoke("Clasica", 1);
                 }
                 else if (mus == GameManager.Music.heavy && heavy && tiempoAux <= 0)
                 {
@@ -81,7 +85,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     clasica = true;
                     electrica = true;
                     heavy = false;
-                    Invoke("Heavy", 1.2f);
+                    Invoke("Heavy", 1);
                 }
                 else if (mus == GameManager.Music.electronic && electrica && tiempoAux <= 0)
                 {
@@ -89,7 +93,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                     clasica = true;
                     electrica = false;
                     heavy = true;
-                    Invoke("Electronica", 1.2f);
+                    Invoke("Electronica", 1);
                 }
             }
         }
