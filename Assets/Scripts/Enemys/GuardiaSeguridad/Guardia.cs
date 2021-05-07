@@ -12,7 +12,7 @@ public class Guardia : MonoBehaviour
     int sentido = 1;               //Sentido del movimiento
     float porrazo;
                    //Almacenara la musica que suene en ese momento       //Almacenara la musica antigua. Empezará siendo ninguna
-    bool metodo = false;
+    bool metodo = false, giro = false;
     public Animator animator;
     Vector2 direction;
     GameManager.Music mus,musicaVieja;
@@ -61,50 +61,65 @@ public class Guardia : MonoBehaviour
                 animator.SetBool("Porra", false);//llamas al parametro;
                 animator.SetBool("Muerte", false);//llamas al parametro;
                 animator.SetBool("Disparar", false);//llamas al parametro;
-                //Posicion del enemigo = Vector2.MoveTowards (PERSEGUIDOR, TARGET, VELOCIDAD)   Si la velocidad es negativa hara el movimiento contrario, por eso lo del sentido
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * sentido * Time.deltaTime); //MoveTowards (hace el seguimiento)
-
-                if (direction.x < 0)
+                
+                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+                if (sentido == -1 && giro)
                 {
+                    giro = false;
+                    transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
+                }
+                else if (direction.x < 0 && sentido == 1)
+                {
+                    giro = true;
                     transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                 }
-                else if (direction.x > 0)
+                else if (direction.x > 0 && sentido == 1)
                 {
+                    giro = true;
                     //llamas al parametro;
                     transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                 }
             }
             else if (mus == GameManager.Music.heavy)//cuerpo a cuerpo
             {
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocidad * sentido * Time.deltaTime);
-                if (direction.magnitude < 1.5f && porrazo <= 0)
+                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+                if (sentido == -1 && giro)
+                {
+                    giro = false;
+                    transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
+                }
+                else if (direction.magnitude < 1.5f && porrazo <= 0 && sentido == 1)
                 { //hacer lo de la porra pegar cuerpo a cuerpo}
+                    giro = true;
                     if (direction.x < 0)
                     {
-                        animator.SetBool("Correr", false);//llamas al parametro;
-                        animator.SetBool("Porra", true);//llamas al parametro;
-                        animator.SetBool("Muerte", false);//llamas al parametro;
-                        animator.SetBool("Disparar", false);//llamas al parametro;
-
+                        transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
+                    }
+                    else if (direction.x > 0 && porrazo <= 0)
+                    { 
+                        transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
+                    }
+                    animator.SetBool("Correr", false);//llamas al parametro;
+                    animator.SetBool("Porra", true);//llamas al parametro;
+                    animator.SetBool("Muerte", false);//llamas al parametro;
+                    animator.SetBool("Disparar", false);//llamas al parametro;
+                    Invoke("Porrazo", 1f);
+                }  
+                else if(sentido == 1){
+                    if (direction.x < 0)
+                    {                  
                         transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                     }
                     else if (direction.x > 0 && porrazo <= 0)
                     {
-                        animator.SetBool("Correr", false);//llamas al parametro;
-                        animator.SetBool("Porra", true);//llamas al parametro;
-                        animator.SetBool("Muerte", false);//llamas al parametro;
-                        animator.SetBool("Disparar", false);//llamas al parametro;
-
                         transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                     }
-                    Invoke("Porrazo", 1f);
-                }  
-                else {
-                animator.SetBool("Correr", true);//llamas al parametro;
-                animator.SetBool("Porra", false);//llamas al parametro;
-                animator.SetBool("Muerte", false);//llamas al parametro;
-                animator.SetBool("Disparar", false);
-                }//rb.velocity = new Vector2(transform.position.x - player.position.x, transform.position.y - player.position.y) * -velocidad;
+                    giro = true;
+                    animator.SetBool("Correr", true);//llamas al parametro;
+                    animator.SetBool("Porra", false);//llamas al parametro;
+                    animator.SetBool("Muerte", false);//llamas al parametro;
+                    animator.SetBool("Disparar", false);
+                }
                 //Invoco persecuccion cada poco para que vaya mas fluido el movimiento
             }
             Invoke("Persecucion", 0.1f);
