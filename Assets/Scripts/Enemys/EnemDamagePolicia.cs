@@ -7,13 +7,13 @@ public class EnemDamagePolicia : MonoBehaviour
     Rigidbody2D rigidBody2D;
     Animator anima;
 
-    GameManager gameManager;
+  
     AudioManager audioManager;
-    public int golpeRobot = 4;
+
     RobotPoliciaMovimiento robotPoliciaMovimiento;
     private void Start()
     {
-        gameManager = GameManager.GetInstance();
+       
         
         rigidBody2D = GetComponent<Rigidbody2D>();
         robotPoliciaMovimiento = GetComponent<RobotPoliciaMovimiento>();
@@ -21,7 +21,7 @@ public class EnemDamagePolicia : MonoBehaviour
     }
     private void Update()
     {
-        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
+        audioManager = GameManager.GetInstance().GetAudioManagerInstance().GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -34,10 +34,10 @@ public class EnemDamagePolicia : MonoBehaviour
     
     void RobotDaño()
     {
-        if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) golpeRobot = golpeRobot-2;
-        else golpeRobot = golpeRobot-1;
+        if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) GameManager.GetInstance().VidaPolicia(2);
+        else GameManager.GetInstance().VidaPolicia(1);
 
-        if (golpeRobot <= 0)
+        if (GameManager.GetInstance().PoliciaMuerto())
         {
             if (robotPoliciaMovimiento) robotPoliciaMovimiento.enabled = false;
             anima.SetBool("Disparo", false);

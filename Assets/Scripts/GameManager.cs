@@ -7,13 +7,20 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     private UIManager UIManager;
+    private UiEnemies UiEnemies;
     AudioManager audioManager;
+    UiPolicia UiPolicia;
     //Empieza con 101 vidas porque le quita vidas solo con empezar
     int vidas = 101, discos = 20;
     int enemy = 0;
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = true, classic = true, heavy = true, electric = true;
     public string[] scenesInOrder;
     bool cambio = true;
+    float golpeGuardia = 2;
+    float golpeActuGuardia;
+    float golpePolicia = 2;
+    float golpePoliciaActual;
+
     //para poner por orden las escenas que hay
     /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
@@ -32,6 +39,11 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
         }
         AñadirDiscos();     
+    }
+    private void Start()
+    {
+        golpeActuGuardia = golpeGuardia;
+       golpePoliciaActual = golpePolicia;
     }
 
 
@@ -249,6 +261,26 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
+    public void VidaGuardia(float golp)
+    {
+        golpeActuGuardia = golpeActuGuardia - golp;
+        
+    }
+    public bool GuardiaMuerto()
+    {
+        if (golpeActuGuardia <= 0) return true;
+        else return false;
+    }
+    public void VidaPolicia(float golp)
+    {
+        golpePoliciaActual = golpePoliciaActual - golp;
+
+    }
+    public bool PoliciaMuerto()
+    {
+        if (golpePoliciaActual <= 0) return true;
+        else return false;
+    }
     public static GameManager GetInstance()
     {
         return instance;
@@ -258,8 +290,20 @@ public class GameManager : MonoBehaviour
         UIManager = uim;
         UIManager.VariarDiscos(discos, mus);
         UIManager.UpdateLives(vidas);
+        
     }
-
+    public void UIEnemiesUpdate(UiEnemies uie)
+    {
+        UiEnemies = uie;
+        UiEnemies.VidaGuardia(golpeGuardia, golpeActuGuardia);
+     
+    }
+    public void UIVidaPolicia(UiPolicia uie)
+    {
+        UiPolicia = uie;
+  
+        UiPolicia.VidaPoli(golpePolicia, golpePoliciaActual);
+    }
     //guarda el audio manager 
     public void SoyElAudioManager(AudioManager aM)
     {

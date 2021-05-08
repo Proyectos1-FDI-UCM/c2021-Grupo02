@@ -20,6 +20,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     static bool GameIsPaused = false;
     private int contador = 0;
+   
+    
 
     private void Update()
     {
@@ -98,6 +100,7 @@ public class UIManager : MonoBehaviour
             }
         }
     }
+    
     public void Perder()
     {
         loseScreen.gameObject.SetActive(true);

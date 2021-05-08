@@ -15,7 +15,7 @@ public class EnemDamageGuardia : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.GetInstance();
+       
         
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
@@ -24,7 +24,7 @@ public class EnemDamageGuardia : MonoBehaviour
     }
     private void Update()
     {
-        audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
+        audioManager = GameManager.GetInstance().GetAudioManagerInstance().GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -36,12 +36,12 @@ public class EnemDamageGuardia : MonoBehaviour
     }
     void GuardiaDaño()
     {
-        if (GameManager.GetInstance().Musica() == GameManager.Music.heavy) golpe = golpe - 2;
-        else golpe = golpe - 1;
+        if (GameManager.GetInstance().Musica() == GameManager.Music.heavy) GameManager.GetInstance().VidaGuardia(2);
+        else GameManager.GetInstance().VidaGuardia(1);
 
-      
 
-        if (golpe <= 0)
+
+        if (GameManager.GetInstance().GuardiaMuerto())
         //para animacion de matarlo
         {
             if(guardia && shooterGuardia)
