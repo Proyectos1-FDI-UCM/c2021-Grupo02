@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     bool cambio = true;
     float golpeGuardia = 2;
     float golpeActuGuardia;
-    float golpePolicia = 2;
+    float golpePolicia = 4;
     float golpePoliciaActual;
 
     //para poner por orden las escenas que hay
