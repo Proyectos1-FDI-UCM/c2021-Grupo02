@@ -12,11 +12,12 @@ public class EnemDamageGuardia : MonoBehaviour
     int golpe = 2;
     Guardia guardia;
     ShooterGuardia shooterGuardia;
+    private UiEnemies uiEnemies;
 
     private void Start()
     {
-       
-        
+
+     
         rigidBody2D = GetComponent<Rigidbody2D>();
         guardia = GetComponent<Guardia>();
         shooterGuardia = GetComponentInChildren<ShooterGuardia>();
@@ -34,14 +35,26 @@ public class EnemDamageGuardia : MonoBehaviour
             GuardiaDaño();
         }
     }
+    public void vidasUIGuardia(UiEnemies uie)
+    {
+        uiEnemies = uie;
+        uiEnemies.VidaGuardia(2, golpe);
+    }
     void GuardiaDaño()
     {
-        if (GameManager.GetInstance().Musica() == GameManager.Music.heavy) GameManager.GetInstance().VidaGuardia(2);
-        else GameManager.GetInstance().VidaGuardia(1);
+        
+        if (GameManager.GetInstance().Musica() == GameManager.Music.heavy)
+        {
+            golpe = golpe - 2; 
+        }
+        else 
+        {
+            golpe = golpe - 1;
+        }
+        
 
 
-
-        if (GameManager.GetInstance().GuardiaMuerto())
+        if (golpe<=0)
         //para animacion de matarlo
         {
             if(guardia && shooterGuardia)

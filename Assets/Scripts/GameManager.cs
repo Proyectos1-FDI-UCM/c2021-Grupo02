@@ -16,10 +16,6 @@ public class GameManager : MonoBehaviour
     bool paralisis = false, perderJugador = false, playerEnSala = false, recargaDiscos = true, classic = true, heavy = true, electric = true;
     public string[] scenesInOrder;
     bool cambio = true;
-    float golpeGuardia = 2;
-    float golpeActuGuardia;
-    float golpePolicia = 4;
-    float golpePoliciaActual;
 
     //para poner por orden las escenas que hay
     /*int stage = 1;*///escena en la que te encuentras
@@ -40,16 +36,8 @@ public class GameManager : MonoBehaviour
         }
         AñadirDiscos();     
     }
-    private void Start()
-    {
-        golpeActuGuardia = golpeGuardia;
-       golpePoliciaActual = golpePolicia;
-    }
-
-
     private void Update()
     {
-        Debug.Log(perderJugador);
         if (SceneManager.GetActiveScene().name != "EscenaFinal") vidas = 101;
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
@@ -261,26 +249,6 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
-    public void VidaGuardia(float golp)
-    {
-        golpeActuGuardia = golpeActuGuardia - golp;
-        
-    }
-    public bool GuardiaMuerto()
-    {
-        if (golpeActuGuardia <= 0) return true;
-        else return false;
-    }
-    public void VidaPolicia(float golp)
-    {
-        golpePoliciaActual = golpePoliciaActual - golp;
-
-    }
-    public bool PoliciaMuerto()
-    {
-        if (golpePoliciaActual <= 0) return true;
-        else return false;
-    }
     public static GameManager GetInstance()
     {
         return instance;
@@ -292,19 +260,6 @@ public class GameManager : MonoBehaviour
         UIManager.UpdateLives(vidas);
         
     }
-    public void UIEnemiesUpdate(UiEnemies uie)
-    {
-        UiEnemies = uie;
-        UiEnemies.VidaGuardia(golpeGuardia, golpeActuGuardia);
-     
-    }
-    public void UIVidaPolicia(UiPolicia uie)
-    {
-        UiPolicia = uie;
-  
-        UiPolicia.VidaPoli(golpePolicia, golpePoliciaActual);
-    }
-    //guarda el audio manager 
     public void SoyElAudioManager(AudioManager aM)
     {
         audioManager = aM;

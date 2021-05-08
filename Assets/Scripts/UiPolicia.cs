@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class UiPolicia : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField]
     Image barraVidaG;
-    // Start is called before the first frame update
+    EnemDamagePolicia enemDamagePolicia;
+    private void Start()
+    {
+        enemDamagePolicia = GetComponentInParent<EnemDamagePolicia>();
+    }
     private void Update()
     {
-        GameManager.GetInstance().UIVidaPolicia(this);
+        enemDamagePolicia.vidasUIRobot(this);
     }
     public void VidaPoli(float golpepoli, float golpeActupoli)
     {

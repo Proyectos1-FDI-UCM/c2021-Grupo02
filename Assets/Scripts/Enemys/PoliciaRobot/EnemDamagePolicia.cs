@@ -9,7 +9,8 @@ public class EnemDamagePolicia : MonoBehaviour
 
   
     AudioManager audioManager;
-
+    private UiPolicia uiPoli;
+    int golpe = 4;
     RobotPoliciaMovimiento robotPoliciaMovimiento;
     private void Start()
     {
@@ -31,13 +32,17 @@ public class EnemDamagePolicia : MonoBehaviour
             RobotDaño();
         }
     }
-    
+    public void vidasUIRobot(UiPolicia uie)
+    {
+        uiPoli = uie;
+        uiPoli.VidaPoli(4, golpe);
+    }
     void RobotDaño()
     {
-        if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) GameManager.GetInstance().VidaPolicia(2);
-        else GameManager.GetInstance().VidaPolicia(1);
+        if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) golpe = golpe - 2;
+        else golpe--;
 
-        if (GameManager.GetInstance().PoliciaMuerto())
+        if (golpe<=0)
         {
             if (robotPoliciaMovimiento) robotPoliciaMovimiento.enabled = false;
             anima.SetBool("Disparo", false);

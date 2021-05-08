@@ -7,14 +7,19 @@ public class UiEnemies : MonoBehaviour
 {
     [SerializeField]
     Image barraVidaG;
-    // Start is called before the first frame update
+    EnemDamageGuardia enemDamageGuardia;
+
+    private void Start()
+    {
+
+        enemDamageGuardia = GetComponentInParent<EnemDamageGuardia>();
+    }
     private void Update()
     {
-        GameManager.GetInstance().UIEnemiesUpdate(this);
+        enemDamageGuardia.vidasUIGuardia(this);
     }
     public void VidaGuardia(float golpeguardia, float golpeActuGuardia)
     {
-    
         barraVidaG.fillAmount =golpeActuGuardia/golpeguardia;
     }
   
