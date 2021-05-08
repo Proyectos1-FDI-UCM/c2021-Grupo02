@@ -164,7 +164,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     void Heavy()
     {
-        if(rb.velocity != Vector2.zero) { 
+        if(rb.velocity != Vector2.zero && direction.magnitude < 15) { 
             if (rb.velocity.x > 0)
             {
                 anim.SetBool("Disparo", false);
