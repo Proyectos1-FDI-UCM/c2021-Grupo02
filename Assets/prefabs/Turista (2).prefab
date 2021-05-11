@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anima: {fileID: 5245199775597642296}
-  limitehorizontal: 10
-  limitevertical: 10
+  limitehorizontal: 5
+  limitevertical: 5
   PuntoAleatorio: {fileID: 0}
   player: {fileID: 0}
   fuerzaTuristaHeavy: 3
