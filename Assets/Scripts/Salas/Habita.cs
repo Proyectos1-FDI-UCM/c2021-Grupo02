@@ -5,7 +5,7 @@ using UnityEngine;
 public class Habita : MonoBehaviour
 {
     [SerializeField]
-    GameObject puerta1, puerta2;
+    GameObject  puerta2;
     void Start()
     {
         
@@ -17,7 +17,7 @@ public class Habita : MonoBehaviour
         {
             gameObject.layer = 0;
             GameManager.GetInstance().EntrarSala();
-            Invoke("DoorClosed", 1);
+          
 
         }
         if (collision.gameObject.GetComponent<RobotPoliciaMovimiento>()|| collision.gameObject.GetComponent<Guardia>())
@@ -28,10 +28,7 @@ public class Habita : MonoBehaviour
        
        
     }
-    void DoorClosed()
-    {
-        puerta1.SetActive(true);
-    }
+ 
 
 
 private void OnTriggerExit2D(Collider2D collision)
