@@ -182,7 +182,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
-        else if(tiempoAux >=0)
+        else if(tiempoChoque >=0)
         {
             if (player.transform.position.x - transform.position.x >= 0)
             {
@@ -203,11 +203,30 @@ public class RobotPoliciaMovimiento : MonoBehaviour
                 transform.localScale = new Vector3(-1, 1, 1);
             }
         }
+        else
+        {
+            if (player.transform.position.x - transform.position.x >= 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", true);
+                anim.SetBool("Retroceder", false);
+                anim.SetBool("Morir", false);  
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (player.transform.position.x - transform.position.x < 0)
+            {
+                anim.SetBool("Disparo", false);
+                anim.SetBool("Embestir", true);
+                anim.SetBool("Retroceder", false);
+                anim.SetBool("Morir", false);
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
 
         if (rb.velocity  == Vector2.zero && tiempoAux <=0) {
             anguloEmbestida = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
         }
-        if (tiempoAux <= 0) rb.velocity = anguloEmbestida * 8 * velocidad * sentido * Time.deltaTime;
+        if (tiempoChoque <= 0) rb.velocity = anguloEmbestida * 8 * velocidad * sentido * Time.deltaTime;
         else rb.velocity = Vector2.zero;
         Invoke("Heavy", 0.001f);
 
