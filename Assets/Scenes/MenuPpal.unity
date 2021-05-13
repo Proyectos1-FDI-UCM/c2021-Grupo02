@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
         type: 3}
       propertyPath: scenesInOrder.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
         type: 3}
@@ -384,6 +384,11 @@ PrefabInstance:
         type: 3}
       propertyPath: scenesInOrder.Array.data[3]
       value: EscenaFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
+        type: 3}
+      propertyPath: scenesInOrder.Array.data[4]
+      value: EscenaPruebas
       objectReference: {fileID: 0}
     - target: {fileID: 5952469113557217819, guid: e24a6d6cabdf26445a7cae24172b6f80,
         type: 3}
@@ -537,7 +542,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: EscenaFinal
+          m_StringArgument: EscenaPruebas
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &879282484

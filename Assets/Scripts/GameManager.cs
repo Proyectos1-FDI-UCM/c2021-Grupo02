@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name != "EscenaFinal 1") vidas = 101;
+        if (SceneManager.GetActiveScene().name != "EscenaPruebas") vidas = 101;
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             audioManager.ChangeMusic("MusicaMenu");
