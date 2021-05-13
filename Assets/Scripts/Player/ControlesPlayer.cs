@@ -7,7 +7,7 @@ public class ControlesPlayer : MonoBehaviour
     //Declaración de variables
     [SerializeField]
     float velocityScale;//velocidad de movimiento
-    float forceX, forceY;
+    float forceX, forceY, tiempoAux = 0;
     Rigidbody2D rb;
     Vector2 fuerzas;
     Animator anim;
@@ -33,8 +33,7 @@ public class ControlesPlayer : MonoBehaviour
    
     void Update()
     {
-       
-        
+        tiempoAux = tiempoAux - Time.deltaTime;
         bool paralisis = GameManager.GetInstance().EstadoParalisis();
         if (!paralisis && !GameManager.GetInstance().EstadoJugador())
         {
@@ -62,6 +61,7 @@ public class ControlesPlayer : MonoBehaviour
                 shooter.Disparo();
                 angu = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
                 angulbala = angu;
+                tiempoAux = 0.2f;
                 if (angulbala>= angul[7] && angulbala< angul[6]) anim.SetBool("dispfront",true);
                 else if (angulbala >= angul[5] && angulbala < angul[4]) anim.SetBool("dispder", true);
                 else if(angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", true);
@@ -71,17 +71,17 @@ public class ControlesPlayer : MonoBehaviour
                 else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", true);
                 else if(angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu", true);
             }        
-            else
+            //Contador para que se quede la animación de disparo en esa dirección durante 0.2 segundos
+            else if(tiempoAux <=0)
             {
-            
-                if (angulbala >= angul[7] && angulbala < angul[6]) anim.SetBool("dispfront", false);
-                else if (angulbala >= angul[5] && angulbala < angul[4]) anim.SetBool("dispder", false);
-                else if (angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", false);
-                else if (angulbala >= angul[4] && angulbala < angul[3]) anim.SetBool("disdigatrasder",false);
-                else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras", false);
-                else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", false);
-                else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", false);
-                else if (angulbala >= angul[1] && angulbala <= angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu",false);
+              anim.SetBool("dispfront", false);
+              anim.SetBool("dispder", false);
+              anim.SetBool("diagoder", false);
+              anim.SetBool("disdigatrasder",false);
+              anim.SetBool("atras", false);
+              anim.SetBool("dig", false);
+              anim.SetBool("sdigfront", false);
+              anim.SetBool("sperfizqu",false);
             }
             if (Input.GetKeyDown("1"))
             {
