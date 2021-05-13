@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869915761259871836}
   - component: {fileID: 2541389999343641193}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: -2722911044198108191}
   - component: {fileID: 2806741852107552056}
   - component: {fileID: 7324212198886692686}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: guarBala
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 3868899412370571831}
   - component: {fileID: 8566939766497627484}
   - component: {fileID: 5184321190396631828}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

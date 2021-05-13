@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3656210996506595873}
   - component: {fileID: 4460428169571124737}
   - component: {fileID: 7552230824807418057}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: -3328503445493145527}
   - component: {fileID: 2835645377500818674}
   - component: {fileID: 7764133684153149358}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: "da\xF1o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4947,7 +4947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2866906868667748906}
   - component: {fileID: 5721644327409089334}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
