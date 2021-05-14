@@ -43,9 +43,10 @@ public class GameManager : MonoBehaviour
         {
             audioManager.ChangeMusic("MusicaMenu");
         }
-       else if (SceneManager.GetActiveScene().name == "EscenaFinal"&&cambio)
+        else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" || SceneManager.GetActiveScene().name == "EscenaPruebas" || SceneManager.GetActiveScene().name == "Playa") && cambio)
         {
             cambio = false;
+            mus = Music.classic;
             audioManager.ChangeMusic("MusicaClasica"); 
         }
         if (mus == Music.classic)
