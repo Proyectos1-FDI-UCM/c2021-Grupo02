@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Damageable : MonoBehaviour
 {
+    [SerializeField]
+    GameObject paralizado;
+    
     Animator anim;
 
     //Música electrónica: la vida aumenta, es decir se cura 1 pila cada 8 segundos.
@@ -34,6 +37,7 @@ public class Damageable : MonoBehaviour
                 if (collision.GetComponent<VelocidadRayoDaño>()) GameManager.GetInstance().reducir2Vidas();
                 else if (collision.GetComponent<VelocidadRayoStoon>())
                 {
+                    Instantiate(paralizado, transform.position, transform.rotation, transform);
                     GameManager.GetInstance().CambiarEstadoParalisis();
                     GameManager.GetInstance().reducirVidas();
                 }
