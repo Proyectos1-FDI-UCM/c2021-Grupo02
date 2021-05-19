@@ -79,7 +79,7 @@ public class MusicEffect : MonoBehaviour
     {
         musica = GameManager.GetInstance().Musica();
         bool metodo = false;
-        if (GameManager.GetInstance().EstadoSala() && !metodo)
+        if (/*GameManager.GetInstance().EstadoSala()*//* &&*/ !metodo)
         {
             Empezar();
             metodo = true;
