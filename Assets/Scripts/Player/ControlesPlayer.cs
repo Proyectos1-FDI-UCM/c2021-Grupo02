@@ -38,6 +38,21 @@ public class ControlesPlayer : MonoBehaviour
         if (!paralisis && !GameManager.GetInstance().EstadoJugador())
         {
             CancelInvoke();
+            if (Input.GetMouseButton(0))
+            {
+                shooter.Disparo();
+                angu = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
+                angulbala = angu;
+                tiempoAux = 0.2f;
+                if (angulbala >= angul[7] && angulbala < angul[6]) anim.SetBool("dispfront", true);
+                else if (angulbala >= angul[5] && angulbala < angul[4]) anim.SetBool("dispder", true);
+                else if (angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", true);
+                else if (angulbala >= angul[4] && angulbala < angul[3]) anim.SetBool("disdigatrasder", true);
+                else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras", true);
+                else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", true);
+                else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", true);
+                else if (angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu", true);
+            }
             //Fuerza asociada al eje x
             forceX = Input.GetAxis("Horizontal");
             //Fuerza asociada al eje y
@@ -56,21 +71,7 @@ public class ControlesPlayer : MonoBehaviour
             else if (forceX == -1 && forceY == -1) anim.SetInteger("Direction", 8);
             else if (forceX == 1 && forceY == -1) anim.SetInteger("Direction", 2);
 
-            if (Input.GetMouseButton(0))
-            {
-                shooter.Disparo();
-                angu = GetComponentInChildren<ShooterApuntadoRaton>().angulo;
-                angulbala = angu;
-                tiempoAux = 0.2f;
-                if (angulbala>= angul[7] && angulbala< angul[6]) anim.SetBool("dispfront",true);
-                else if (angulbala >= angul[5] && angulbala < angul[4]) anim.SetBool("dispder", true);
-                else if(angulbala >= angul[6] && angulbala < angul[5]) anim.SetBool("diagoder", true);
-                else if(angulbala >= angul[4] && angulbala < angul[3]) anim.SetBool("disdigatrasder", true);
-                else if (angulbala >= angul[3] && angulbala < angul[2]) anim.SetBool("atras",true);
-                else if (angulbala >= angul[2] && angulbala < angul[1]) anim.SetBool("dig", true);                        
-                else if (angulbala >= angul[8] && angulbala < angul[7]) anim.SetBool("sdigfront", true);
-                else if(angulbala >= angul[1] && angulbala < angul[0] || angulbala >= angul[9] && angulbala < angul[8]) anim.SetBool("sperfizqu", true);
-            }        
+                 
             //Contador para que se quede la animación de disparo en esa dirección durante 0.2 segundos
             else if(tiempoAux <=0)
             {
