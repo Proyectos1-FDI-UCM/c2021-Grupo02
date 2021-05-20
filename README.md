@@ -4,7 +4,7 @@
 ### Descripción del juego
 Run The Beat es un juego de acción y estrategia estilo top down shooter donde debemos recuperar los discos que habrá al final de cada nivel para poder avanzar hacia el siguiente, experimentando de primera mano la adrenalina de los  combates rápidos que cambian constantemente, derrotando a los enemigos del robot protagonista, Quaver 303, y avanzar hasta alcanzar los ansiados discos para restaurar la armonía del mundo y abrirlo musicalmente.
 
-Se trata de un proyecto desarrollado con unity utilizando el lenguaje de programación C#.
+Se trata de un proyecto desarrollado en unity utilizando el lenguaje de programación C#.
 
 ### Documentos guardados en el repositorio
 
