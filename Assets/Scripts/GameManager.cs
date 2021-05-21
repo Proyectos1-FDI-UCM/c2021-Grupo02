@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             audioManager.ChangeMusic("MusicaMenu");
+            audioManager.ResetMusic();
         }
         else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" || SceneManager.GetActiveScene().name == "EscenaPruebas" || SceneManager.GetActiveScene().name == "Playa") && cambio)
         {
@@ -287,7 +288,10 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeScene(string sceneName)
     {
-      
+        if(sceneName == "EscenaFinal 1")
+        {
+            cambio = true;
+        }
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
     }

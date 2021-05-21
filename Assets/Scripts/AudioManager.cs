@@ -75,4 +75,14 @@ public class AudioManager : MonoBehaviour
         Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.volume = 0;
         Array.Find(sounds, sound => sound.name == "MusicaMenu").source.volume = 0;
     }
+
+    public void ResetMusic()
+    {
+        Array.Find(sounds, sound => sound.name == "MusicaClasica").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaElectronica").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.Stop();
+        Array.Find(sounds, sound => sound.name == "MusicaClasica").source.Play();
+        Array.Find(sounds, sound => sound.name == "MusicaElectronica").source.Play();
+        Array.Find(sounds, sound => sound.name == "MusicaHeavy").source.Play();
+    }
 }
