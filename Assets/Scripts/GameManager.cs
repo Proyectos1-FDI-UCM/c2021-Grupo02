@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Playa" && SceneManager.GetActiveScene().name != "EscenaFinal 1") vidas = 101;
+        if (SceneManager.GetActiveScene().name != "Playa" && SceneManager.GetActiveScene().name != "EscenaFinal 1"){
+            vidas = 101;
+            discos = 20;
+        }
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             audioManager.ChangeMusic("MusicaMenu");
@@ -214,6 +217,9 @@ public class GameManager : MonoBehaviour
             UIManager.Ganar();
             print("YOU WIN");
             vidas = 101;
+            discos = 20;
+            mus = Music.classic;
+            audioManager.ChangeMusic("MusicaClasica");
         }
        
     }
