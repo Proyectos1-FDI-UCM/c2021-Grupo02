@@ -203,17 +203,19 @@ public class GameManager : MonoBehaviour
     //Cuando el jugador pierde cambia el booleano para que los enemigos dejen de disparar
     public void Perder(bool perder)
     {
+        Time.timeScale = 0;
         if (perder == true)
         {
             perderJugador = true;
-            UIManager.Perder();
+            UIManager.Perder();          
         }
         else
         {
             UIManager.Ganar();
             print("YOU WIN");
+            vidas = 101;
         }
-
+       
     }
     //Avisa de si el jugador está vivo o muerto, un simple booleano
     public bool EstadoJugador()
@@ -279,9 +281,9 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeScene(string sceneName)
     {
+      
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
-  
     }
     
 }

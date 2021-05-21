@@ -419,5 +419,5 @@ MonoBehaviour:
     type: 3}
   discoClasic: {fileID: 4097979326506190078, guid: cbbf6979cc8b76f4da804f1479434539,
     type: 3}
-  cadencia: 2
+  cadencia: 1
   angulo: 0

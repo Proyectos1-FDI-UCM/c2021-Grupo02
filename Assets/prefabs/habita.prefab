@@ -179,7 +179,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd811b63b2d909429e88d5090f5b83a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puerta1: {fileID: 8308965878719030015}
   puerta2: {fileID: 8308965880043758938}
 --- !u!1 &8308965879977130987
 GameObject:
@@ -192,7 +191,7 @@ GameObject:
   - component: {fileID: 8308965879977130986}
   - component: {fileID: 8308965879977130980}
   - component: {fileID: 8308965879977130981}
-  m_Layer: 11
+  m_Layer: 14
   m_Name: DetectorPuertas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
