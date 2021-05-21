@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 8308965879977130986}
   - component: {fileID: 8308965879977130980}
   - component: {fileID: 8308965879977130981}
-  m_Layer: 14
+  m_Layer: 15
   m_Name: DetectorPuertas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
