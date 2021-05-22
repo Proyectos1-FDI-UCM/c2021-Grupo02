@@ -35,7 +35,7 @@ public class ControlesPlayer : MonoBehaviour
     {
         tiempoAux = tiempoAux - Time.deltaTime;
         bool paralisis = GameManager.GetInstance().EstadoParalisis();
-        if (!paralisis && !GameManager.GetInstance().EstadoJugador())
+        if (!paralisis )
         {
             CancelInvoke();
             if (Input.GetMouseButton(0))
@@ -101,11 +101,7 @@ public class ControlesPlayer : MonoBehaviour
         {
             Invoke("Paralisis", 1);  
         }
-        else
-        {
-            fuerzas = Vector2.zero;
-            CancelInvoke();
-        }
+    
         
     }
     //Para movimientos físicos

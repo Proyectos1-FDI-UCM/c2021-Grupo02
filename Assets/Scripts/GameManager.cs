@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     public string[] scenesInOrder;
     bool cambio = true;
 
+
     //para poner por orden las escenas que hay
     /*int stage = 1;*///escena en la que te encuentras
     //Método para crear la instancia del GameManager
@@ -38,61 +39,72 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Playa" && SceneManager.GetActiveScene().name != "EscenaFinal 1"){
-            vidas = 101;
-            discos = 20;
-        }
-        if (SceneManager.GetActiveScene().name == "MenuPpal")
+       if((SceneManager.GetActiveScene().name != "EscenaFinal 1" && SceneManager.GetActiveScene().name != "Playa"))
         {
             audioManager.ChangeMusic("MusicaMenu");
             audioManager.ResetMusic();
+            
         }
-        else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" || SceneManager.GetActiveScene().name == "EscenaPruebas" || SceneManager.GetActiveScene().name == "Playa") && cambio)
+        if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
-            cambio = false;
+           
+            vidas = 101;
+            discos = 20;
+            vidas = 101;
+            
+        }
+        else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" ||  SceneManager.GetActiveScene().name == "Playa") && cambio)
+        {
             mus = Music.classic;
-            audioManager.ChangeMusic("MusicaClasica"); 
+            audioManager.ChangeMusic("MusicaClasica");
+        
+            cambio = false;
+          
         }
-        if (mus == Music.classic)
+        if (vidas >0)
         {
-            if (classic && recargaDiscos)
+            if (mus == Music.classic)
             {
-                classic = false;
-                heavy = true;
-                electric = true;
-                recargaDiscos = false;
-                CancelInvoke();
-                InvokeRepeating("AñadirDiscos", 0, 2);
-                InvokeRepeating("ReducirVidasConstante", 0, 0.6f);
-            }
+                if (classic && recargaDiscos)
+                {
+                    classic = false;
+                    heavy = true;
+                    electric = true;
+                    recargaDiscos = false;
+                    CancelInvoke();
+                    InvokeRepeating("AñadirDiscos", 0, 2);
+                    InvokeRepeating("ReducirVidasConstante", 0, 0.6f);
+                }
 
-        }
-        else if (mus == Music.heavy)
-        {
-            if (heavy)
-            {
-                heavy = false;
-                classic = true;
-                electric = true;
-                recargaDiscos = true;
-                CancelInvoke();
-                InvokeRepeating("ReducirVidasConstante", 0, 0.4f);
             }
+            else if (mus == Music.heavy)
+            {
+                if (heavy)
+                {
+                    heavy = false;
+                    classic = true;
+                    electric = true;
+                    recargaDiscos = true;
+                    CancelInvoke();
+                    InvokeRepeating("ReducirVidasConstante", 0, 0.4f);
+                }
 
-        }
-        else if (mus == Music.electronic)
-        {
-            if (electric)
+            }
+            else if (mus == Music.electronic)
             {
-                electric = false;
-                classic = true;
-                heavy = true;
-                recargaDiscos = true;
-                CancelInvoke();
-                InvokeRepeating("vidasElectric", 0, 0.6f);
+                if (electric)
+                {
+                    electric = false;
+                    classic = true;
+                    heavy = true;
+                    recargaDiscos = true;
+                    CancelInvoke();
+                    InvokeRepeating("vidasElectric", 0, 0.6f);
+                }
             }
         }
-        if (vidas >= 0) JugMuerto();
+       
+        if (vidas <= 0) JugMuerto();
     }
     public void PonerFalsePerderJugador()
     {
@@ -100,6 +112,7 @@ public class GameManager : MonoBehaviour
         cambio = true;
         vidas = 101;
         enemy = 0;
+       
     }
     public bool EntrarSala()
     {
@@ -207,7 +220,9 @@ public class GameManager : MonoBehaviour
     //Cuando el jugador pierde cambia el booleano para que los enemigos dejen de disparar
     public void Perder(bool perder)
     {
-        Time.timeScale = 0;
+    
+        Invoke("StopGame", 1);
+        
         if (perder == true)
         {
             perderJugador = true;
@@ -223,6 +238,10 @@ public class GameManager : MonoBehaviour
             audioManager.ChangeMusic("MusicaClasica");
         }
        
+    }
+    void StopGame()
+    {
+        Time.timeScale = 0;
     }
     //Avisa de si el jugador está vivo o muerto, un simple booleano
     public bool EstadoJugador()
@@ -288,10 +307,8 @@ public class GameManager : MonoBehaviour
     }
     public void ChangeScene(string sceneName)
     {
-        if(sceneName == "EscenaFinal 1")
-        {
-            cambio = true;
-        }
+        cambio = true;
+    
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
     }
