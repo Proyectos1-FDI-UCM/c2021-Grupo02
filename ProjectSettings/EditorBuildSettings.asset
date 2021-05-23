@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Playa.unity
     guid: b12579a44de264d48b74b96ffe388fe3
+  - enabled: 1
+    path: Assets/Scenes/Scenes.unity
+    guid: d69352ee55bd42742a846f7170d4cfaa
   m_configObjects: {}
