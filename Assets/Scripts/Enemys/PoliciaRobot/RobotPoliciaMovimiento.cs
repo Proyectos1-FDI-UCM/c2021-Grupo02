@@ -146,7 +146,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 9 && direction.magnitude > 4)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 4)
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
@@ -164,7 +164,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     void Heavy()
     {
-        if(rb.velocity != Vector2.zero && direction.magnitude < 10) { 
+        if(rb.velocity != Vector2.zero && direction.magnitude < 7) { 
             if (rb.velocity.x > 0)
             {
                 anim.SetBool("Disparo", false);
@@ -250,7 +250,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             anim.SetBool("Morir", false);
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 8 && direction.magnitude > 4)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 4)
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }

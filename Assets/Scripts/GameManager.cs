@@ -47,11 +47,9 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
-           
+            cambio = true;
             vidas = 101;
-            discos = 20;
-            vidas = 101;
-            
+            discos = 20;           
         }
         else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" ||  SceneManager.GetActiveScene().name == "Playa") && cambio)
         {

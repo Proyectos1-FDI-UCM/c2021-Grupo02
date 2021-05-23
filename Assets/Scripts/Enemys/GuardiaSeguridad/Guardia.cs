@@ -55,7 +55,7 @@ public class Guardia : MonoBehaviour
 
             // Calculo la distancia para cuando este a dos o menos unidades de distancia no siga corriendo
             direction = player.position - transform.position;
-            if (direction.magnitude > 4 && direction.magnitude < 9 && mus != GameManager.Music.heavy)// a distancia
+            if (direction.magnitude > 4 && direction.magnitude < 7 && mus != GameManager.Music.heavy)// a distancia
             {
                 animator.SetBool("Correr", true);//llamas al parametro;
                 animator.SetBool("Porra", false);//llamas al parametro;
