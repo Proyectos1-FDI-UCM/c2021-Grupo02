@@ -80,7 +80,7 @@ public class Guardia : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                 }
             }
-            else if (mus == GameManager.Music.heavy)//cuerpo a cuerpo
+            else if (mus == GameManager.Music.heavy && direction.magnitude < 7 && direction.magnitude > 0.5f)//cuerpo a cuerpo
             {
                 rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
                 if (sentido == -1 && giro)
