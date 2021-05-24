@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             cambio = true;
+            enemy = 0;
             vidas = 101;
             discos = 20;           
         }
