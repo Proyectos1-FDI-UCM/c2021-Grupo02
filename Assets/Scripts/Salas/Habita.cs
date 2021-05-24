@@ -8,7 +8,7 @@ public class Habita : MonoBehaviour
     GameObject  puerta2;
     void Start()
     {
-        
+        GameManager.GetInstance().ResetEnemies();
     }
    
     private void OnTriggerEnter2D(Collider2D collision)

@@ -104,13 +104,17 @@ public class GameManager : MonoBehaviour
        
         if (vidas <= 0) JugMuerto();
     }
-    public void PonerFalsePerderJugador()
+   /* public void PonerFalsePerderJugador()
     {
         perderJugador = false;
         cambio = true;
         vidas = 101;
         enemy = 0;
        
+    }*/
+   public void ResetEnemies()
+    {
+        enemy = 0;
     }
     public bool EntrarSala()
     {
@@ -233,6 +237,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+           
             UIManager.Ganar();
             print("YOU WIN");
             vidas = 101;

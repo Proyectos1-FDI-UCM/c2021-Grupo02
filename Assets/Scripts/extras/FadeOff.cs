@@ -12,7 +12,7 @@ public class FadeOff : MonoBehaviour
                                // Start is called before the first frame update
     void Start()
     {
-        GameManager.GetInstance().PonerFalsePerderJugador();
+      
         renderer =GetComponent<Renderer>();
     }
 
