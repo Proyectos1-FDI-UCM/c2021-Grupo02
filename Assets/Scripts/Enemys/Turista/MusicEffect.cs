@@ -33,14 +33,7 @@ public class MusicEffect : MonoBehaviour
     {
         if (collision.GetComponent<EfectoHeavy>()) Rigidbody2D.velocity = Vector2.zero;
     }
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        Rigidbody2D.isKinematic = true;
-    }
-    void OnCollisionExit2D(Collision2D other)
-    {
-        Rigidbody2D.isKinematic = false;
-    }
+
     public void Empezar()
     {
         //Al morir que solo haga la animación y se cancele el movimiento eléctrico
