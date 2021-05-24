@@ -787,8 +787,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1305610832005698998, guid: e24a6d6cabdf26445a7cae24172b6f80,
           type: 3}
-        m_MethodName: ChangeSceneFinJuego
-        m_Mode: 1
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

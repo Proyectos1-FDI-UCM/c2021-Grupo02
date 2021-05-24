@@ -104,14 +104,7 @@ public class GameManager : MonoBehaviour
        
         if (vidas <= 0) JugMuerto();
     }
-   /* public void PonerFalsePerderJugador()
-    {
-        perderJugador = false;
-        cambio = true;
-        vidas = 101;
-        enemy = 0;
-       
-    }*/
+
    public void ResetEnemies()
     {
         enemy = 0;
@@ -207,11 +200,7 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void FinJuego()
-    {
-     
-        finJuego = true;
-    }
+  
     //Actualiza de si el jugador está vivo o muerto 
     public bool JugMuerto()
     {
@@ -313,15 +302,7 @@ public class GameManager : MonoBehaviour
     {
         audioManager.GetComponent<AudioManager>().Play(sonido);
     }
-    public void ChangeSceneFinJuego()
-    {
-        cambio = true;
-        print(finJuego);
-        if(finJuego) SceneManager.LoadScene("Scenes");
-        else SceneManager.LoadScene("Playa");
-
-        Time.timeScale = 1;
-    }
+  
     public void ChangeScene(string sceneName)
     {
         cambio = true;

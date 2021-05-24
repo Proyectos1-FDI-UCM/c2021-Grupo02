@@ -8,7 +8,7 @@ public class DiscoGanar : MonoBehaviour
     void OnTriggerEnter2D(Collider2D colision)
     {
         
-        GameManager.GetInstance().FinJuego();
+      
         Destroy(this.gameObject);
         GameManager.GetInstance().Perder(false);
 
