@@ -141,6 +141,8 @@ public class UIManager : MonoBehaviour
     public void Resume()//si esta parado que se esconda el cuadro de texto y vuelva a la normalidad , si saliendo = false , significa que tiene que esconderse el cuadro de texto
     {
         MenuPausa.gameObject.SetActive(false);
+        menuControlesRect.gameObject.SetActive(false);
+        menuSonidoRect.gameObject.SetActive(false);
         //animboton.SetBool("Saliendo", false);
         Time.timeScale = 1f;//lo se , es para que no se pare
         GameIsPaused = false;
