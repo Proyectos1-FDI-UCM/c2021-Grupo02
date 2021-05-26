@@ -311,5 +311,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
     }
-    
+    public void Enlace(string s)
+    {
+        Application.OpenURL(s);
+    }
 }
