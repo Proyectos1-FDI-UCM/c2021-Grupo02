@@ -82,13 +82,13 @@ public class Guardia : MonoBehaviour
             }
             else if (mus == GameManager.Music.heavy && direction.magnitude < 7 && direction.magnitude > 0.5f)//cuerpo a cuerpo
             {
-                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+                rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * 2 * sentido * Time.deltaTime;
                 if (sentido == -1 && giro)
                 {
                     giro = false;
                     transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
                 }
-                else if (direction.magnitude < 0.5f && porrazo <= 0 && sentido == 1)
+                else if (direction.magnitude < 1 && porrazo <= 0 && sentido == 1)
                 { //hacer lo de la porra pegar cuerpo a cuerpo}
                     giro = true;
                     if (direction.x < 0)

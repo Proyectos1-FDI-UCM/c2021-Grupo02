@@ -484,7 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  velocidad: 20
+  velocidad: 40
   anim: {fileID: 8230852323400912559}
 --- !u!61 &8230852322581576804
 BoxCollider2D:
