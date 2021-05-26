@@ -101,7 +101,7 @@ public class ControlesPlayer : MonoBehaviour
                 GameManager.GetInstance().MusicaElectric();
             }
         }
-        else if(paralisis)
+        else 
         {
             Invoke("Paralisis", 1);  
         }

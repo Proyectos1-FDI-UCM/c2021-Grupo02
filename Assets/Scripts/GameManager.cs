@@ -43,13 +43,15 @@ public class GameManager : MonoBehaviour
         {
             audioManager.ChangeMusic("MusicaMenu");
             audioManager.ResetMusic();
-            
+            Time.timeScale = 1;
+
         }
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             cambio = true;
             enemy = 0;
             vidas = 101;
+            Time.timeScale = 1;
             discos = 20;           
         }
         else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" ||  SceneManager.GetActiveScene().name == "Playa") && cambio)
