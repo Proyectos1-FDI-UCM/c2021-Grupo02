@@ -22,7 +22,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         if (mus == GameManager.Music.heavy && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
         {
             GameManager.GetInstance().reducirVidas();
-            tiempoChoque = 1.2f;
+            tiempoChoque = 0.8f;
         }
         else if (collision.transform.GetComponent<MusicEffect>() || collision.transform.GetComponent<Guardia>()) Debug.Log("Aparta");
         else Invoke("CambiarSentidoChoque", 0);
@@ -100,13 +100,13 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     }
     void CambiarSentidoChoque()
     {
-        tiempoAux = 1.2f;
+        tiempoAux = 0.8f;
     }
     void CambiarSentido()
     {
         musicaVieja = mus;    
         sentido = -1;
-        tiempoAux = 1.2f;
+        tiempoAux = 0.8f;
         if (rb.velocity.x > 0)
         {
             anim.SetBool("Disparo", false);
@@ -126,7 +126,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
         Invoke("CambiarSentido", 0.001f);
-        Invoke("CambioSentido", 1);  
+        Invoke("CambioSentido", 0.8f);  
     }
     void Clasica()
     {

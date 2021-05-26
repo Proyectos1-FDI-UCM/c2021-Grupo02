@@ -45,7 +45,7 @@ public class Guardia : MonoBehaviour
         {
             musicaVieja = mus;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
             CambioSentido();                                  //El enemigo irá en setido contrario
-            Invoke("CambioSentido", 1f);                      //Tras un segundo el enemigo volverá a ir en la dirección normal. Si cambias el sentido 2 veces t qdas igual
+            Invoke("CambioSentido", 0.8f);                      //Tras un segundo el enemigo volverá a ir en la dirección normal. Si cambias el sentido 2 veces t qdas igual
         }
     }
     public void Persecucion()     //Metodo que se encarga de la persecucion
@@ -88,7 +88,7 @@ public class Guardia : MonoBehaviour
                     giro = false;
                     transform.localScale = new Vector3(-transform.localScale.x, 1, 1);
                 }
-                else if (direction.magnitude < 1.5f && porrazo <= 0 && sentido == 1)
+                else if (direction.magnitude < 0.5f && porrazo <= 0 && sentido == 1)
                 { //hacer lo de la porra pegar cuerpo a cuerpo}
                     giro = true;
                     if (direction.x < 0)
@@ -103,7 +103,7 @@ public class Guardia : MonoBehaviour
                     animator.SetBool("Porra", true);//llamas al parametro;
                     animator.SetBool("Muerte", false);//llamas al parametro;
                     animator.SetBool("Disparar", false);//llamas al parametro;
-                    Invoke("Porrazo", 1f);
+                    Invoke("Porrazo", 0.5f);
                 }  
                 else if(sentido == 1){
                     if (direction.x < 0)

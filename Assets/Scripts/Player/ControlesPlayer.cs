@@ -7,7 +7,7 @@ public class ControlesPlayer : MonoBehaviour
     //Declaración de variables
     [SerializeField]
     float velocityScale;//velocidad de movimiento
-    float forceX, forceY, tiempoAux = 0;
+    float forceX, forceY, tiempoAux = 0, tiempoCambioMusica = 0;
     Rigidbody2D rb;
     Vector2 fuerzas;
     Animator anim;
@@ -34,6 +34,7 @@ public class ControlesPlayer : MonoBehaviour
     void Update()
     {
         tiempoAux = tiempoAux - Time.deltaTime;
+        tiempoCambioMusica = tiempoCambioMusica - Time.deltaTime;
         bool paralisis = GameManager.GetInstance().EstadoParalisis();
         if (!paralisis )
         {
@@ -84,16 +85,19 @@ public class ControlesPlayer : MonoBehaviour
               anim.SetBool("sdigfront", false);
               anim.SetBool("sperfizqu",false);
             }
-            if (Input.GetKeyDown("1"))
+            if (Input.GetKeyDown("1") && tiempoCambioMusica <= 0)
             {
+                tiempoCambioMusica = 1;
                 GameManager.GetInstance().MusicaClásica();
             }
-            else if (Input.GetKeyDown("2"))
+            else if (Input.GetKeyDown("2") && tiempoCambioMusica <= 0)
             {
+                tiempoCambioMusica = 1;
                 GameManager.GetInstance().MusicaHeavy();
             }
-            else if (Input.GetKeyDown("3"))
+            else if (Input.GetKeyDown("3") && tiempoCambioMusica <= 0)
             {
+                tiempoCambioMusica = 1;
                 GameManager.GetInstance().MusicaElectric();
             }
         }
