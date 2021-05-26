@@ -52,7 +52,8 @@ public class GameManager : MonoBehaviour
             enemy = 0;
             vidas = 101;
             Time.timeScale = 1;
-            discos = 20;           
+            discos = 20;
+            perderJugador = false;
         }
         else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" ||  SceneManager.GetActiveScene().name == "Playa") && cambio)
         {
