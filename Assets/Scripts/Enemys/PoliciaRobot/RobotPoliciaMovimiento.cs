@@ -230,7 +230,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             {
                 anguloEmbestida = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y);
             }
-            if (tiempoChoque <= 0) rb.velocity = anguloEmbestida * 6 * velocidad * sentido * Time.deltaTime;
+            if (tiempoChoque <= 0) rb.velocity = anguloEmbestida * 3 * velocidad * sentido * Time.deltaTime;
             else rb.velocity = Vector2.zero;
         }
         
