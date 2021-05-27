@@ -37,7 +37,6 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     private void Start()
     {
         //Comportamiento con el que inicia
-        Invoke("Clasica", 0);
         clasica = false;
         tiempoAux = 0;
         mus = GameManager.GetInstance().Musica();
@@ -146,14 +145,14 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
 
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 4)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 2)
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
-        else if (direction.magnitude < 4 && direction.magnitude > 2)
+        else if (direction.magnitude < 2)
         {
             rpd.MusicaClasica(angle);
-            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+            rb.velocity = Vector2.zero;
         }
         //Si el sentido es negativo, tendrá velocidad negativa y el ángulo opuesto
         else if (sentido == -1)
@@ -258,14 +257,14 @@ public class RobotPoliciaMovimiento : MonoBehaviour
             anim.SetBool("Morir", false);
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 4)
+        if (sentido == 1 && tiempoAux <= 0 && direction.magnitude < 7 && direction.magnitude > 2)
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
-        else if (direction.magnitude < 4 && direction.magnitude > 2)
+        else if (direction.magnitude < 2)
         {
             rpd.MusicaElectronica(angle);
-            rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
+            rb.velocity = Vector2.zero;
         }
         //Si el sentido es negativo, tendrá velocidad negativa y el ángulo opuesto
         else if (sentido == -1)

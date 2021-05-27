@@ -34,6 +34,7 @@ public class Guardia : MonoBehaviour
     private void Update()
     {
         porrazo = porrazo - Time.deltaTime;
+        direction = player.position - transform.position;
         mus = GameManager.GetInstance().Musica();
         if (GameManager.GetInstance().EstadoSala() && !metodo)
         {
@@ -54,14 +55,13 @@ public class Guardia : MonoBehaviour
         {
 
             // Calculo la distancia para cuando este a dos o menos unidades de distancia no siga corriendo
-            direction = player.position - transform.position;
-            if (direction.magnitude < 7 && direction.magnitude > 4 &&  mus != GameManager.Music.heavy)// a distancia
+            if (direction.magnitude < 7 && direction.magnitude > 2 && mus != GameManager.Music.heavy)// a distancia
             {
                 animator.SetBool("Correr", true);//llamas al parametro;
                 animator.SetBool("Porra", false);//llamas al parametro;
                 animator.SetBool("Muerte", false);//llamas al parametro;
                 animator.SetBool("Disparar", false);//llamas al parametro;
-                
+
                 rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
                 if (sentido == -1 && giro)
                 {
@@ -80,6 +80,7 @@ public class Guardia : MonoBehaviour
                     transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                 }
             }
+            else if (mus != GameManager.Music.heavy) rb.velocity = Vector2.zero;
             else if (mus == GameManager.Music.heavy && direction.magnitude < 7 && direction.magnitude > 0.5f)//cuerpo a cuerpo
             {
                 rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * 2 * sentido * Time.deltaTime;
@@ -96,7 +97,7 @@ public class Guardia : MonoBehaviour
                         transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                     }
                     else if (direction.x > 0 && porrazo <= 0)
-                    { 
+                    {
                         transform.localScale = new Vector3(1, 1, 1);//si se mueve hacia eje X positivo derecha
                     }
                     animator.SetBool("Correr", false);//llamas al parametro;
@@ -104,10 +105,11 @@ public class Guardia : MonoBehaviour
                     animator.SetBool("Muerte", false);//llamas al parametro;
                     animator.SetBool("Disparar", false);//llamas al parametro;
                     Invoke("Porrazo", 0.5f);
-                }  
-                else if(sentido == 1){
+                }
+                else if (sentido == 1)
+                {
                     if (direction.x < 0)
-                    {                  
+                    {
                         transform.localScale = new Vector3(-1, 1, 1);//si se mueve hacia eje X negativo izquierda
                     }
                     else if (direction.x > 0 && porrazo <= 0)
@@ -122,7 +124,7 @@ public class Guardia : MonoBehaviour
                 }
                 //Invoco persecuccion cada poco para que vaya mas fluido el movimiento
             }
-            Invoke("Persecucion", 0.1f);
+            Invoke("Persecucion", 0.001f);
         }
     }
     private void Porrazo()
