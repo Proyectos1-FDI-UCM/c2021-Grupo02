@@ -156,7 +156,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         {
             rb.velocity = -new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }   
-        if(direction.magnitude < 2) rpd.MusicaClasica(angle);
+        if(direction.magnitude < 4) rpd.MusicaClasica(angle);
         Invoke("Clasica", 0.001f);
     }
     void Heavy()
