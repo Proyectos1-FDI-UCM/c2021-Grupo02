@@ -37,10 +37,11 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     private void Start()
     {
         //Comportamiento con el que inicia
-        clasica = false;
+     clasica = true;
         tiempoAux = 0;
         mus = GameManager.GetInstance().Musica();
         musicaVieja = mus;
+     
         //anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         rpd = GetComponentInChildren<RobotPoliciaDisparo>();
@@ -149,16 +150,13 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
-        else if (direction.magnitude < 2)
-        {
-            rpd.MusicaClasica(angle);
-            rb.velocity = Vector2.zero;
-        }
+        else if (direction.magnitude < 2) rb.velocity = Vector2.zero;   
         //Si el sentido es negativo, tendrá velocidad negativa y el ángulo opuesto
         else if (sentido == -1)
         {
             rb.velocity = -new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
-        }     
+        }   
+        if(direction.magnitude < 2) rpd.MusicaClasica(angle);
         Invoke("Clasica", 0.001f);
     }
     void Heavy()
@@ -261,17 +259,14 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         {
             rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * sentido * Time.deltaTime;
         }
-        else if (direction.magnitude < 2)
-        {
-            rpd.MusicaElectronica(angle);
-            rb.velocity = Vector2.zero;
-        }
+        else if (direction.magnitude < 2) rb.velocity = Vector2.zero;
         //Si el sentido es negativo, tendrá velocidad negativa y el ángulo opuesto
         else if (sentido == -1)
         {
             rb.velocity = -transform.right * velocidad * sentido * Time.deltaTime;
         }
         else rb.velocity = Vector2.zero;
+        if (direction.magnitude < 4) rpd.MusicaElectronica(angle); 
         Invoke("Electronica", 0.001f);
     }
     public void Parar()

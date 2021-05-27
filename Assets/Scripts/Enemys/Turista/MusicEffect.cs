@@ -37,7 +37,7 @@ public class MusicEffect : MonoBehaviour
     public void Empezar()
     {
         //Al morir que solo haga la animación y se cancele el movimiento eléctrico
-        if (Rigidbody2D.velocity == Vector2.zero) Cancelar();
+     
         if (player != null)
         {
             if (musica == GameManager.Music.classic && !clasic)
