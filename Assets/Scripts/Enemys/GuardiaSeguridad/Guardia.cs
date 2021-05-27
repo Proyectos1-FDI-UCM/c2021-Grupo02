@@ -81,7 +81,7 @@ public class Guardia : MonoBehaviour
                 }
             }
             else if (mus != GameManager.Music.heavy) rb.velocity = Vector2.zero;
-            else if (mus == GameManager.Music.heavy && direction.magnitude < 7 && direction.magnitude > 0.5f)//cuerpo a cuerpo
+            else if (mus == GameManager.Music.heavy && direction.magnitude < 7 )//cuerpo a cuerpo
             {
                 rb.velocity = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y) * velocidad * 2 * sentido * Time.deltaTime;
                 if (sentido == -1 && giro)
@@ -104,7 +104,7 @@ public class Guardia : MonoBehaviour
                     animator.SetBool("Porra", true);//llamas al parametro;
                     animator.SetBool("Muerte", false);//llamas al parametro;
                     animator.SetBool("Disparar", false);//llamas al parametro;
-                    Invoke("Porrazo", 0.5f);
+                    Invoke("Porrazo", 1);
                 }
                 else if (sentido == 1)
                 {
