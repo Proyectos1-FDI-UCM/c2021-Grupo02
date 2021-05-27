@@ -45,7 +45,8 @@ public class Guardia : MonoBehaviour
         if (mus != musicaVieja)                            //Si la musica ha cambiado, es decir si la de ahora es diferente a la de antes
         {
             musicaVieja = mus;                             //La musica actual pas a ser la amtigua, para que al cambiar se note la diferencia
-            CambioSentido();                                  //El enemigo irá en setido contrario
+            CambioSentido();
+            velocidad = 10;//El enemigo irá en setido contrario
             Invoke("CambioSentido", 0.8f);                      //Tras un segundo el enemigo volverá a ir en la dirección normal. Si cambias el sentido 2 veces t qdas igual
         }
     }
@@ -134,6 +135,7 @@ public class Guardia : MonoBehaviour
     void CambioSentido()
     {
         sentido = -sentido; //Sentido contrario
+        velocidad = 40;
     }
     private void OnDisable()
     {
