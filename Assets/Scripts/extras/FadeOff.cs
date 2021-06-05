@@ -10,13 +10,14 @@ public class FadeOff : MonoBehaviour
     public float velocidadFade = 0.1f;
     private float alpha = 1.0f;//componente del color A que cambiamos ya qye controla la opacidad
                                // Start is called before the first frame update
+
     void Start()
     {
       
         renderer =GetComponent<Renderer>();
     }
 
-    // Update is called once per frame
+    //Metodo que desvanece el color negro de la pantalla poco a poco con una velocidad concreta.
     void Update()
     {
         renderer.material = colorInicial;
