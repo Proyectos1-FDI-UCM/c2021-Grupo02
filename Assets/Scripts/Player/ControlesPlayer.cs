@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ControlesPlayer : MonoBehaviour
-{
+{//Dani, Miriam, Pablo, Sara. 
     //Declaración de variables
     [SerializeField]
     float velocityScale;//velocidad de movimiento

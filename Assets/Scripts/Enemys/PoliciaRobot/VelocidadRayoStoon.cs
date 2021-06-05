@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Daniel
 public class VelocidadRayoStoon : MonoBehaviour
 {
     //Variables públicas para decidir desde el editor la velocidad del disco y lo que tarda en explotar

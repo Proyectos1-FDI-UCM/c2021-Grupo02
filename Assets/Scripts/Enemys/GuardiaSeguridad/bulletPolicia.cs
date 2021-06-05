@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Daniel 
+
+
 // Script asociado a la bala
 public class bulletPolicia : MonoBehaviour
 {

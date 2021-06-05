@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Pablo , Daniel , Sara , Miriam
 public class EfectoHeavy : MonoBehaviour
 {     
     CircleCollider2D circleCollider2D;

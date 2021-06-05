@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Daniel , Miriam y Javi
 
 public class EnemDamageGuardia : MonoBehaviour
 {

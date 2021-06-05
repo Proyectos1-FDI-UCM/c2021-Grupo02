@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//Daniel , Miriam
 public class Damageable : MonoBehaviour
 {
     [SerializeField]

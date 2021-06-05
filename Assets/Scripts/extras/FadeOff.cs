@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Pablo
 public class FadeOff : MonoBehaviour
 {
     public Material colorInicial;

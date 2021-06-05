@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Sara , Dani , Miriam , Pablo
+
+
 //Script asociado a los enemigos
 public class Guardia : MonoBehaviour
 {

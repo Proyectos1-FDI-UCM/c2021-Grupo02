@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Miriam
 public class DetectorPuerta : MonoBehaviour
 {
     public GameObject puerta;

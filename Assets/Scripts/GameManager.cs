@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Pablo , Sara , Miriam, Javier , Dani
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -52,6 +53,8 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
             CancelInvoke();
+            InvokeRepeating("AñadirDiscos", 0, 2);
+            InvokeRepeating("ReducirVidasConstante", 0, 0.6f);
             cambio = true;
             enemy = 0;
             vidas = 101;

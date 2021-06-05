@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//Miriam , Daniel , Javier.
+
 //Scripts asociado al robot
 public class RobotPoliciaMovimiento : MonoBehaviour
 {

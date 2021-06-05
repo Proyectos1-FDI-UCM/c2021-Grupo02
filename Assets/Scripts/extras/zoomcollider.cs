@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+//Pablo
 public class zoomcollider : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera  myVirtualCamera;

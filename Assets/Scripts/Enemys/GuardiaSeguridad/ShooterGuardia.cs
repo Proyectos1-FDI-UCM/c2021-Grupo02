@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+
+//Sara , Pablo , Javi
+
 //Script asociado a la pistola del guardia de seguridad
 public class ShooterGuardia : MonoBehaviour
 {

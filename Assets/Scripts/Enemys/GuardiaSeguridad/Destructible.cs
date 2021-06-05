@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Sara
+
 // Este script va asociado a la bala
 public class Destructible : MonoBehaviour
 {

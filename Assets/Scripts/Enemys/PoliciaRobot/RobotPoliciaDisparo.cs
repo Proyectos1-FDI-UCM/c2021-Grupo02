@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//Daniel 
+
+
 //Script asociado al "cañón" del robot
 public class RobotPoliciaDisparo : MonoBehaviour
 {

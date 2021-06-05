@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 
+//Javier
 public class AudioManager : MonoBehaviour
 {
     private static AudioManager instance;

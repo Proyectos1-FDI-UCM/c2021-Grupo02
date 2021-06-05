@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Pablo , Daniel , Sara , Miriam
 public class MusicEffect : MonoBehaviour
 {
     [SerializeField]

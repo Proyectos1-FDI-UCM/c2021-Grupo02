@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Javier , Miriam , Daniel
 public class EnemDamagePolicia : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Miriam , Daniel
 public class UiPolicia : MonoBehaviour
 {
     [SerializeField]

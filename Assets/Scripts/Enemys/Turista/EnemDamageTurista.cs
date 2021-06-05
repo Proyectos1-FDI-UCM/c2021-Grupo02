@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+// Sara , Miriam y Javi
 public class EnemDamageTurista : MonoBehaviour
 {
     Rigidbody2D rigidBody2D;

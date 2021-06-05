@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CamaraFollower : MonoBehaviour
-{
+{//Pablo , Javi , Sara
     
         [SerializeField]
         GameObject personaje;//objeto que queremos que la camara siga , asociarlo a  GO Player
