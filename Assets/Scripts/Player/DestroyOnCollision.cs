@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyOnCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Metodo que se utiliza para que detecte el collider cuando se coja el disco de oro y se destruya este
     void OnTriggerEnter2D(Collider2D colision)
     {
         Debug.Log("Has obtenido el disco de oro!");

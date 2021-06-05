@@ -13,6 +13,7 @@ public class ShooterApuntadoRaton : MonoBehaviour
     Vector3 mousePosition, playerPosition;
     GameManager.Music mus;
  
+    //Metodo para disparar cuando sobre donde se hace click con el raton
     public void Disparo()
     {
         mus= GameManager.GetInstance().Musica();

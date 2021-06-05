@@ -31,6 +31,7 @@ public class ControlesPlayer : MonoBehaviour
       
     }
    
+    //Metodo encargado del input de usuario del jugador
     void Update()
     {
         tiempoAux = tiempoAux - Time.deltaTime;

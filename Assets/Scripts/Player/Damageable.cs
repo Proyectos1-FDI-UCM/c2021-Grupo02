@@ -22,6 +22,7 @@ public class Damageable : MonoBehaviour
             Destroy(this.gameObject, 2f);
         }
     }
+    //Metodo para que al jugador se le reduzca vida
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.GetComponent<VelocidadDisco>()&&!collision.GetComponent<Habita>())
