@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class DiscoGanar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Si el jugador toca el disco el juego acaba
     void OnTriggerEnter2D(Collider2D colision)
     {
-        
-      
         Destroy(this.gameObject);
         GameManager.GetInstance().Perder(false);
 

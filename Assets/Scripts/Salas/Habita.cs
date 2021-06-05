@@ -17,16 +17,11 @@ public class Habita : MonoBehaviour
         {
             gameObject.layer = 0;
             GameManager.GetInstance().EntrarSala();
-          
-
         }
         if (collision.gameObject.GetComponent<RobotPoliciaMovimiento>()|| collision.gameObject.GetComponent<Guardia>())
-        GameManager.GetInstance().AddEnemy();
-        
+        GameManager.GetInstance().AddEnemy();//contador de enemigos en las salas
 
-       
-       
-       
+  
     }
  
 

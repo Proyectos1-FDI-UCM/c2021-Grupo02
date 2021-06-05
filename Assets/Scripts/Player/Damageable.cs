@@ -9,15 +9,9 @@ public class Damageable : MonoBehaviour
     GameObject paralizado;
     
     Animator anim;
-
-    //Música electrónica: la vida aumenta, es decir se cura 1 pila cada 8 segundos.
-    //Música clásica: la vida del jugador disminuye de forma normal 1 pila cada 6 segundos.
-    //Música heavy metal: la vida decrementará a una velocidad más rápida(1 pila cada 4 segundos).
-
     void Start()
     {
         anim = GetComponent<Animator>();
-        
 
     }
     void Update()
@@ -34,6 +28,7 @@ public class Damageable : MonoBehaviour
         {
             if (!GameManager.GetInstance().JugMuerto())
             {
+                //reducción de pilas cuando una bala de un enemigo colisona con el jugador
                 if (collision.GetComponent<VelocidadRayoDaño>()) GameManager.GetInstance().reducir2Vidas();
                 else if (collision.GetComponent<VelocidadRayoStoon>())
                 {
