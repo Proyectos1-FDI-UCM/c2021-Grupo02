@@ -25,18 +25,21 @@ public class EnemDamagePolicia : MonoBehaviour
         audioManager = GameManager.GetInstance().GetAudioManagerInstance().GetComponent<AudioManager>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    { //metodo que activa el daño al robot policia si el GO posee script VelocidadDisco (que lo poseen los 3 discos deñ jugador)
         //METEMOS QUE SOLO EL DISCO DEL JUG PUEDE HACER DAÑO
         if (collision.GetComponent<VelocidadDisco>())
         {
             RobotDaño();
         }
     }
+
+    //Metodo para que aoarezcan vidas del robot policia en la UI.
     public void vidasUIRobot(UiPolicia uie)
     {
         uiPoli = uie;
         uiPoli.VidaPoli(4, golpe);
     }
+    //Metodo para contar cantidad de daño y activar  o no animacion de muerte
     void RobotDaño()
     {
         if (GameManager.GetInstance().Musica() == GameManager.Music.electronic) golpe = golpe - 2;

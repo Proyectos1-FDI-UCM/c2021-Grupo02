@@ -18,13 +18,14 @@ public class RobotPoliciaMovimiento : MonoBehaviour
     GameManager.Music mus,musicaVieja;
    
     private void OnCollisionEnter2D(Collision2D collision)
-    {
+    {//Metodo que al sonar musica heavy y sea el jugado, se le baje una vida sino está tiempochoque>0
         if (mus == GameManager.Music.heavy && collision.transform.GetComponent<ControlesPlayer>() && tiempoChoque <= 0)
         {
             GameManager.GetInstance().reducirVidas();
             tiempoChoque = 0.8f;
         }
         else if (collision.transform.GetComponent<MusicEffect>() || collision.transform.GetComponent<Guardia>()) Debug.Log("Aparta");
+       //para cuando se choca contra un muro
         else Invoke("CambiarSentidoChoque", 0);
     }
  
@@ -98,10 +99,12 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         }
         else CancelInvoke();
     }
+    //Metodo para recalcular el tiempo
     void CambiarSentidoChoque()
     {
         tiempoAux = 0.8f;
     }
+    //Metodo para que el robot policia gire en dirección al jugador
     void CambiarSentido()
     {
         musicaVieja = mus;    
@@ -159,7 +162,7 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         if(direction.magnitude < 4) rpd.MusicaClasica(angle);
         Invoke("Clasica", 0.001f);
     }
-    void Heavy()
+    void Heavy()//metodo para que al estar en una distancia maxima de 7 hace animacion y movimiento de embestir
     {
         if( direction.magnitude < 7)
         {
@@ -235,8 +238,9 @@ public class RobotPoliciaMovimiento : MonoBehaviour
        
         Invoke("Heavy", 0.001f);
 
-       
+
     }
+    //Metodo para hacer animacion de disparo y girar este sprite en la dirección indicada
     void Electronica()
     {
         if (rb.velocity.x > 0)
@@ -269,11 +273,13 @@ public class RobotPoliciaMovimiento : MonoBehaviour
         if (direction.magnitude < 4) rpd.MusicaElectronica(angle); 
         Invoke("Electronica", 0.001f);
     }
+    //Metodo para poner la velocidad del Robot Policia a 0.
     public void Parar()
     {
         rb.velocity = Vector2.zero;
         CancelInvoke();
     }
+    //metodo para cambiar de sentido.
     void CambioSentido()
     {
         CancelInvoke();

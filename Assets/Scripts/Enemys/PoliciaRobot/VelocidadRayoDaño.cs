@@ -19,6 +19,7 @@ public class VelocidadRayoDaño : MonoBehaviour
     {
         Destroy(this.gameObject);
     }
+    //Metodo para destruir cualquier GO que no posea el script Habita
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (  !collision.GetComponent<Habita>())
