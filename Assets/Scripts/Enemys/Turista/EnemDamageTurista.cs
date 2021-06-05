@@ -21,6 +21,7 @@ public class EnemDamageTurista : MonoBehaviour
     {
         audioManager = gameManager.GetAudioManagerInstance().GetComponent<AudioManager>();
     }
+    //Metodo que permite al disco del jjugador hacer daño al turista
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //METEMOS QUE SOLO EL DISCO DEL JUG PUEDE HACER DAÑO
@@ -30,6 +31,7 @@ public class EnemDamageTurista : MonoBehaviour
         }
     }
 
+    //Metodo que hace daño al turista y que activa
     void TuristaDaño()
     {
         

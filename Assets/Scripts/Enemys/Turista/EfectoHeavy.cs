@@ -30,6 +30,8 @@ public class EfectoHeavy : MonoBehaviour
             heavy = false;
         }
     }
+
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<MusicEffect>())
@@ -37,6 +39,7 @@ public class EfectoHeavy : MonoBehaviour
             collision.GetComponent<MusicEffect>().Cancelar();
         }
     }
+    //Metodo para asignar coordenadas aleatorias para la musica heavy y su efecto con los turistas
     public void Heavy()
     {
         float x2 = Random.Range(ini.x-horizontal,ini.x+ horizontal);

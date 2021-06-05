@@ -34,6 +34,7 @@ public class MusicEffect : MonoBehaviour
         if (collision.GetComponent<EfectoHeavy>()) Rigidbody2D.velocity = Vector2.zero;
     }
 
+    //Metodo para iniciar musica , electrónica y heavy
     public void Empezar()
     {
         //Al morir que solo haga la animación y se cancele el movimiento eléctrico
@@ -78,10 +79,14 @@ public class MusicEffect : MonoBehaviour
             metodo = true;
         }
     }
+
+
     public void Cancelar()
     {
         CancelInvoke();
     }
+
+    //Metodo que hace efecto musica heavy y activa animaciones.
     public void MusicaHeavy()
     {
         anima.SetBool("Dream", false);
@@ -100,6 +105,8 @@ public class MusicEffect : MonoBehaviour
             anima.SetBool("MovIzq", false);
         }
     }
+
+    //Metodo que activa efecto musica clásica , es decir desactiva collider2D
     public void MusicaClasica()
     {
         anima.SetBool("Heavy", false);
@@ -109,6 +116,8 @@ public class MusicEffect : MonoBehaviour
         anima.SetBool("Dream", true);
         Rigidbody2D.velocity = Vector2.zero;
     }
+
+    //Metodo que activa efecto musica electrónica, es decir da un movimiento aleatoria.
     public void MusicaElectronica()
     {
         anima.SetBool("Heavy", false);
