@@ -12,13 +12,15 @@ public class zoomcollider : MonoBehaviour
         myVirtualCamera.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
+    //Metodo que posee un Trigger que detecta a un GO con script ControlesPlayer y activa la camara virtual
     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.GetComponent<ControlesPlayer>())
             myVirtualCamera.gameObject.SetActive(true);
     }
+
+    //Metodo que posee un Trigger que detecta a un GO con script ControlesPlayer y desactiva la camara virtual
     private void OnTriggerExit2D(Collider2D other)
     {
         if(other.GetComponent<ControlesPlayer>())
