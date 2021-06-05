@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     public enum Music { classic,heavy,electronic}
     Music mus = Music.classic;
+   
+
+    //
     void Awake()
     {
         if (instance == null)
@@ -111,30 +114,39 @@ public class GameManager : MonoBehaviour
         if (vidas <= 0) JugMuerto();
     }
 
+    //metodo para resetear enemigos
    public void ResetEnemies()
     {
         enemy = 0;
     }
+
+    //metodo para detectar si han entrado en la sala.
     public bool EntrarSala()
     {
         playerEnSala = true;
         return playerEnSala;
     }
+    //metodo para detectar si han salido en la sala.
     public bool SalirSala()
     {
         playerEnSala = false;
         return playerEnSala;
     }
+
+    //metodo para detectar estado de la sala.
     public bool EstadoSala()
     {
         return playerEnSala;
     }
+
     //Método para cada vez que matamos a un robot lo quite de la cuenta
     public void RemoveEnemy()
     {
         enemy--;
         print("enemy: " + enemy);
     }
+
+    //metodo para abrir las vallas en caso de que no queden enemigos en la sala
     public bool Enemiesmuertos()
     {
         if (enemy <= 0) return true;
@@ -153,6 +165,8 @@ public class GameManager : MonoBehaviour
         vidas = vidas - 20;
       
     }
+
+    //bajar vidas de manera constante
     public void ReducirVidasConstante()
     {
         if(vidas >= 0)
@@ -198,10 +212,13 @@ public class GameManager : MonoBehaviour
         audioManager.ChangeMusic("MusicaHeavy");
     }
     //Actualiza el char de la música que esté sonando y lo devuelve 
+    
     public Music Musica()
     {
         return mus;
     }
+
+    //Metodo asignado a un boton para cerrar el juego.
     public void CerrarJuego()
     {
         Application.Quit();
@@ -242,6 +259,7 @@ public class GameManager : MonoBehaviour
         }
        
     }
+    //Metodo para parar
     void StopGame()
     {
         Time.timeScale = 0;
@@ -262,11 +280,14 @@ public class GameManager : MonoBehaviour
     {
         Invoke("SumaDiscos", 0);
     }
+
+    //metodo que suma discos
     public void SumaDiscos()
     {
         if(discos < 20) discos++;
     
     }
+    //metodo que te resta discos si te quedan y te avisa cuando se acaban.
     public bool NumeroDiscos()
     {
         if (discos > 0)
@@ -281,10 +302,13 @@ public class GameManager : MonoBehaviour
             return false;
         }
     }
+    
     public static GameManager GetInstance()
     {
         return instance;
     }
+
+    //metodo que cambia discos en la interfaz y actualiza el numero de vidas.
     public void UIManagerUpdate(UIManager uim)
     {
         UIManager = uim;
@@ -292,6 +316,7 @@ public class GameManager : MonoBehaviour
         UIManager.UpdateLives(vidas);
         
     }
+
     public void SoyElAudioManager(AudioManager aM)
     {
         audioManager = aM;
@@ -309,6 +334,7 @@ public class GameManager : MonoBehaviour
         audioManager.GetComponent<AudioManager>().Play(sonido);
     }
   
+    //metodo de cmabio de escena
     public void ChangeScene(string sceneName)
     {
         cambio = true;
@@ -316,6 +342,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Time.timeScale = 1;
     }
+
+    //metodo abrir enlace para la escena copyright 
     public void Enlace(string s)
     {
         Application.OpenURL(s);

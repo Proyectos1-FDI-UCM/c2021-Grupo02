@@ -23,11 +23,13 @@ public class Guardia : MonoBehaviour
         //Se accede al metodo  AddEnemy del gm para que se cuente al numero de enemigos
         rb = GetComponent<Rigidbody2D>();                     //Acceso al rigidBody2D
     }
+    //metodo que activa componente isKinematic.
     void OnCollisionEnter2D(Collision2D col)
     {
         rb.isKinematic = true;
     }
     void OnCollisionExit2D(Collision2D other)
+    //metodo que desactiva componente isKinematic.
     {
         rb.isKinematic = false;
     }

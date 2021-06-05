@@ -27,6 +27,8 @@ public class EnemDamageGuardia : MonoBehaviour
     {
         audioManager = GameManager.GetInstance().GetAudioManagerInstance().GetComponent<AudioManager>();
     }
+
+    //metodo que llama a GuardiaDaño() si el GO colisionado posee el script VelocidadDisco
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //METEMOS QUE SOLO EL DISCO DEL JUG PUEDE HACER DAÑO
@@ -35,11 +37,14 @@ public class EnemDamageGuardia : MonoBehaviour
             GuardiaDaño();
         }
     }
+
+    //metodo que cuenta las vidas de la UI del Guardia
     public void vidasUIGuardia(UiEnemies uie)
     {
         uiEnemies = uie;
         uiEnemies.VidaGuardia(2, golpe);
     }
+    //metodo que se encarga del daño de los golpes de los guardias según la música y de sus animaciones.
     void GuardiaDaño()
     {
         
@@ -79,6 +84,7 @@ public class EnemDamageGuardia : MonoBehaviour
 
         audioManager.Play("ImpactoGuardia");
     }
+    
     void Destruir()
     {
         Destroy(this.gameObject);

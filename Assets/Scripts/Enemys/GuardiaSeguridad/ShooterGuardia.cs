@@ -56,7 +56,7 @@ public class ShooterGuardia : MonoBehaviour
         Invoke("Automatic", 1f); //Dispara una bala cada segundo
 
     }  
-    public void Automatic()
+    public void Automatic()//metodo para que en musica clasica y electronica dispare el guardia a partir de una distancia
     {
             if (direction.magnitude < 4)
             {

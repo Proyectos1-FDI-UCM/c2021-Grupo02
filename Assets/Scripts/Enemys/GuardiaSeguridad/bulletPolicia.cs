@@ -12,10 +12,12 @@ public class bulletPolicia : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();   //Acceso al componente RigidBody2D
         Invoke("ExplosionBala", tiempoExplot);
     }
+
     void ExplosionBala()
     {
         Destroy(this.gameObject);
     }
+    //metodo que define el movimiento de la bala
     void FixedUpdate()
     {
         rb.velocity = transform.up * velocityScale;   //Movimiento físico de la bala
