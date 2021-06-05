@@ -48,12 +48,14 @@ public class GameManager : MonoBehaviour
         }
         if (SceneManager.GetActiveScene().name == "MenuPpal")
         {
+            CancelInvoke();
             cambio = true;
             enemy = 0;
             vidas = 101;
             Time.timeScale = 1;
             discos = 20;
             perderJugador = false;
+            Time.timeScale = 1;
         }
         else if ((SceneManager.GetActiveScene().name == "EscenaFinal 1" ||  SceneManager.GetActiveScene().name == "Playa") && cambio)
         {
