@@ -10,7 +10,7 @@ public class Habita : MonoBehaviour
     {
         GameManager.GetInstance().ResetEnemies();
     }
-   
+   //Metodo que cuenta enemigos en la sala y ver si el jugador ha entrado. 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<ControlesPlayer>())    //Solo se produce si el objeto que entra en el trigger es el jugador
@@ -25,7 +25,7 @@ public class Habita : MonoBehaviour
     }
  
 
-
+    //Metodo que abre la puerta si están todos los enemigos muertos
 private void OnTriggerExit2D(Collider2D collision)
     {
        
