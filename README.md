@@ -34,3 +34,12 @@ Se trata de un proyecto desarrollado en unity utilizando el lenguaje de programa
 - Directorio "Packages": Se guardan paquetes de Unity que ya vienen predefinidos y/o que hayan sido instalados posteriormente.
 
 - Directorio "Project Settings": Unity guarda todos los ajustes que se han hecho en el proyecto relacionados con el audio, las físicas, capas de colisión y configuración del input entre otras cosas.
+
+
+### Integrantes
+Daniel Martin Gomez - damart24@ucm.es
+Javier Callejo Herrero - jacall02@ucm.es
+Miriam Martin Sanchez - mirima10@ucm.es
+Pablo García Moreno - pablog30@ucm.es
+Sara Isabel García Moral - sarais02@ucm.es
+
