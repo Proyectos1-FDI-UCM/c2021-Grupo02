@@ -38,8 +38,13 @@ Se trata de un proyecto desarrollado en unity utilizando el lenguaje de programa
 
 ### Integrantes
 Daniel Martin Gomez - damart24@ucm.es
+
 Javier Callejo Herrero - jacall02@ucm.es
+
 Miriam Martin Sanchez - mirima10@ucm.es
+
 Pablo García Moreno - pablog30@ucm.es
+
 Sara Isabel García Moral - sarais02@ucm.es
+
 
