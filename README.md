@@ -1,6 +1,8 @@
 # RUN THE BEAT
 **c2021-Grupo02**
 
+![WhatsApp Image 2021-04-23 at 11 26 28](https://user-images.githubusercontent.com/82498555/120921173-bbb3a600-c6c2-11eb-818e-cc9994c1c803.jpeg)
+
 ### Descripción del juego
 Run The Beat es un juego de acción y estrategia estilo top down shooter donde debemos recuperar los discos que habrá al final de cada nivel para poder avanzar hacia el siguiente, experimentando de primera mano la adrenalina de los  combates rápidos que cambian constantemente, derrotando a los enemigos del robot protagonista, Quaver 303, y avanzar hasta alcanzar los ansiados discos para restaurar la armonía del mundo y abrirlo musicalmente.
 
